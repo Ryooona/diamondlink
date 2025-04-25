@@ -192,30 +192,33 @@ body.top .container {
     padding: 12px;
   }
 }
-/* ===== ハンバーガーメニュー用 ===== */
+/* ===== ハンバーガーメニュー用（修正版） ===== */
 .hamburger {
-  display: none;
+  display: none; /* 初期状態は非表示 */
   font-size: 2em;
   cursor: pointer;
+  position: absolute; /* 位置を自由に動かす */
+  top: 15px;
+  right: 20px;
 }
 
-/* スマホサイズのときだけハンバーガー表示＆メニュー非表示 */
+/* スマホサイズだけハンバーガーを出す */
 @media (max-width: 600px) {
   .hamburger {
     display: block;
   }
-  
+
   .nav-menu {
     display: none;
     flex-direction: column;
     background-color: white;
     position: absolute;
-    top: 60px;
+    top: 60px; /* ハンバーガーの下に開く */
     left: 0;
     width: 100%;
     border-top: 1px solid #ccc;
   }
-  
+
   .nav-menu.show {
     display: flex;
   }
