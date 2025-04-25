@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DiamondLink | チーム登録</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>チーム登録</h1>
+  <p>このサービスを利用するには、<strong>会員登録（無料）</strong>が必要です。</p>
+
+  <h2>プランを選択してください</h2>
+  <label>
+    <input type="radio" name="plan" value="free" checked>
+    無料プラン（基本的な登録と検索機能）
+  </label><br>
+  <label>
+    <input type="radio" name="plan" value="paid">
+    有料プラン（チームページカスタマイズ・特集掲載など）※近日対応予定
+  </label>
+
+  <h2>チーム情報を入力してください</h2>
+  <form>
+    <label>チーム名：<br>
+      <input type="text" name="team-name" required>
+    </label><br><br>
+
+    <label>都道府県：<br>
+      <input type="text" name="prefecture" required>
+    </label><br><br>
+
+    <label>市区町村：<br>
+      <input type="text" name="city">
+    </label><br><br>
+
+    <label>チーム種別：<br>
+      <select name="team-type">
+        <option value="general">一般</option>
+        <option value="female">女子</option>
+        <option value="student">学生</option>
+      </select>
+    </label><br><br>
+
+    <label>代表者名：<br>
+      <input type="text" name="manager" required>
+    </label><br><br>
+
+    <label>連絡先（メールアドレス）：<br>
+      <input type="email" name="email" required>
+    </label><br><br>
+
+    <label>その他メモ（任意）：<br>
+      <textarea name="memo" rows="4" cols="40"></textarea>
+    </label><br><br>
+
+    <button type="submit" disabled>送信（ダミー）</button>
+    <p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
+  </form>
+
+  <hr>
+  <p>まだ会員登録していない方は <a href="#">こちらから</a></p>
+</body>
+</html>
