@@ -70,8 +70,8 @@ body.top .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative; /* ←追加！ */
-  min-height: 60px;    /* ←追加！（高さ確保）*/
+  position: relative;
+  min-height: 60px;
 }
 
 .logo {
@@ -106,7 +106,12 @@ body.top .container {
   top: 15px;
   right: 20px;
   z-index: 1001;
-  color: #0047ab; /* ←表示が白背景で埋もれてたら色つける */
+  color: #0047ab;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================
