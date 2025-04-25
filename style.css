@@ -189,9 +189,9 @@ a:hover {
 }
 
 /* ============================
-   ◆ スマホ対応（600px以下）
+   ◆ スマホ対応（768px以下）
 ============================ */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .header-container {
     flex-direction: column;
     align-items: flex-start;
