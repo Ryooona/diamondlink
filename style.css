@@ -1,4 +1,6 @@
-/* ページ全体の基本設定 */
+/* ============================
+   ◆ 全体の基本スタイル
+============================ */
 body {
   font-family: sans-serif;
   background-color: #f9f9f9;
@@ -6,97 +8,14 @@ body {
   padding: 20px;
 }
 
-/* ページタイトル */
 h1 {
   text-align: center;
   color: #333;
 }
 
-/* フォーム全体 */
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  max-width: 800px;
-  margin: 20px auto;
-}
-
-/* 各フォーム項目 */
-form label {
-  display: block;
-  margin-bottom: 15px;
-}
-
-/* 入力欄、セレクトボックス */
-form input[type="text"],
-form select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* 検索ボタン */
-form button {
-  width: 100%;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: not-allowed; /* 今はダミーだから */
-}
-
-/* チーム一覧のリスト */
-ul {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
-  margin: 20px auto;
-}
-
-/* チームカード */
-ul li {
-  background: white;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-/* チーム名（強調） */
-ul li strong {
-  font-size: 18px;
-  color: #007bff;
-}
-
-/* トップに戻るリンク */
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-/* チームカードの中の画像 */
-.team-thumb {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 15px;
-  float: left;
-}
-
-/* テキスト情報の配置 */
-.team-info {
-  overflow: hidden;
-}
-/* トップページ専用スタイル */
+/* ============================
+   ◆ トップページ専用スタイル
+============================ */
 body.top h1 {
   font-size: 2.5em;
   color: #0047ab;
@@ -121,11 +40,25 @@ body.top .main-button {
 body.top .main-button:hover {
   background-color: #002e7e;
 }
-/* ===== ヘッダー設定 ===== */
+
+body.top .container {
+  max-width: 600px;
+  margin: 100px auto 0;
+  padding: 0 20px;
+}
+
+/* ============================
+   ◆ ヘッダー
+============================ */
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: white;
   border-bottom: 1px solid #ccc;
   padding: 10px 20px;
+  z-index: 1000;
 }
 
 .header-container {
@@ -152,30 +85,128 @@ body.top .main-button:hover {
 .nav-menu a:hover {
   text-decoration: underline;
 }
-.site-header {
-  position: fixed; /* ←この1行を追加するだけ！ */
-  top: 0;
-  left: 0;
+
+/* ============================
+   ◆ ハンバーガーメニュー
+============================ */
+.hamburger {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1001;
+}
+
+/* ============================
+   ◆ チーム検索ページ（フォーム・カード）
+============================ */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+form input[type="text"],
+form select {
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 20px;
-  z-index: 1000; /* 前面に出すため */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-/* トップページのメインコンテンツ位置調整 */
-body.top .container {
-  max-width: 600px;
-  margin: 100px auto 0;
+
+form button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: not-allowed; /* 今はダミー */
 }
-/* ===== スマホ対応（画面幅600px以下のとき） ===== */
+
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+ul li {
+  background: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+ul li strong {
+  font-size: 18px;
+  color: #007bff;
+}
+
+.team-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 15px;
+  float: left;
+}
+
+.team-info {
+  overflow: hidden;
+}
+
+/* ============================
+   ◆ リンク
+============================ */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   ◆ スマホ対応（600px以下）
+============================ */
 @media (max-width: 600px) {
   .header-container {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  .hamburger {
+    display: block;
+  }
+
   .nav-menu {
-    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+  }
+
+  .nav-menu.show {
+    display: flex;
   }
 
   .nav-menu a {
@@ -190,36 +221,5 @@ body.top .container {
   .main-button {
     font-size: 1em;
     padding: 12px;
-  }
-}
-/* ===== ハンバーガーメニュー用（修正版） ===== */
-.hamburger {
-  display: none; /* 初期状態は非表示 */
-  font-size: 2em;
-  cursor: pointer;
-  position: absolute; /* 位置を自由に動かす */
-  top: 15px;
-  right: 20px;
-}
-
-/* スマホサイズだけハンバーガーを出す */
-@media (max-width: 600px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    top: 60px; /* ハンバーガーの下に開く */
-    left: 0;
-    width: 100%;
-    border-top: 1px solid #ccc;
-  }
-
-  .nav-menu.show {
-    display: flex;
   }
 }
