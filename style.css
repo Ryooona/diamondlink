@@ -1,21 +1,84 @@
+/* ページ全体の基本設定 */
 body {
-  text-align: center;
   font-family: sans-serif;
-  padding: 50px;
   background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
 }
 
+/* ページタイトル */
 h1 {
-  color: darkblue;
+  text-align: center;
+  color: #333;
 }
 
-button {
-  background-color: orange;
-  color: white;
-  padding: 12px 24px;
-  margin: 10px;
-  border: none;
+/* フォーム全体 */
+form {
+  background: white;
+  padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* 各フォーム項目 */
+form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* 入力欄、セレクトボックス */
+form input[type="text"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 検索ボタン */
+form button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
   font-size: 16px;
-  cursor: pointer;
+  border-radius: 4px;
+  cursor: not-allowed; /* 今はダミーだから */
+}
+
+/* チーム一覧のリスト */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* チームカード */
+ul li {
+  background: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* チーム名（強調） */
+ul li strong {
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* トップに戻るリンク */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
