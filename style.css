@@ -192,3 +192,31 @@ body.top .container {
     padding: 12px;
   }
 }
+/* ===== ハンバーガーメニュー用 ===== */
+.hamburger {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+/* スマホサイズのときだけハンバーガー表示＆メニュー非表示 */
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+  }
+  
+  .nav-menu.show {
+    display: flex;
+  }
+}
