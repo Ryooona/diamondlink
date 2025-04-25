@@ -80,6 +80,7 @@ body.top .container {
   color: #0047ab;
 }
 
+/* ナビゲーション */
 .nav-menu {
   display: flex;
 }
@@ -95,11 +96,7 @@ body.top .container {
   text-decoration: underline;
 }
 
-/* ============================
-   ◆ ハンバーガーメニュー
-============================ */
-/* 通常（PC画面以上のとき）は非表示 */
-/* 通常（PC画面以上）はハンバーガー非表示、ナビゲーション横並び */
+/* ハンバーガー（通常は非表示） */
 .hamburger {
   display: none;
   font-size: 2.5em;
@@ -109,36 +106,6 @@ body.top .container {
   right: 20px;
   z-index: 1001;
   color: #0047ab;
-}
-
-.nav-menu {
-  display: flex;
-}
-
-/* スマホ画面（768px以下）はハンバーガー表示＆ナビゲーション非表示 */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    border-top: 1px solid #ccc;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
 }
 
 /* ============================
@@ -230,11 +197,14 @@ a:hover {
   .header-container {
     flex-direction: column;
     align-items: flex-start;
-    position: relative;
   }
 
   .hamburger {
-    display: block;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-menu {
