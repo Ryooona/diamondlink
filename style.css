@@ -239,3 +239,35 @@ a:hover {
     text-align: center;
   }
 }
+/* ————————
+   モバイルファースト：スマホではハンバーガー表示、ナビは隠す
+——————— */
+.nav-menu {
+  display: none;
+}
+.hamburger {
+  display: flex;
+  font-size: 2.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  color: #0047ab;
+}
+
+/* ————————
+   PC向け（769px以上）では逆にする
+——————— */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+  .nav-menu {
+    display: flex !important;
+  }
+}
