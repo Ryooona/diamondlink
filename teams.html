@@ -89,5 +89,17 @@
 
   <hr>
   <a href="index.html">← トップに戻る</a>
+<script>
+  window.onload = function() {
+    const snsLinks = document.querySelectorAll('.sns-icons a');
+    snsLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      // hrefが空か、または「sample」というダミーリンクなら非表示にする
+      if (!href || href.includes('sample')) {
+        link.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>
