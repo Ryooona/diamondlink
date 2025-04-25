@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DiamondLink | チーム検索</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>チームを探す</h1>
+
+  <h2>検索フォーム</h2>
+  <form>
+    <label>キーワード検索：<br>
+      <input type="text" name="keyword" placeholder="チーム名などを入力">
+    </label><br><br>
+
+    <label>都道府県で絞り込む：<br>
+      <select name="prefecture">
+        <option value="">選択してください</option>
+        <option value="tokyo">東京都</option>
+        <option value="osaka">大阪府</option>
+        <option value="aichi">愛知県</option>
+        <option value="hokkaido">北海道</option>
+        <!-- ここに都道府県を増やしていけます -->
+      </select>
+    </label><br><br>
+
+    <button type="submit" disabled>検索（※ダミー）</button>
+    <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
+  </form>
+
+  <hr>
+
+  <h2>チーム一覧（サンプル）</h2>
+  <ul>
+    <li><strong>ダイヤモンドスターズ</strong>（東京都・一般）</li>
+    <li><strong>ブルースカイズ</strong>（大阪府・学生）</li>
+    <li><strong>サンライズソフトボールクラブ</strong>（愛知県・女子）</li>
+  </ul>
+
+  <hr>
+  <a href="index.html">← トップに戻る</a>
+</body>
+</html>
