@@ -96,3 +96,28 @@ a:hover {
 .team-info {
   overflow: hidden;
 }
+/* トップページ専用スタイル */
+body.top h1 {
+  font-size: 2.5em;
+  color: #0047ab;
+}
+
+body.top .catch {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+body.top .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+body.top .main-button {
+  background-color: #0047ab;
+  color: white;
+}
+
+body.top .main-button:hover {
+  background-color: #002e7e;
+}
