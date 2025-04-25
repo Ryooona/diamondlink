@@ -167,3 +167,28 @@ body.top .container {
   max-width: 600px;
   margin: 100px auto 0;
 }
+/* ===== スマホ対応（画面幅600px以下のとき） ===== */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    margin-top: 10px;
+  }
+
+  .nav-menu a {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .main-button {
+    font-size: 1em;
+    padding: 12px;
+  }
+}
