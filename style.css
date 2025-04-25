@@ -80,9 +80,11 @@ body.top .container {
   color: #0047ab;
 }
 
-/* ナビゲーション */
+/* ============================
+   ◆ ナビゲーション
+============================ */
 .nav-menu {
-  display: flex;
+  display: none; /* モバイルでは隠す（モバイルファースト） */
 }
 
 .nav-menu a {
@@ -96,14 +98,20 @@ body.top .container {
   text-decoration: underline;
 }
 
-/* ハンバーガー（通常は非表示） */
+/* ============================
+   ◆ ハンバーガーメニュー
+============================ */
 .hamburger {
-  display: none;
+  display: flex; /* モバイルファーストで表示 */
   font-size: 2.5em;
   cursor: pointer;
   position: absolute;
   top: 15px;
   right: 20px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
   z-index: 1001;
   color: #0047ab;
 }
@@ -191,115 +199,14 @@ a:hover {
 }
 
 /* ============================
-   ◆ スマホ対応（768px以下）
+   ◆ モバイルファースト & PC向け切り替え
 ============================ */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* モバイル（すべての画面）ではハンバーガー表示＆ナビ隠す */
+.nav-menu { display: none; }
+.hamburger { display: flex; }
 
-  .hamburger {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    border-top: 1px solid #ccc;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
-  .nav-menu a {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-  }
-
-  .container {
-    padding: 0 10px;
-  }
-
-  .main-button {
-    font-size: 1em;
-    padding: 12px;
-    width: 80%;
-    text-align: center;
-  }
-}
-/* ————————
-   モバイルファースト：スマホではハンバーガー表示、ナビは隠す
-——————— */
-.nav-menu {
-  display: none;
-}
-.hamburger {
-  display: flex;
-  font-size: 2.5em;
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  z-index: 1001;
-  color: #0047ab;
-}
-
-/* ————————
-   PC向け（769px以上）では逆にする
-——————— */
+/* PC（769px以上）では逆にする */
 @media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-  .nav-menu {
-    display: flex !important;
-  }
-}
-/* ————————
-   モバイルファースト：スマホではハンバーガー表示、ナビは隠す
-———————— */
-.nav-menu {
-  display: none;
-}
-.hamburger {
-  display: flex;
-  font-size: 2.5em;
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  z-index: 1001;
-  color: #0047ab;
-}
-
-/* ————————
-   PC向け（769px以上）では逆にする
-———————— */
-@media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-  .nav-menu {
-    display: flex !important;
-  }
+  .hamburger { display: none; }
+  .nav-menu { display: flex !important; }
 }
