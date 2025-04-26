@@ -2,16 +2,47 @@
 <header class="site-header">
   <div class="header-container">
     <div class="logo">
-      <a href="index.html">
-        <img src="images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
+      <a href="/diamondlink/index.html">
+        <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
       </a>
     </div>
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-menu" id="nav-menu">
-      <a href="index.html">ホーム</a>
-      <a href="teams.html">チーム検索</a>
-      <a href="login.html">ログイン</a> <!-- 追加：ログイン -->
-      <a href="signup.html" class="signup-button">アカウント作成</a>
+      <!-- JavaScriptで中身を自動生成 -->
     </nav>
   </div>
 </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 仮：ログインしてるかどうか（あとで本格対応するときにここを変える）
+  const isLoggedIn = false; // 今は仮で「未ログイン状態」にしてる
+
+  const navMenu = document.getElementById('nav-menu');
+  navMenu.innerHTML = ''; // まずリセット
+
+  if (isLoggedIn) {
+    // ★ログイン済みのメニュー
+    navMenu.innerHTML = `
+      <a href="/diamondlink/index.html">ホーム</a>
+      <a href="/diamondlink/teams.html">チーム検索</a>
+      <a href="/diamondlink/mypage.html">マイページ</a>
+      <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
+    `;
+  } else {
+    // ★未ログインのメニュー
+    navMenu.innerHTML = `
+      <a href="/diamondlink/index.html">ホーム</a>
+      <a href="/diamondlink/teams.html">チーム検索</a>
+      <a href="/diamondlink/login.html">ログイン</a>
+      <a href="/diamondlink/signup.html" class="signup-button">アカウント作成</a>
+    `;
+  }
+
+  // ハンバーガーメニューの開閉
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', function() {
+    navMenu.classList.toggle('show');
+  });
+});
+</script>
