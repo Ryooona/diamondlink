@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiamondLink | 登録完了</title>
+  <link rel="stylesheet" href="/diamondlink/style.css?v=2">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="container" style="text-align: center; margin-top: 50px;">
+    <h1>登録が完了しました！</h1>
+    <p>ご登録ありがとうございます。</p>
+    <p>引き続き、DiamondLinkをお楽しみください！</p>
+
+    <br>
+    <a href="/diamondlink/index.html" class="button">トップへ戻る</a>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // 共通ヘッダー・フッター読み込み
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/diamondlink/header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-placeholder').innerHTML = html;
+          const hamburger = document.getElementById('hamburger');
+          const navMenu = document.getElementById('nav-menu');
+          if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+              navMenu.classList.toggle('show');
+            });
+          }
+        });
+
+      fetch('/diamondlink/footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    });
+  </script>
+
+</body>
+</html>
