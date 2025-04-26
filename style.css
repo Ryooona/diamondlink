@@ -300,3 +300,21 @@ a:hover {
   height: auto;
   object-fit: cover;
 }
+/* 通常はメニュー非表示 */
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 60px; /* ヘッダーの下に表示する感じ */
+  right: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 999;
+}
+
+/* showクラスが付いたら表示 */
+.nav-menu.show {
+  display: flex;
+}
