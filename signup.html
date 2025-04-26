@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DiamondLink | アカウント作成</title>
   <link rel="stylesheet" href="/diamondlink/style.css?v=2" />
+  <style>
+    /* 赤い＊ */
+    .required {
+      color: red;
+      margin-left: 5px;
+    }
+  </style>
 </head>
 <body>
 
@@ -14,27 +21,76 @@
   <!-- メインコンテンツ -->
   <main class="container">
     <h1>アカウント作成</h1>
-    <p>以下の情報を入力して、アカウントを作成してください（※現在はダミーです）。</p>
+    <p>以下の情報を入力してください（※現在はダミーです）。</p>
 
     <form>
-      <label>名前：<br>
-        <input type="text" name="name" required>
+      <!-- 氏名 -->
+      <label>氏名<span class="required">*</span><br>
+        姓 <input type="text" name="last-name" required>
+        名 <input type="text" name="first-name" required>
       </label><br><br>
 
-      <label>メールアドレス：<br>
+      <!-- ニックネーム -->
+      <label>ニックネーム（自由形式）<br>
+        <input type="text" name="nickname">
+      </label><br><br>
+
+      <!-- 地域（都道府県） -->
+      <label>お住まいの地域<span class="required">*</span><br>
+        <select name="prefecture" required>
+          <option value="">選択してください</option>
+          <option value="北海道">北海道</option>
+          <option value="青森県">青森県</option>
+          <option value="岩手県">岩手県</option>
+          <!-- 以下略（全47都道府県用意する） -->
+          <option value="沖縄県">沖縄県</option>
+        </select>
+      </label><br><br>
+
+      <!-- 生年月日 -->
+      <label>生年月日<span class="required">*</span><br>
+        <select name="birth-year" required></select>年
+        <select name="birth-month" required></select>月
+        <select name="birth-day" required></select>日
+      </label><br><br>
+
+      <!-- 性別 -->
+      <label>性別<span class="required">*</span><br>
+        <select name="gender" required>
+          <option value="">選択してください</option>
+          <option value="male">男性</option>
+          <option value="female">女性</option>
+          <option value="other">その他</option>
+        </select>
+      </label><br><br>
+
+      <!-- メールアドレス -->
+      <label>メールアドレス<span class="required">*</span><br>
         <input type="email" name="email" required>
       </label><br><br>
 
-      <label>パスワード：<br>
+      <!-- パスワード -->
+      <label>パスワード<span class="required">*</span><br>
         <input type="password" name="password" required>
       </label><br><br>
 
-      <label>パスワード（確認用）：<br>
+      <!-- パスワード確認 -->
+      <label>パスワード（確認用）<span class="required">*</span><br>
         <input type="password" name="password-confirm" required>
       </label><br><br>
 
+      <!-- 利用目的 -->
+      <label>利用目的（複数選択可）<span class="required">*</span><br>
+        <input type="checkbox" name="purpose" value="join-team"> 本格的な加入チームを探したい<br>
+        <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
+        <input type="checkbox" name="purpose" value="practice-only"> 練習だけ参加できるチームを探したい<br>
+        <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
+        <input type="checkbox" name="purpose" value="other"> その他<br>
+        <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
+      </label><br><br>
+
       <button type="submit" disabled>アカウント作成（ダミー）</button>
-      <p style="font-size: small; color: gray;">※この機能はまだ有効になっていません</p>
+      <p style="font-size: small; color: gray;">※まだ送信機能は有効になっていません</p>
     </form>
 
     <p>すでにアカウントをお持ちの方は <a href="#">こちらからログイン</a></p>
@@ -43,10 +99,10 @@
   <!-- 共通フッター -->
   <div id="footer-placeholder"></div>
 
-  <!-- ヘッダー＆フッター読込スクリプト -->
+  <!-- スクリプト -->
   <script>
+    // 共通ヘッダー＆フッター読み込み
     document.addEventListener('DOMContentLoaded', function () {
-      // ヘッダー
       fetch('/diamondlink/header.html')
         .then(res => res.text())
         .then(html => {
@@ -58,12 +114,38 @@
           });
         });
 
-      // フッター
       fetch('/diamondlink/footer.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('footer-placeholder').innerHTML = html;
         });
+
+      // ▼ 生年月日プルダウン自動生成
+      const now = new Date();
+      const yearSelect = document.querySelector('select[name="birth-year"]');
+      const monthSelect = document.querySelector('select[name="birth-month"]');
+      const daySelect = document.querySelector('select[name="birth-day"]');
+
+      for (let y = 1950; y <= now.getFullYear(); y++) {
+        const option = document.createElement('option');
+        option.value = y;
+        option.textContent = y;
+        yearSelect.appendChild(option);
+      }
+
+      for (let m = 1; m <= 12; m++) {
+        const option = document.createElement('option');
+        option.value = m;
+        option.textContent = m;
+        monthSelect.appendChild(option);
+      }
+
+      for (let d = 1; d <= 31; d++) {
+        const option = document.createElement('option');
+        option.value = d;
+        option.textContent = d;
+        daySelect.appendChild(option);
+      }
     });
   </script>
 
