@@ -287,3 +287,16 @@ a:hover {
 .nav-menu .signup-button:hover {
   background-color: #002e7e;    /* ホバー時に少し濃く */
 }
+.slideshow-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-container .slide {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
