@@ -11,6 +11,7 @@
     <label>都道府県<span class="required">*</span><br>
       <select name="prefecture" required>
         <option value="">選択してください</option>
+        <!-- ▼ 47都道府県 -->
         <option value="北海道">北海道</option>
         <option value="青森県">青森県</option>
         <option value="岩手県">岩手県</option>
@@ -111,7 +112,7 @@
   <p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
 </form>
 
-<!-- ▼ 競技種別による区分の切り替えスクリプト -->
+<!-- ▼ 競技種別によって区分の選択肢を変える -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const sportType = document.getElementById('sport-type');
