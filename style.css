@@ -91,20 +91,19 @@ a:hover {
    ◆ PC版（769px以上）
 ======================================= */
 @media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-
   .nav-menu {
     display: flex !important;
     flex-direction: row;
-    position: static;
+    position: absolute; /* ←ここを絶対位置にする！！ */
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%); /* 縦中央寄せ */
     background: none;
     box-shadow: none;
     border: none;
     width: auto;
     padding: 0;
-    margin-left: auto;
+    margin: 0;
     align-items: center;
     gap: 20px;
   }
@@ -115,7 +114,6 @@ a:hover {
     color: #0047ab;
   }
 }
-
 /* =======================================
    ◆ コンテンツ間の基本レイアウト
 ======================================= */
