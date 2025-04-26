@@ -258,7 +258,35 @@ for (let d = 1; d <= 31; d++) {
         });
       }
     });
-    
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const prefectureSelect = document.getElementById('prefecture');
+    const citySelect = document.getElementById('city-select');
+
+    prefectureSelect.addEventListener('change', function() {
+      const selectedPrefecture = this.value;
+      citySelect.innerHTML = '<option value="">選択してください</option>'; // リセット
+
+      if (selectedPrefecture) {
+        fetch('/diamondlink/prefecture_city.json')
+          .then(response => response.json())
+          .then(data => {
+            if (data[selectedPrefecture]) {
+              data[selectedPrefecture].forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+              });
+            }
+          })
+          .catch(error => {
+            console.error('市区町村データの読み込みに失敗しました:', error);
+          });
+      }
+    });
+  });
+</script>
   </script>
 
 </body>
