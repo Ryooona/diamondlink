@@ -271,3 +271,19 @@ a:hover {
   /* ヘッダーの高さ ≒ 60px + 少し余白 */
   margin-top: 80px;
 }
+/* ============================
+   ◆ ナビのアカウント作成ボタン
+============================ */
+.nav-menu .signup-button {
+  margin-left: 20px;            /* 左の余白は他リンクと同じ */
+  padding: 6px 12px;            /* 内側の余白 */
+  background-color: #0047ab;    /* ボタン背景 */
+  color: white !important;      /* 文字色は白 */
+  border-radius: 4px;           /* 角丸 */
+  text-decoration: none;        /* リンク下線を消す */
+  font-weight: bold;            /* 太字 */
+}
+
+.nav-menu .signup-button:hover {
+  background-color: #002e7e;    /* ホバー時に少し濃く */
+}
