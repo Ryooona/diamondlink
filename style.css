@@ -313,7 +313,49 @@ a:hover {
   padding: 10px;
   z-index: 999;
 }
+/* ============================
+   ◆ ハンバーガーとナビの表示切り替え
+============================ */
+/* すべての画面で最初は非表示 */
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 999;
+}
 
+/* ハンバーガーが押されたとき */
+.nav-menu.show {
+  display: flex;
+}
+
+/* PC版（幅769px以上）は常に表示、横並び */
+@media (min-width: 769px) {
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin-left: auto; /* ロゴの右側に寄せる */
+  }
+  .nav-menu a {
+    margin-left: 20px;
+    color: #0047ab;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .nav-menu a:hover {
+    text-decoration: underline;
+  }
+}
 /* showクラスが付いたら表示 */
 .nav-menu.show {
   display: flex;
