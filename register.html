@@ -33,12 +33,39 @@
       </label><br><br>
 
       <label>都道府県：<br>
-        <input type="text" name="prefecture" required>
-      </label><br><br>
+  <input type="text" name="prefecture" required>
+</label><br><br>
 
-      <label>市区町村：<br>
-        <input type="text" name="city">
-      </label><br><br>
+<label>市区町村：<br>
+  <input type="text" name="city" required>
+</label><br><br>
+
+<label>チーム種別：<br>
+  <select name="team-type" required>
+    <option value="">選択してください</option>
+    <option value="general">一般</option>
+    <option value="female">女子</option>
+    <option value="student">学生</option>
+  </select>
+</label><br><br>
+
+<label>競技種別：<br>
+  <select name="sport-type" required>
+    <option value="">選択してください</option>
+    <option value="baseball">野球</option>
+    <option value="softball">ソフトボール</option>
+  </select>
+</label><br><br>
+
+<label>ボール種別：<br>
+  <select name="ball-type" required>
+    <option value="">選択してください</option>
+    <option value="rubber">ゴムボール</option>
+    <option value="semi-hard">準硬式</option>
+    <option value="hard">硬式</option>
+    <option value="leather">革ボール</option>
+  </select>
+</label><br><br>
 
       <label>チーム種別：<br>
         <select name="team-type">
