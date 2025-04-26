@@ -2,40 +2,66 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink | 管理者ページ</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/diamondlink/style.css?v=2">
 </head>
 <body>
-  <h1>チーム管理ページ（仮）</h1>
 
-  <p><strong>ログイン中：</strong>山田 太郎 さん（代表）</p>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger">☰</div>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html">ホーム</a>
+        <a href="teams.html">チームを探す</a>
+        <a href="register.html">チーム登録</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>チーム情報</h2>
-  <form>
-    <label>チーム名：<br>
-      <input type="text" value="ダイヤモンドスターズ">
-    </label><br><br>
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <h1>チーム管理ページ（仮）</h1>
 
-    <label>所在地（都道府県）：<br>
-      <input type="text" value="東京都">
-    </label><br><br>
+    <p><strong>ログイン中：</strong>山田 太郎 さん（代表）</p>
 
-    <label>連絡先（メール）：<br>
-      <input type="email" value="sample@example.com">
-    </label><br><br>
+    <h2>チーム情報</h2>
+    <form>
+      <label>チーム名：<br>
+        <input type="text" value="ダイヤモンドスターズ">
+      </label><br><br>
 
-    <label>紹介文（メモ）：<br>
-      <textarea rows="4" cols="40">ここにチーム紹介を書きます。</textarea>
-    </label><br><br>
+      <label>所在地（都道府県）：<br>
+        <input type="text" value="東京都">
+      </label><br><br>
 
-    <button type="submit" disabled>保存する（ダミー）</button>
-    <p style="font-size: small; color: gray;">※現在は保存機能は未対応です</p>
-  </form>
+      <label>連絡先（メール）：<br>
+        <input type="email" value="sample@example.com">
+      </label><br><br>
 
-  <hr>
-  <a href="index.html">← トップに戻る</a> ／
-  <a href="#">ログアウト</a>
-    <footer class="site-footer">
+      <label>紹介文（メモ）：<br>
+        <textarea rows="4" cols="40">ここにチーム紹介を書きます。</textarea>
+      </label><br><br>
+
+      <button type="submit" disabled>保存する（ダミー）</button>
+      <p style="font-size: small; color: gray;">※現在は保存機能は未対応です</p>
+    </form>
+
+    <hr>
+    <p>
+      <a href="index.html">← トップに戻る</a> ／
+      <a href="#">ログアウト</a>
+    </p>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
     <div class="footer-container">
       <p>&copy; 2025 DiamondLink. All Rights Reserved.</p>
       <nav class="footer-nav">
@@ -46,5 +72,17 @@
       </nav>
     </div>
   </footer>
+
+  <!-- ハンバーガーメニュー用スクリプト -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+      });
+    });
+  </script>
+
 </body>
 </html>
