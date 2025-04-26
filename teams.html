@@ -2,29 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>DiamondLink | チーム検索</title>
-  <!-- CSS はプロジェクトページ直下のものを読み込み -->
   <link rel="stylesheet" href="/diamondlink/style.css?v=2">
 </head>
 <body>
 
-  <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="logo">
-        <a href="index.html">
-          <img src="images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
-        </a>
-      </div>
-      <div class="hamburger" id="hamburger">☰</div>
-      <nav class="nav-menu" id="nav-menu">
-        <a href="index.html">ホーム</a>
-        <a href="teams.html">チームを探す</a>
-        <a href="register.html">チームを登録する</a>
-      </nav>
-    </div>
-  </header>
+  <!-- 共通ヘッダー挿入 -->
+  <div id="header-placeholder"></div>
 
   <!-- メインコンテンツ -->
   <main class="container">
@@ -111,27 +96,30 @@
     <a href="index.html">← トップに戻る</a>
   </main>
 
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2025 DiamondLink. All Rights Reserved.</p>
-      <nav class="footer-nav">
-        <a href="index.html">ホーム</a>
-        <a href="teams.html">チームを探す</a>
-        <a href="register.html">チーム登録</a>
-        <a href="#">お問い合わせ</a>
-      </nav>
-    </div>
-  </footer>
+  <!-- 共通フッター挿入 -->
+  <div id="footer-placeholder"></div>
 
-  <!-- ハンバーガーメニュー用 JS -->
+  <!-- 共通ヘッダー／フッター読み込み＋ハンバーガー動作スクリプト -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.getElementById('nav-menu');
-      hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
-      });
+      // ヘッダーを読み込んで挿入
+      fetch('/diamondlink/header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-placeholder').innerHTML = html;
+          const hamburger = document.getElementById('hamburger');
+          const navMenu   = document.getElementById('nav-menu');
+          hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+          });
+        });
+
+      // フッターを読み込んで挿入
+      fetch('/diamondlink/footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer-placeholder').innerHTML = html;
+        });
     });
   </script>
 
