@@ -57,7 +57,20 @@
           document.getElementById('footer-placeholder').innerHTML = html;
         });
     });
-  </script>
+      </script>
 
-</body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        setInterval(() => {
+          slides[currentIndex].style.display = 'none';
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].style.display = 'block';
+        }, 3000);
+      });
+    </script>
+
+  </body>
 </html>
