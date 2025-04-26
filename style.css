@@ -360,3 +360,39 @@ a:hover {
 .nav-menu.show {
   display: flex;
 }
+/* ▼ ナビゲーションメニューの基本スタイル（PC版） */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* メニュー同士の間隔 */
+}
+
+/* ハンバーガーはPCでは非表示 */
+.hamburger {
+  display: none;
+}
+
+/* ▼ スマホ用レスポンシブスタイル */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* 最初は隠しておく */
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px; /* ヘッダーの高さに合わせて調整 */
+    right: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  .nav-menu.show {
+    display: flex; /* ハンバーガー押したときだけ出す */
+  }
+  .hamburger {
+    display: block; /* スマホではハンバーガー表示 */
+    font-size: 30px;
+    cursor: pointer;
+  }
+}
