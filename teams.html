@@ -2,106 +2,117 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink | チーム検索</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS はプロジェクトページ直下のものを読み込み -->
+  <link rel="stylesheet" href="/diamondlink/style.css?v=2">
 </head>
 <body>
-  <h1>チームを探す</h1>
 
-  <h2>検索フォーム</h2>
-  <form>
-    <!-- キーワード検索 -->
-    <label>キーワード検索：<br>
-      <input type="text" name="keyword" placeholder="チーム名や地域を入力">
-    </label><br><br>
-
-    <!-- 競技種別 -->
-    <label>競技種別：<br>
-      <select name="sport">
-        <option value="">指定なし</option>
-        <option value="baseball">野球</option>
-        <option value="softball">ソフトボール</option>
-      </select>
-    </label><br><br>
-
-    <!-- チーム構成 -->
-    <label>チーム構成：<br>
-      <select name="gender">
-        <option value="">指定なし</option>
-        <option value="male">男子</option>
-        <option value="female">女子</option>
-        <option value="mixed">混合</option>
-      </select>
-    </label><br><br>
-
-    <!-- 野球種別 -->
-    <label>野球種別：<br>
-      <select name="baseball-type">
-        <option value="">指定なし</option>
-        <option value="soft">軟式</option>
-        <option value="semi-hard">準硬式</option>
-        <option value="hard">硬式</option>
-      </select>
-    </label><br><br>
-
-    <!-- ソフトボール種別 -->
-    <label>ソフトボール種別：<br>
-      <select name="softball-type">
-        <option value="">指定なし</option>
-        <option value="rubber">ゴムボール</option>
-        <option value="leather">革ボール</option>
-      </select>
-    </label><br><br>
-
-    <!-- 検索ボタン -->
-    <button type="submit" disabled>検索（※ダミー）</button>
-    <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
-  </form>
-
-  <hr>
-
-  <h2>チーム一覧（サンプル）</h2>
-<ul>
-  <li>
-    <img src="https://placehold.co/80x80" alt="ダイヤモンドスターズ" class="team-thumb">
-    <div class="team-info">
-      <strong>ダイヤモンドスターズ</strong><br>
-      東京都・一般・軟式
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger">☰</div>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html">ホーム</a>
+        <a href="teams.html">チームを探す</a>
+        <a href="register.html">チームを登録する</a>
+      </nav>
     </div>
-  </li>
+  </header>
 
-  <li>
-    <img src="https://placehold.co/80x80" alt="ブルースカイズ" class="team-thumb">
-    <div class="team-info">
-      <strong>ブルースカイズ</strong><br>
-      大阪府・学生・硬式
-    </div>
-  </li>
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <h1>チームを探す</h1>
 
-  <li>
-    <img src="https://placehold.co/80x80" alt="サンライズソフトボールクラブ" class="team-thumb">
-    <div class="team-info">
-      <strong>サンライズソフトボールクラブ</strong><br>
-      愛知県・女子・ゴムボール
-    </div>
-  </li>
-</ul>
+    <h2>検索フォーム</h2>
+    <form>
+      <!-- キーワード検索 -->
+      <label>キーワード検索：<br>
+        <input type="text" name="keyword" placeholder="チーム名や地域を入力">
+      </label><br><br>
 
-  <hr>
-  <a href="index.html">← トップに戻る</a>
-<script>
-  window.onload = function() {
-    const snsLinks = document.querySelectorAll('.sns-icons a');
-    snsLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      // hrefが空か、または「sample」というダミーリンクなら非表示にする
-      if (!href || href.includes('sample')) {
-        link.style.display = 'none';
-      }
-    });
-  }
-</script>
-    <footer class="site-footer">
+      <!-- 競技種別 -->
+      <label>競技種別：<br>
+        <select name="sport">
+          <option value="">指定なし</option>
+          <option value="baseball">野球</option>
+          <option value="softball">ソフトボール</option>
+        </select>
+      </label><br><br>
+
+      <!-- チーム構成 -->
+      <label>チーム構成：<br>
+        <select name="gender">
+          <option value="">指定なし</option>
+          <option value="male">男子</option>
+          <option value="female">女子</option>
+          <option value="mixed">混合</option>
+        </select>
+      </label><br><br>
+
+      <!-- 野球種別 -->
+      <label>野球種別：<br>
+        <select name="baseball-type">
+          <option value="">指定なし</option>
+          <option value="soft">軟式</option>
+          <option value="semi-hard">準硬式</option>
+          <option value="hard">硬式</option>
+        </select>
+      </label><br><br>
+
+      <!-- ソフトボール種別 -->
+      <label>ソフトボール種別：<br>
+        <select name="softball-type">
+          <option value="">指定なし</option>
+          <option value="rubber">ゴムボール</option>
+          <option value="leather">革ボール</option>
+        </select>
+      </label><br><br>
+
+      <!-- 検索ボタン -->
+      <button type="submit" disabled>検索（※ダミー）</button>
+      <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
+    </form>
+
+    <hr>
+
+    <h2>チーム一覧（サンプル）</h2>
+    <ul>
+      <li>
+        <img src="https://placehold.co/80x80" alt="ダイヤモンドスターズ" class="team-thumb">
+        <div class="team-info">
+          <strong>ダイヤモンドスターズ</strong><br>
+          東京都・一般・軟式
+        </div>
+      </li>
+      <li>
+        <img src="https://placehold.co/80x80" alt="ブルースカイズ" class="team-thumb">
+        <div class="team-info">
+          <strong>ブルースカイズ</strong><br>
+          大阪府・学生・硬式
+        </div>
+      </li>
+      <li>
+        <img src="https://placehold.co/80x80" alt="サンライズソフトボールクラブ" class="team-thumb">
+        <div class="team-info">
+          <strong>サンライズソフトボールクラブ</strong><br>
+          愛知県・女子・ゴムボール
+        </div>
+      </li>
+    </ul>
+
+    <hr>
+    <a href="index.html">← トップに戻る</a>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
     <div class="footer-container">
       <p>&copy; 2025 DiamondLink. All Rights Reserved.</p>
       <nav class="footer-nav">
@@ -112,5 +123,30 @@
       </nav>
     </div>
   </footer>
+
+  <!-- ハンバーガーメニュー用 JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+      });
+    });
+  </script>
+
+  <!-- SNSリンク非表示用スクリプト -->
+  <script>
+    window.onload = function() {
+      const snsLinks = document.querySelectorAll('.sns-icons a');
+      snsLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href.includes('sample')) {
+          link.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
