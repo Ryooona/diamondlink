@@ -6,41 +6,110 @@
         <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
       </a>
     </div>
-    <div class="hamburger" id="hamburger">☰</div>
+
     <nav class="nav-menu" id="nav-menu">
       <!-- JavaScriptで中身を自動生成 -->
     </nav>
+
+    <div class="hamburger" id="hamburger">☰</div>
   </div>
 </header>
 
+<style>
+/* 基本設定 */
+.site-header {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+/* メニュー（PC用） */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #174bb3;
+  font-weight: bold;
+}
+
+/* アカウント作成ボタンっぽく */
+.signup-button {
+  background-color: #174bb3;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* ハンバーガー（最初は非表示） */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* スマホ用 */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 10;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 仮：ログインしてるかどうか（あとで本格対応するときにここを変える）
-  const isLoggedIn = false; // 今は仮で「未ログイン状態」にしてる
+  // 仮：ログインしてるかどうか
+  const isLoggedIn = false; // 仮の状態（後でセッション管理に変える）
 
   const navMenu = document.getElementById('nav-menu');
-  navMenu.innerHTML = ''; // まずリセット
+  navMenu.innerHTML = ''; // 一旦リセット
 
   if (isLoggedIn) {
-    // ★ログイン済みのメニュー
-navMenu.innerHTML = `
-  <a href="/diamondlink/index.html">ホーム</a>
-  <a href="/diamondlink/teams.html">チーム検索</a>
-  <a href="/diamondlink/mypage.html">マイページ</a>
-  <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
-`;
-    ;
+    navMenu.innerHTML = `
+      <a href="/diamondlink/index.html">ホーム</a>
+      <a href="/diamondlink/teams.html">チーム検索</a>
+      <a href="/diamondlink/mypage.html">マイページ</a>
+      <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
+    `;
   } else {
-    // ★未ログインのメニュー
     navMenu.innerHTML = `
       <a href="/diamondlink/index.html">ホーム</a>
       <a href="/diamondlink/teams.html">チーム検索</a>
       <a href="/diamondlink/login.html">ログイン</a>
       <a href="/diamondlink/signup.html" class="signup-button">アカウント作成</a>
-  `;
+    `;
   }
 
-  // ハンバーガーメニューの開閉
+  // ハンバーガー開閉
   const hamburger = document.getElementById('hamburger');
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
