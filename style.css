@@ -162,3 +162,23 @@ a:hover {
     align-items: center;
   }
 }
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* 最初は隠す */
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 999;
+  }
+
+  .nav-menu.show {
+    display: flex; /* ハンバーガー押したときだけ表示 */
+  }
+}
