@@ -142,60 +142,62 @@
   <div id="footer-placeholder"></div>
 
   <!-- ▼ JavaScriptまとめ -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダー読み込み
-      fetch('/diamondlink/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-          const hamburger = document.getElementById('hamburger');
-          const navMenu = document.getElementById('nav-menu');
-          hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-          });
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ヘッダー読み込み
+  fetch('/diamondlink/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+          navMenu.classList.toggle('show');
         });
-
-      // フッター読み込み
-      fetch('/diamondlink/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
-
-      // 区分切り替え
-      const sportType = document.getElementById('sport-type');
-      const division = document.getElementById('division');
-
-      sportType.addEventListener('change', function() {
-        division.innerHTML = '';
-
-        if (sportType.value === "baseball") {
-          division.disabled = false;
-          ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt;
-            option.textContent = opt;
-            division.appendChild(option);
-          });
-        } else if (sportType.value === "softball") {
-          division.disabled = false;
-          ["指定なし", "ゴム", "革"].forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt;
-            option.textContent = opt;
-            division.appendChild(option);
-          });
-        } else {
-          division.disabled = true;
-          const option = document.createElement('option');
-          option.value = "";
-          option.textContent = "選択してください";
-          division.appendChild(option);
-        }
-      });
+      }
     });
-    document.addEventListener('DOMContentLoaded', function() {
+
+  // フッター読み込み
+  fetch('/diamondlink/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
+
+  // 区分切り替え
+  const sportType = document.getElementById('sport-type');
+  const division = document.getElementById('division');
+
+  sportType.addEventListener('change', function() {
+    division.innerHTML = '';
+
+    if (sportType.value === "baseball") {
+      division.disabled = false;
+      ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else if (sportType.value === "softball") {
+      division.disabled = false;
+      ["指定なし", "ゴム", "革"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else {
+      division.disabled = true;
+      const option = document.createElement('option');
+      option.value = "";
+      option.textContent = "選択してください";
+      division.appendChild(option);
+    }
+  });
+
+  // 都道府県 → 市区町村切り替え
   const prefectureSelect = document.getElementById('prefecture');
   const citySelect = document.getElementById('city-select');
 
@@ -221,8 +223,9 @@
         });
     }
   });
+
 });
-  </script>
+</script>
 
 </body>
 </html>
