@@ -35,86 +35,79 @@
         <input type="text" name="nickname">
       </label><br><br>
 
-<!-- 地域（都道府県） -->
-<label for="prefecture">お住まいの地域<span class="required">*</span></label><br>
-<select name="prefecture" id="prefecture" required>
-  <option value="">選択してください</option>
+      <!-- 地域（都道府県） -->
+      <label for="prefecture">お住まいの地域<span class="required">*</span></label><br>
+      <select name="prefecture" id="prefecture" required>
+        <option value="">選択してください</option>
+        <optgroup label="北海道・東北地方">
+          <option value="北海道">北海道</option>
+          <option value="青森県">青森県</option>
+          <option value="岩手県">岩手県</option>
+          <option value="宮城県">宮城県</option>
+          <option value="秋田県">秋田県</option>
+          <option value="山形県">山形県</option>
+          <option value="福島県">福島県</option>
+        </optgroup>
+        <optgroup label="関東地方">
+          <option value="茨城県">茨城県</option>
+          <option value="栃木県">栃木県</option>
+          <option value="群馬県">群馬県</option>
+          <option value="埼玉県">埼玉県</option>
+          <option value="千葉県">千葉県</option>
+          <option value="東京都">東京都</option>
+          <option value="神奈川県">神奈川県</option>
+        </optgroup>
+        <optgroup label="中部地方">
+          <option value="新潟県">新潟県</option>
+          <option value="富山県">富山県</option>
+          <option value="石川県">石川県</option>
+          <option value="福井県">福井県</option>
+          <option value="山梨県">山梨県</option>
+          <option value="長野県">長野県</option>
+          <option value="岐阜県">岐阜県</option>
+          <option value="静岡県">静岡県</option>
+          <option value="愛知県">愛知県</option>
+        </optgroup>
+        <optgroup label="近畿地方">
+          <option value="三重県">三重県</option>
+          <option value="滋賀県">滋賀県</option>
+          <option value="京都府">京都府</option>
+          <option value="大阪府">大阪府</option>
+          <option value="兵庫県">兵庫県</option>
+          <option value="奈良県">奈良県</option>
+          <option value="和歌山県">和歌山県</option>
+        </optgroup>
+        <optgroup label="中国地方">
+          <option value="鳥取県">鳥取県</option>
+          <option value="島根県">島根県</option>
+          <option value="岡山県">岡山県</option>
+          <option value="広島県">広島県</option>
+          <option value="山口県">山口県</option>
+        </optgroup>
+        <optgroup label="四国地方">
+          <option value="徳島県">徳島県</option>
+          <option value="香川県">香川県</option>
+          <option value="愛媛県">愛媛県</option>
+          <option value="高知県">高知県</option>
+        </optgroup>
+        <optgroup label="九州・沖縄地方">
+          <option value="福岡県">福岡県</option>
+          <option value="佐賀県">佐賀県</option>
+          <option value="長崎県">長崎県</option>
+          <option value="熊本県">熊本県</option>
+          <option value="大分県">大分県</option>
+          <option value="宮崎県">宮崎県</option>
+          <option value="鹿児島県">鹿児島県</option>
+          <option value="沖縄県">沖縄県</option>
+        </optgroup>
+      </select><br><br>
 
-  <optgroup label="北海道・東北地方">
-    <option value="北海道">北海道</option>
-    <option value="青森県">青森県</option>
-    <option value="岩手県">岩手県</option>
-    <option value="宮城県">宮城県</option>
-    <option value="秋田県">秋田県</option>
-    <option value="山形県">山形県</option>
-    <option value="福島県">福島県</option>
-  </optgroup>
-
-  <optgroup label="関東地方">
-    <option value="茨城県">茨城県</option>
-    <option value="栃木県">栃木県</option>
-    <option value="群馬県">群馬県</option>
-    <option value="埼玉県">埼玉県</option>
-    <option value="千葉県">千葉県</option>
-    <option value="東京都">東京都</option>
-    <option value="神奈川県">神奈川県</option>
-  </optgroup>
-
-  <optgroup label="中部地方">
-    <option value="新潟県">新潟県</option>
-    <option value="富山県">富山県</option>
-    <option value="石川県">石川県</option>
-    <option value="福井県">福井県</option>
-    <option value="山梨県">山梨県</option>
-    <option value="長野県">長野県</option>
-    <option value="岐阜県">岐阜県</option>
-    <option value="静岡県">静岡県</option>
-    <option value="愛知県">愛知県</option>
-  </optgroup>
-
-  <optgroup label="近畿地方">
-    <option value="三重県">三重県</option>
-    <option value="滋賀県">滋賀県</option>
-    <option value="京都府">京都府</option>
-    <option value="大阪府">大阪府</option>
-    <option value="兵庫県">兵庫県</option>
-    <option value="奈良県">奈良県</option>
-    <option value="和歌山県">和歌山県</option>
-  </optgroup>
-
-  <optgroup label="中国地方">
-    <option value="鳥取県">鳥取県</option>
-    <option value="島根県">島根県</option>
-    <option value="岡山県">岡山県</option>
-    <option value="広島県">広島県</option>
-    <option value="山口県">山口県</option>
-  </optgroup>
-
-  <optgroup label="四国地方">
-    <option value="徳島県">徳島県</option>
-    <option value="香川県">香川県</option>
-    <option value="愛媛県">愛媛県</option>
-    <option value="高知県">高知県</option>
-  </optgroup>
-
-  <optgroup label="九州・沖縄地方">
-    <option value="福岡県">福岡県</option>
-    <option value="佐賀県">佐賀県</option>
-    <option value="長崎県">長崎県</option>
-    <option value="熊本県">熊本県</option>
-    <option value="大分県">大分県</option>
-    <option value="宮崎県">宮崎県</option>
-    <option value="鹿児島県">鹿児島県</option>
-    <option value="沖縄県">沖縄県</option>
-  </optgroup>
-
-</select><br><br>
-<!-- 市区町村 -->
-<label>市区町村<span class="required">*</span><br>
-  <select name="city" id="city-select" required>
-    <option value="">選択してください</option>
-  </select>
-</label><br><br>
+      <!-- 市区町村 -->
+      <label>市区町村<span class="required">*</span><br>
+        <select name="city" id="city-select" required>
+          <option value="">選択してください</option>
+        </select>
+      </label><br><br>
 
       <!-- 生年月日 -->
       <label>生年月日<span class="required">*</span><br>
@@ -168,10 +161,10 @@
   <!-- 共通フッター -->
   <div id="footer-placeholder"></div>
 
-  <!-- スクリプトまとめ -->
+  <!-- ▼ JavaScriptまとめ -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // 共通ヘッダー読み込み
+      // ヘッダー・フッター読み込み
       fetch('/diamondlink/header.html')
         .then(res => res.text())
         .then(html => {
@@ -184,72 +177,55 @@
             });
           }
         });
-
-      // 共通フッター読み込み
       fetch('/diamondlink/footer.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('footer-placeholder').innerHTML = html;
         });
 
-     // ▼ 生年月日プルダウン自動生成
-const now = new Date();
-const yearSelect = document.getElementById('birth-year');
-const monthSelect = document.getElementById('birth-month');
-const daySelect = document.getElementById('birth-day');
+      // 生年月日プルダウン生成
+      const now = new Date();
+      const yearSelect = document.getElementById('birth-year');
+      const monthSelect = document.getElementById('birth-month');
+      const daySelect = document.getElementById('birth-day');
 
-// 「選択してください」を最初に追加
-const defaultYearOption = document.createElement('option');
-defaultYearOption.value = "";
-defaultYearOption.textContent = "選択してください";
-yearSelect.appendChild(defaultYearOption);
+      ["year", "month", "day"].forEach(type => {
+        const select = document.getElementById('birth-' + type);
+        const defaultOption = document.createElement('option');
+        defaultOption.value = "";
+        defaultOption.textContent = "選択してください";
+        select.appendChild(defaultOption);
+      });
 
-const defaultMonthOption = document.createElement('option');
-defaultMonthOption.value = "";
-defaultMonthOption.textContent = "選択してください";
-monthSelect.appendChild(defaultMonthOption);
+      for (let y = 1900; y <= now.getFullYear(); y++) {
+        const option = document.createElement('option');
+        option.value = y;
+        option.textContent = y;
+        yearSelect.appendChild(option);
+      }
+      for (let m = 1; m <= 12; m++) {
+        const option = document.createElement('option');
+        option.value = m;
+        option.textContent = m;
+        monthSelect.appendChild(option);
+      }
+      for (let d = 1; d <= 31; d++) {
+        const option = document.createElement('option');
+        option.value = d;
+        option.textContent = d;
+        daySelect.appendChild(option);
+      }
 
-const defaultDayOption = document.createElement('option');
-defaultDayOption.value = "";
-defaultDayOption.textContent = "選択してください";
-daySelect.appendChild(defaultDayOption);
-
-// 年（1900年〜今年まで）
-for (let y = 1900; y <= now.getFullYear(); y++) {
-  const option = document.createElement('option');
-  option.value = y;
-  option.textContent = y;
-  yearSelect.appendChild(option);
-}
-
-// 月（1〜12）
-for (let m = 1; m <= 12; m++) {
-  const option = document.createElement('option');
-  option.value = m;
-  option.textContent = m;
-  monthSelect.appendChild(option);
-}
-
-// 日（1〜31）
-for (let d = 1; d <= 31; d++) {
-  const option = document.createElement('option');
-  option.value = d;
-  option.textContent = d;
-  daySelect.appendChild(option);
-}
-
-      // ▼ 生年月日が未来だったらエラーにする
+      // 生年月日未来エラー
       const form = document.getElementById('account-form');
       if (form) {
         form.addEventListener('submit', function(event) {
           const year = yearSelect.value;
           const month = monthSelect.value;
           const day = daySelect.value;
-
           if (year && month && day) {
             const selectedDate = new Date(year, month - 1, day);
             const today = new Date();
-
             if (selectedDate > today) {
               alert('生年月日に未来の日付は選べません！');
               event.preventDefault();
@@ -258,35 +234,36 @@ for (let d = 1; d <= 31; d++) {
         });
       }
     });
-    <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const prefectureSelect = document.getElementById('prefecture');
-    const citySelect = document.getElementById('city-select');
+  </script>
 
-    prefectureSelect.addEventListener('change', function() {
-      const selectedPrefecture = this.value;
-      citySelect.innerHTML = '<option value="">選択してください</option>'; // リセット
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const prefectureSelect = document.getElementById('prefecture');
+      const citySelect = document.getElementById('city-select');
 
-      if (selectedPrefecture) {
-        fetch('/diamondlink/prefecture_city.json')
-          .then(response => response.json())
-          .then(data => {
-            if (data[selectedPrefecture]) {
-              data[selectedPrefecture].forEach(city => {
-                const option = document.createElement('option');
-                option.value = city;
-                option.textContent = city;
-                citySelect.appendChild(option);
-              });
-            }
-          })
-          .catch(error => {
-            console.error('市区町村データの読み込みに失敗しました:', error);
-          });
-      }
+      prefectureSelect.addEventListener('change', function() {
+        const selectedPrefecture = this.value;
+        citySelect.innerHTML = '<option value="">選択してください</option>';
+
+        if (selectedPrefecture) {
+          fetch('/diamondlink/prefecture_city.json')
+            .then(response => response.json())
+            .then(data => {
+              if (data[selectedPrefecture]) {
+                data[selectedPrefecture].forEach(city => {
+                  const option = document.createElement('option');
+                  option.value = city;
+                  option.textContent = city;
+                  citySelect.appendChild(option);
+                });
+              }
+            })
+            .catch(error => {
+              console.error('市区町村データの読み込みに失敗しました:', error);
+            });
+        }
+      });
     });
-  });
-</script>
   </script>
 
 </body>
