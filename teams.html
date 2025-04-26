@@ -17,12 +17,10 @@
 
     <h2>検索フォーム</h2>
     <form>
-      <!-- キーワード検索 -->
       <label>キーワード検索：<br>
         <input type="text" name="keyword" placeholder="チーム名や地域を入力">
       </label><br><br>
 
-      <!-- 競技種別 -->
       <label>競技種別：<br>
         <select name="sport">
           <option value="">指定なし</option>
@@ -31,7 +29,6 @@
         </select>
       </label><br><br>
 
-      <!-- チーム構成 -->
       <label>チーム構成：<br>
         <select name="gender">
           <option value="">指定なし</option>
@@ -41,7 +38,6 @@
         </select>
       </label><br><br>
 
-      <!-- 野球種別 -->
       <label>野球種別：<br>
         <select name="baseball-type">
           <option value="">指定なし</option>
@@ -51,7 +47,6 @@
         </select>
       </label><br><br>
 
-      <!-- ソフトボール種別 -->
       <label>ソフトボール種別：<br>
         <select name="softball-type">
           <option value="">指定なし</option>
@@ -60,37 +55,16 @@
         </select>
       </label><br><br>
 
-      <!-- 検索ボタン -->
       <button type="submit" disabled>検索（※ダミー）</button>
       <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
     </form>
 
     <hr>
 
-    <h2>チーム一覧（サンプル）</h2>
-    <ul>
-      <li>
-        <img src="https://placehold.co/80x80" alt="ダイヤモンドスターズ" class="team-thumb">
-        <div class="team-info">
-          <strong>ダイヤモンドスターズ</strong><br>
-          東京都・一般・軟式
-        </div>
-      </li>
-      <li>
-        <img src="https://placehold.co/80x80" alt="ブルースカイズ" class="team-thumb">
-        <div class="team-info">
-          <strong>ブルースカイズ</strong><br>
-          大阪府・学生・硬式
-        </div>
-      </li>
-      <li>
-        <img src="https://placehold.co/80x80" alt="サンライズソフトボールクラブ" class="team-thumb">
-        <div class="team-info">
-          <strong>サンライズソフトボールクラブ</strong><br>
-          愛知県・女子・ゴムボール
-        </div>
-      </li>
-    </ul>
+    <h2>チーム一覧</h2>
+    <ul id="team-list"></ul>
+
+    <div id="pagination" class="pagination"></div>
 
     <hr>
     <a href="index.html">← トップに戻る</a>
@@ -99,41 +73,91 @@
   <!-- 共通フッター挿入 -->
   <div id="footer-placeholder"></div>
 
-  <!-- 共通ヘッダー／フッター読み込み＋ハンバーガー動作スクリプト -->
+  <!-- JavaScript（チームデータとページネーション） -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダーを読み込んで挿入
+      // ヘッダーとフッター読み込み
       fetch('/diamondlink/header.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('header-placeholder').innerHTML = html;
           const hamburger = document.getElementById('hamburger');
-          const navMenu   = document.getElementById('nav-menu');
+          const navMenu = document.getElementById('nav-menu');
           hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('show');
           });
         });
 
-      // フッターを読み込んで挿入
       fetch('/diamondlink/footer.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('footer-placeholder').innerHTML = html;
         });
-    });
-  </script>
 
-  <!-- SNSリンク非表示用スクリプト -->
-  <script>
-    window.onload = function() {
-      const snsLinks = document.querySelectorAll('.sns-icons a');
-      snsLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (!href || href.includes('sample')) {
-          link.style.display = 'none';
+      // チームデータ
+      const teams = [
+        { name: "ダイヤモンドスターズ", area: "東京都", type: "一般", category: "軟式", thumbnail: "https://placehold.co/80x80" },
+        { name: "ブルースカイズ", area: "大阪府", type: "学生", category: "硬式", thumbnail: "https://placehold.co/80x80" },
+        { name: "サンライズソフトボールクラブ", area: "愛知県", type: "女子", category: "ゴムボール", thumbnail: "https://placehold.co/80x80" },
+        // ここに追加していける！
+      ];
+
+      const teamList = document.getElementById('team-list');
+      const pagination = document.getElementById('pagination');
+      const teamsPerPage = 10;
+      let currentPage = 1;
+
+      function displayTeams(page) {
+        teamList.innerHTML = '';
+        const start = (page - 1) * teamsPerPage;
+        const end = start + teamsPerPage;
+        const pageTeams = teams.slice(start, end);
+
+        pageTeams.forEach(team => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <img src="${team.thumbnail}" alt="${team.name}" class="team-thumb">
+            <div class="team-info">
+              <strong>${team.name}</strong><br>
+              ${team.area}・${team.type}・${team.category}
+            </div>
+          `;
+          teamList.appendChild(li);
+        });
+      }
+
+      function setupPagination() {
+        pagination.innerHTML = '';
+        const pageCount = Math.ceil(teams.length / teamsPerPage);
+
+        if (pageCount > 1) {
+          const first = document.createElement('button');
+          first.textContent = '最初へ';
+          first.onclick = () => { currentPage = 1; update(); };
+          pagination.appendChild(first);
+
+          for (let i = 1; i <= pageCount; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            if (i === currentPage) btn.disabled = true;
+            btn.onclick = () => { currentPage = i; update(); };
+            pagination.appendChild(btn);
+          }
+
+          const last = document.createElement('button');
+          last.textContent = '最後へ';
+          last.onclick = () => { currentPage = pageCount; update(); };
+          pagination.appendChild(last);
         }
-      });
-    }
+      }
+
+      function update() {
+        displayTeams(currentPage);
+        setupPagination();
+      }
+
+      update();
+    });
   </script>
 
 </body>
