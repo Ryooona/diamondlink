@@ -42,16 +42,16 @@
           <option value="北海道">北海道</option>
           <option value="青森県">青森県</option>
           <option value="岩手県">岩手県</option>
-          <!-- 以下略（全47都道府県用意する） -->
+          <!-- ※ここに47都道府県分すべて追加するのが正式 -->
           <option value="沖縄県">沖縄県</option>
         </select>
       </label><br><br>
 
       <!-- 生年月日 -->
       <label>生年月日<span class="required">*</span><br>
-        <select name="birth-year" required></select>年
-        <select name="birth-month" required></select>月
-        <select name="birth-day" required></select>日
+        <select name="birth-year" id="birth-year" required></select>年
+        <select name="birth-month" id="birth-month" required></select>月
+        <select name="birth-day" id="birth-day" required></select>日
       </label><br><br>
 
       <!-- 性別 -->
@@ -99,21 +99,24 @@
   <!-- 共通フッター -->
   <div id="footer-placeholder"></div>
 
-  <!-- スクリプト -->
+  <!-- スクリプトまとめ -->
   <script>
-    // 共通ヘッダー＆フッター読み込み
     document.addEventListener('DOMContentLoaded', function () {
+      // 共通ヘッダー読み込み
       fetch('/diamondlink/header.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('header-placeholder').innerHTML = html;
           const hamburger = document.getElementById('hamburger');
           const navMenu = document.getElementById('nav-menu');
-          hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-          });
+          if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+              navMenu.classList.toggle('show');
+            });
+          }
         });
 
+      // 共通フッター読み込み
       fetch('/diamondlink/footer.html')
         .then(res => res.text())
         .then(html => {
@@ -122,9 +125,9 @@
 
       // ▼ 生年月日プルダウン自動生成
       const now = new Date();
-      const yearSelect = document.querySelector('select[name="birth-year"]');
-      const monthSelect = document.querySelector('select[name="birth-month"]');
-      const daySelect = document.querySelector('select[name="birth-day"]');
+      const yearSelect = document.getElementById('birth-year');
+      const monthSelect = document.getElementById('birth-month');
+      const daySelect = document.getElementById('birth-day');
 
       for (let y = 1950; y <= now.getFullYear(); y++) {
         const option = document.createElement('option');
@@ -146,59 +149,28 @@
         option.textContent = d;
         daySelect.appendChild(option);
       }
-    });
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('account-form'); // フォームのID
 
-  form.addEventListener('submit', function(event) {
-    const year = document.getElementById('birth-year').value;
-    const month = document.getElementById('birth-month').value;
-    const day = document.getElementById('birth-day').value;
+      // ▼ 生年月日が未来だったらエラーにする
+      const form = document.getElementById('account-form');
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          const year = yearSelect.value;
+          const month = monthSelect.value;
+          const day = daySelect.value;
 
-    if (year && month && day) {
-      const selectedDate = new Date(year, month - 1, day); // JSは月だけ0スタート
-      const today = new Date();
+          if (year && month && day) {
+            const selectedDate = new Date(year, month - 1, day);
+            const today = new Date();
 
-      if (selectedDate > today) {
-        alert('生年月日に未来の日付は選べません！');
-        event.preventDefault(); // フォーム送信ストップ！
+            if (selectedDate > today) {
+              alert('生年月日に未来の日付は選べません！');
+              event.preventDefault();
+            }
+          }
+        });
       }
-    }
-  });
-});
-    // 生年月日の年・月・日を自動生成する
-document.addEventListener('DOMContentLoaded', function() {
-  const yearSelect = document.getElementById('birth-year');
-  const monthSelect = document.getElementById('birth-month');
-  const daySelect = document.getElementById('birth-day');
-
-  // 年：西暦 1950〜今年
-  const currentYear = new Date().getFullYear();
-  for (let y = currentYear; y >= 1950; y--) {
-    const option = document.createElement('option');
-    option.value = y;
-    option.textContent = y;
-    yearSelect.appendChild(option);
-  }
-
-  // 月：1〜12
-  for (let m = 1; m <= 12; m++) {
-    const option = document.createElement('option');
-    option.value = m;
-    option.textContent = m;
-    monthSelect.appendChild(option);
-  }
-
-  // 日：1〜31（これはあとで月によって変える）
-  for (let d = 1; d <= 31; d++) {
-    const option = document.createElement('option');
-    option.value = d;
-    option.textContent = d;
-    daySelect.appendChild(option);
-  }
-});
-</script>
+    });
+  </script>
 
 </body>
 </html>
