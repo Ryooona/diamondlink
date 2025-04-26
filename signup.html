@@ -167,6 +167,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+    // 生年月日の年・月・日を自動生成する
+document.addEventListener('DOMContentLoaded', function() {
+  const yearSelect = document.getElementById('birth-year');
+  const monthSelect = document.getElementById('birth-month');
+  const daySelect = document.getElementById('birth-day');
+
+  // 年：西暦 1950〜今年
+  const currentYear = new Date().getFullYear();
+  for (let y = currentYear; y >= 1950; y--) {
+    const option = document.createElement('option');
+    option.value = y;
+    option.textContent = y;
+    yearSelect.appendChild(option);
+  }
+
+  // 月：1〜12
+  for (let m = 1; m <= 12; m++) {
+    const option = document.createElement('option');
+    option.value = m;
+    option.textContent = m;
+    monthSelect.appendChild(option);
+  }
+
+  // 日：1〜31（これはあとで月によって変える）
+  for (let d = 1; d <= 31; d++) {
+    const option = document.createElement('option');
+    option.value = d;
+    option.textContent = d;
+    daySelect.appendChild(option);
+  }
+});
 </script>
 
 </body>
