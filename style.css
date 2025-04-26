@@ -250,3 +250,16 @@ a:hover {
     align-items: center;
   }
 }
+/* ─────────────────────────
+   ヘッダー内ロゴ画像
+───────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* 横長ロゴの最大高さを調整 */
+.logo-img {
+  max-height: 40px;  /* 必要に応じてサイズ調整 */
+  width: auto;
+}
