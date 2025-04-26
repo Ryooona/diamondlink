@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiamondLink | アカウント作成</title>
+  <link rel="stylesheet" href="/diamondlink/style.css?v=2" />
+</head>
+<body>
+
+  <!-- 共通ヘッダー -->
+  <div id="header-placeholder"></div>
+
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <h1>アカウント作成</h1>
+    <p>以下の情報を入力して、アカウントを作成してください（※現在はダミーです）。</p>
+
+    <form>
+      <label>名前：<br>
+        <input type="text" name="name" required>
+      </label><br><br>
+
+      <label>メールアドレス：<br>
+        <input type="email" name="email" required>
+      </label><br><br>
+
+      <label>パスワード：<br>
+        <input type="password" name="password" required>
+      </label><br><br>
+
+      <label>パスワード（確認用）：<br>
+        <input type="password" name="password-confirm" required>
+      </label><br><br>
+
+      <button type="submit" disabled>アカウント作成（ダミー）</button>
+      <p style="font-size: small; color: gray;">※この機能はまだ有効になっていません</p>
+    </form>
+
+    <p>すでにアカウントをお持ちの方は <a href="#">こちらからログイン</a></p>
+  </main>
+
+  <!-- 共通フッター -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ヘッダー＆フッター読込スクリプト -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ヘッダー
+      fetch('/diamondlink/header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-placeholder').innerHTML = html;
+          const hamburger = document.getElementById('hamburger');
+          const navMenu = document.getElementById('nav-menu');
+          hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+          });
+        });
+
+      // フッター
+      fetch('/diamondlink/footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    });
+  </script>
+
+</body>
+</html>
