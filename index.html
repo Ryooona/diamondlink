@@ -62,39 +62,41 @@
   <!-- 共通フッター挿入 -->
   <div id="footer-placeholder"></div>
 
-  <!-- JavaScriptまとめ -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダー読み込み
-      fetch('/diamondlink/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-          const hamburger = document.getElementById('hamburger');
-          const navMenu = document.getElementById('nav-menu');
-          hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-          });
+<!-- JavaScriptまとめ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // ヘッダー読み込み
+    fetch('/diamondlink/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', () => {
+          navMenu.classList.toggle('show');
         });
+      });
 
-      // フッター読み込み
-      fetch('/diamondlink/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
+    // フッター読み込み
+    fetch('/diamondlink/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
 
-      // スライドショー（フェード効果）
-      const slides = document.querySelectorAll('.slide');
-      let currentIndex = 0;
+    // スライドショー
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
 
-      setInterval(() => {
-        slides[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % slides.length;
-        slides[currentIndex].classList.add('active');
-      }, 3000); // 3秒ごとに切り替え
-    });
-  </script>
+    setInterval(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, 3000);
+  });
+</script>
+
+<script src="/diamondlink/header.js"></script>
 
 </body>
 </html>
