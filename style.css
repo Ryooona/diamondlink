@@ -60,8 +60,8 @@ body.top .container {
   width: 100%;
   background-color: white;
   border-bottom: 1px solid #ccc;
-  /* 上 10px, 右 20px, 下 10px, 左 8px */
-  padding: 10px 20px 10px 8px;
+  /* 上 10px, 右 20px, 下 10px, 左 0px */
+  padding: 10px 20px 10px 0px;
   z-index: 1000;
 }
 
