@@ -13,28 +13,33 @@
 
   <!-- メインコンテンツ -->
   <main class="container">
-<!-- スライドショー -->
-<div class="slideshow-container">
-  <img src="https://placehold.co/1200x400?text=チームA" class="slide" style="display: block;">
-  <img src="https://placehold.co/1200x400?text=チームB" class="slide" style="display: none;">
-  <img src="https://placehold.co/1200x400?text=チームC" class="slide" style="display: none;">
-</div>
-<br>
+
+    <!-- スライドショー -->
+    <div class="slideshow-container">
+      <img src="https://placehold.co/1200x400?text=チームA" class="slide" style="display: block;">
+      <img src="https://placehold.co/1200x400?text=チームB" class="slide" style="display: none;">
+      <img src="https://placehold.co/1200x400?text=チームC" class="slide" style="display: none;">
+    </div>
+    <br>
+
+    <!-- キャッチコピー -->
     <p class="catch">
       野球・ソフトボールをもっと身近に。<br>
       あなたにピッタリのチームがきっと見つかる。
     </p>
 
+    <!-- ボタン -->
     <div class="button-group">
       <a href="teams.html" class="main-button">チームを探す</a>
       <a href="register.html" class="main-button">チームを登録する</a>
     </div>
+
   </main>
 
   <!-- 共通フッター挿入 -->
   <div id="footer-placeholder"></div>
 
-  <!-- 共通ヘッダー／フッター読み込み＋ハンバーガー動作 -->
+  <!-- JavaScriptまとめ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // ヘッダー読み込み
@@ -42,9 +47,8 @@
         .then(res => res.text())
         .then(html => {
           document.getElementById('header-placeholder').innerHTML = html;
-          // ハンバーガーメニュー動作設定
           const hamburger = document.getElementById('hamburger');
-          const navMenu   = document.getElementById('nav-menu');
+          const navMenu = document.getElementById('nav-menu');
           hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('show');
           });
@@ -56,21 +60,18 @@
         .then(html => {
           document.getElementById('footer-placeholder').innerHTML = html;
         });
+
+      // スライドショー動作
+      const slides = document.querySelectorAll('.slide');
+      let currentIndex = 0;
+
+      setInterval(() => {
+        slides[currentIndex].style.display = 'none';
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].style.display = 'block';
+      }, 3000); // 3秒ごとに切り替え
     });
-      </script>
+  </script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const slides = document.querySelectorAll('.slide');
-        let currentIndex = 0;
-
-        setInterval(() => {
-          slides[currentIndex].style.display = 'none';
-          currentIndex = (currentIndex + 1) % slides.length;
-          slides[currentIndex].style.display = 'block';
-        }, 3000);
-      });
-    </script>
-
-  </body>
+</body>
 </html>
