@@ -37,53 +37,101 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   min-height: 60px;
-  position: relative;
 }
 
 /* ロゴ */
-.logo {
-  display: flex;
-  align-items: center;
-}
-
 .logo-img {
   max-height: 50px;
 }
 
+/* =======================================
+   ◆ ハンバーガー（モバイルのみ表示）
+======================================= */
+.hamburger {
+  display: block;
+  font-size: 30px;
+  cursor: pointer;
+  color: #0047ab;
+}
 
 /* =======================================
-   ◆ PC版（769px以上）
+   ◆ ナビゲーション（共通／モバイル）
+======================================= */
+.nav-menu {
+  display: none;           /* 最初は隠す */
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.nav-menu.show {
+  display: flex;           /* ハンバーガー押したときだけ表示 */
+}
+
+/* ナビ内リンク */
+.nav-menu a {
+  font-weight: bold;
+}
+
+/* 新規会員登録ボタン風 */
+.nav-menu .signup-button {
+  background-color: #0047ab;
+  color: white !important;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* ユーザーボタン風（ログイン時） */
+.nav-menu .user-button {
+  background-color: #0047ab;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =======================================
+   ◆ PC版：横並びに切り替え
 ======================================= */
 @media (min-width: 769px) {
+  /* ハンバーガーを非表示に */
   .hamburger {
-    display: none; /* PC版ではハンバーガー非表示 */
+    display: none;
   }
 
+  /* ナビは常に横並びで表示 */
   .nav-menu {
     display: flex !important;
     flex-direction: row;
-    position: static; /* ←絶対位置ではなく、通常フローに */
+    position: static;
     background: none;
     box-shadow: none;
     border: none;
-    width: auto;
     padding: 0;
-    margin-left: auto; /* ロゴの右に押しやる */
-    align-items: center;
+    margin-left: auto;
     gap: 20px;
   }
 
   .nav-menu a {
     margin: 0;
-    font-weight: bold;
     color: #0047ab;
   }
 }
+
 /* =======================================
-   ◆ コンテンツ間の基本レイアウト
+   ◆ コンテンツ本体の位置調整
 ======================================= */
 .container {
-  margin-top: 80px; /* ヘッダー分のスペース確保 */
+  margin-top: 80px;  /* ヘッダー分を下げる */
   padding: 20px;
   max-width: 1000px;
   margin-left: auto;
@@ -94,7 +142,7 @@ a:hover {
    ◆ フッター
 ======================================= */
 .site-footer {
-  background-color: #f1f1f1;
+  background: #f1f1f1;
   padding: 20px 0;
   margin-top: 60px;
 }
@@ -123,68 +171,5 @@ a:hover {
     flex-direction: column;
     gap: 8px;
     align-items: center;
-  }
-}
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* 最初は隠す */
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    z-index: 999;
-  }
-
-  .nav-menu.show {
-    display: flex; /* ハンバーガー押したときだけ表示 */
-  }
-}
-/* ─────────────────────────
-   ◆ 新・ナビゲーション共通
-───────────────────────── */
-.nav-menu {
-  display: none;                /* 最初は隠す */
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  gap: 10px;
-  z-index: 1000;
-}
-
-/* ハンバーガーが押されたときだけ表示 */
-.nav-menu.show {
-  display: flex;
-}
-
-/* ─────────────────────────
-   ◆ PC版：横並びに切り替え
-───────────────────────── */
-@media (min-width: 769px) {
-  /* ハンバーガーボタンを消す */
-  .hamburger {
-    display: none;
-  }
-
-  /* ナビ本体を横並びで常に表示 */
-  .nav-menu {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    background: none;
-    box-shadow: none;
-    border: none;
-    gap: 20px;
-    margin-left: auto;
   }
 }
