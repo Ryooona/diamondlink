@@ -85,9 +85,11 @@
         </label><br><br>
 
         <label>市区町村<span class="required">*</span><br>
-          <input type="text" name="city" required>
-        </label>
-      </fieldset><br>
+    <select name="city" id="city-select" required>
+      <option value="">選択してください</option>
+    </select>
+  </label>
+</fieldset><br>
 
       <!-- 競技種別 -->
       <label>競技種別<span class="required">*</span><br>
@@ -193,6 +195,33 @@
         }
       });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+  const prefectureSelect = document.getElementById('prefecture');
+  const citySelect = document.getElementById('city-select');
+
+  prefectureSelect.addEventListener('change', function() {
+    const selectedPrefecture = this.value;
+    citySelect.innerHTML = '<option value="">選択してください</option>';
+
+    if (selectedPrefecture) {
+      fetch('/diamondlink/prefecture_city.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data[selectedPrefecture]) {
+            data[selectedPrefecture].forEach(city => {
+              const option = document.createElement('option');
+              option.value = city;
+              option.textContent = city;
+              citySelect.appendChild(option);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('市区町村データの読み込みに失敗しました:', error);
+        });
+    }
+  });
+});
   </script>
 
 </body>
