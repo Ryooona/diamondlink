@@ -8,35 +8,39 @@
     </div>
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-menu" id="nav-menu">
-      <!-- メニューリンクはJSで自動生成 -->
+      <!-- JavaScriptで中身を自動生成 -->
     </nav>
   </div>
 </header>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 仮：ログインしてるかどうか（あとで本格対応する）
-  const isLoggedIn = false; // 仮
+  // 仮：ログインしてるかどうか（あとで本格対応するときにここを変える）
+  const isLoggedIn = false; // 今は仮で「未ログイン状態」にしてる
 
   const navMenu = document.getElementById('nav-menu');
-  navMenu.innerHTML = '';
+  navMenu.innerHTML = ''; // まずリセット
 
   if (isLoggedIn) {
-    navMenu.innerHTML = `
-      <a href="/diamondlink/index.html">ホーム</a>
-      <a href="/diamondlink/teams.html">チーム検索</a>
-      <a href="/diamondlink/mypage.html">マイページ</a>
-      <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
-    `;
+    // ★ログイン済みのメニュー
+navMenu.innerHTML = `
+  <a href="/diamondlink/index.html">ホーム</a>
+  <a href="/diamondlink/teams.html">チーム検索</a>
+  <a href="/diamondlink/mypage.html">マイページ</a>
+  <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
+`;
+    ;
   } else {
+    // ★未ログインのメニュー
     navMenu.innerHTML = `
       <a href="/diamondlink/index.html">ホーム</a>
       <a href="/diamondlink/teams.html">チーム検索</a>
       <a href="/diamondlink/login.html">ログイン</a>
       <a href="/diamondlink/signup.html" class="signup-button">アカウント作成</a>
-    `;
+  `;
   }
 
+  // ハンバーガーメニューの開閉
   const hamburger = document.getElementById('hamburger');
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
