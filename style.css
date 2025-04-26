@@ -91,19 +91,20 @@ a:hover {
    ◆ PC版（769px以上）
 ======================================= */
 @media (min-width: 769px) {
+  .hamburger {
+    display: none; /* PC版ではハンバーガー非表示 */
+  }
+
   .nav-menu {
     display: flex !important;
     flex-direction: row;
-    position: absolute; /* ←ここを絶対位置にする！！ */
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%); /* 縦中央寄せ */
+    position: static; /* ←絶対位置ではなく、通常フローに */
     background: none;
     box-shadow: none;
     border: none;
     width: auto;
     padding: 0;
-    margin: 0;
+    margin-left: auto; /* ロゴの右に押しやる */
     align-items: center;
     gap: 20px;
   }
