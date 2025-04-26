@@ -8,21 +8,20 @@
     </div>
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-menu" id="nav-menu">
-      <!-- JavaScriptで中身を自動生成 -->
+      <!-- メニューリンクはJSで自動生成 -->
     </nav>
   </div>
 </header>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 仮：ログインしてるかどうか（あとで本格対応するときにここを変える）
-  const isLoggedIn = false; // 今は仮で「未ログイン状態」にしてる
+  // 仮：ログインしてるかどうか（あとで本格対応する）
+  const isLoggedIn = false; // 仮
 
   const navMenu = document.getElementById('nav-menu');
-  navMenu.innerHTML = ''; // まずリセット
+  navMenu.innerHTML = '';
 
   if (isLoggedIn) {
-    // ★ログイン済みのメニュー
     navMenu.innerHTML = `
       <a href="/diamondlink/index.html">ホーム</a>
       <a href="/diamondlink/teams.html">チーム検索</a>
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="/diamondlink/logout.html" class="logout-button">ログアウト</a>
     `;
   } else {
-    // ★未ログインのメニュー
     navMenu.innerHTML = `
       <a href="/diamondlink/index.html">ホーム</a>
       <a href="/diamondlink/teams.html">チーム検索</a>
@@ -39,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
   }
 
-  // ハンバーガーメニューの開閉
   const hamburger = document.getElementById('hamburger');
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
