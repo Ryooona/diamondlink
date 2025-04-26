@@ -23,7 +23,7 @@
     <h1>アカウント作成</h1>
     <p>以下の情報を入力してください（※現在はダミーです）。</p>
 
-    <form>
+    <form id="account-form">
       <!-- 氏名 -->
       <label>氏名<span class="required">*</span><br>
         姓 <input type="text" name="last-name" required>
@@ -147,7 +147,27 @@
         daySelect.appendChild(option);
       }
     });
-  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('account-form'); // フォームのID
+
+  form.addEventListener('submit', function(event) {
+    const year = document.getElementById('birth-year').value;
+    const month = document.getElementById('birth-month').value;
+    const day = document.getElementById('birth-day').value;
+
+    if (year && month && day) {
+      const selectedDate = new Date(year, month - 1, day); // JSは月だけ0スタート
+      const today = new Date();
+
+      if (selectedDate > today) {
+        alert('生年月日に未来の日付は選べません！');
+        event.preventDefault(); // フォーム送信ストップ！
+      }
+    }
+  });
+});
+</script>
 
 </body>
 </html>
