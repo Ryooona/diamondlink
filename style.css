@@ -1,5 +1,5 @@
 /* =======================================
-   基本リセット・全体
+   ◆ 基本リセット
 ======================================= */
 body {
   font-family: sans-serif;
@@ -17,7 +17,7 @@ a:hover {
 }
 
 /* =======================================
-   ヘッダー
+   ◆ ヘッダー
 ======================================= */
 .site-header {
   position: fixed;
@@ -49,11 +49,9 @@ a:hover {
   max-height: 50px;
 }
 
-/* =======================================
-   ナビゲーション
-======================================= */
+/* ナビゲーション */
 .nav-menu {
-  display: none; /* モバイルファーストで非表示 */
+  display: none; /* モバイルファーストでは隠す */
   flex-direction: column;
   background: white;
   position: absolute;
@@ -76,7 +74,7 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* ハンバーガーメニュー */
+/* ハンバーガー */
 .hamburger {
   display: block;
   font-size: 30px;
@@ -90,11 +88,11 @@ a:hover {
 }
 
 /* =======================================
-   PC版（769px以上）
+   ◆ PC版（769px以上）
 ======================================= */
 @media (min-width: 769px) {
   .hamburger {
-    display: none; /* PCではハンバーガー消す */
+    display: none;
   }
 
   .nav-menu {
@@ -115,5 +113,52 @@ a:hover {
     margin: 0;
     font-weight: bold;
     color: #0047ab;
+  }
+}
+
+/* =======================================
+   ◆ コンテンツ間の基本レイアウト
+======================================= */
+.container {
+  margin-top: 80px; /* ヘッダー分のスペース確保 */
+  padding: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =======================================
+   ◆ フッター
+======================================= */
+.site-footer {
+  background-color: #f1f1f1;
+  padding: 20px 0;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.footer-nav a {
+  margin: 0 8px;
+  color: #0047ab;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* スマホ時フッターリンク縦並び */
+@media (max-width: 600px) {
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
   }
 }
