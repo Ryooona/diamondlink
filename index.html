@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>DiamondLink</title>
   <link rel="stylesheet" href="/diamondlink/style.css?v=2">
+  <style>
+    /* スライドショー用のフェード効果 */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .slide {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,9 +39,9 @@
 
     <!-- スライドショー -->
     <div class="slideshow-container">
-      <img src="https://placehold.co/1200x400?text=チームA" class="slide" style="display: block;">
-      <img src="https://placehold.co/1200x400?text=チームB" class="slide" style="display: none;">
-      <img src="https://placehold.co/1200x400?text=チームC" class="slide" style="display: none;">
+      <img src="https://placehold.co/1200x400?text=チームA" class="slide active">
+      <img src="https://placehold.co/1200x400?text=チームB" class="slide">
+      <img src="https://placehold.co/1200x400?text=チームC" class="slide">
     </div>
     <br>
 
@@ -61,14 +84,14 @@
           document.getElementById('footer-placeholder').innerHTML = html;
         });
 
-      // スライドショー動作
+      // スライドショー（フェード効果）
       const slides = document.querySelectorAll('.slide');
       let currentIndex = 0;
 
       setInterval(() => {
-        slides[currentIndex].style.display = 'none';
+        slides[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % slides.length;
-        slides[currentIndex].style.display = 'block';
+        slides[currentIndex].classList.add('active');
       }, 3000); // 3秒ごとに切り替え
     });
   </script>
