@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const isLoggedIn = false;
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
   const overlay = document.getElementById('overlay');
@@ -21,17 +20,17 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.classList.toggle('show');
   });
 
-  // オーバーレイをクリックしたらメニューとモーダルを閉じる
+  // オーバーレイをクリック → モーダルとオーバーレイを閉じる
   overlay.addEventListener('click', function() {
-    navMenu.classList.remove('show');
-    overlay.classList.remove('show');
-    loginModal.classList.remove('show'); // モーダルも閉じる
+    loginModal.classList.remove('show'); // モーダルを非表示にする
+    overlay.classList.remove('show'); // オーバーレイを非表示にする
   });
 
-  // 「ログイン」リンクをクリックしたらモーダル表示
-  openLoginModalButton.addEventListener('click', function() {
-    loginModal.classList.add('show');
-    overlay.classList.add('show');
+  // 「ログイン」リンクをクリック → モーダル表示
+  openLoginModalButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    loginModal.classList.add('show'); // モーダル表示
+    overlay.classList.add('show'); // オーバーレイ表示
     navMenu.classList.remove('show'); // メニューは閉じる
   });
 });
