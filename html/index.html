@@ -35,8 +35,19 @@
 
 <body>
 
-  <!-- 共通ヘッダー挿入 -->
-  <div id="header-placeholder"></div>
+<header>
+  <div class="header-inner">
+    <button id="menu-button">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="/diamondlink/index.html">ホーム</a></li>
+        <li><a href="/diamondlink/teams.html">チームを探す</a></li>
+        <li><a href="/diamondlink/register.html">チームを登録する</a></li>
+        <li><a href="/diamondlink/signup.html">サインアップ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- メインコンテンツ -->
   <main class="container">
@@ -69,17 +80,6 @@
   <!-- JavaScriptまとめ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダー読み込み
-      fetch('/diamondlink/html/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-
-          // ★ヘッダーが読み込まれたら header.js をあとから読み込む
-          const headerScript = document.createElement('script');
-          headerScript.src = '/diamondlink/js/header.js';
-          document.body.appendChild(headerScript);
-        });
 
       // フッター読み込み
       fetch('/diamondlink/html/footer.html')
@@ -99,6 +99,6 @@
       }, 3000);
     });
   </script>
-
+<script src="/diamondlink/js/header.js"></script>
 </body>
 </html>
