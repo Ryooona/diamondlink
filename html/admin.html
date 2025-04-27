@@ -1,80 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>DiamondLink | 管理者ページ</title>
+  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="/diamondlink/css/header.css">
 </head>
 <body>
 
-  <!-- 共通ヘッダー挿入 -->
-  <div id="header-placeholder"></div>
+<!-- 共通ヘッダー挿入 -->
+<div id="header-placeholder"></div>
 
-  <!-- メインコンテンツ -->
-  <main class="container">
-    <h1>チーム管理ページ（仮）</h1>
+<!-- メインコンテンツ -->
+<main class="container">
+  <h1>チーム管理ページ（仮）</h1>
 
-    <p><strong>ログイン中：</strong>山田 太郎 さん（代表）</p>
+  <p><strong>ログイン中：</strong>山田 太郎 さん（代表）</p>
 
-    <h2>チーム情報</h2>
-    <form>
-      <label>チーム名：<br>
-        <input type="text" value="ダイヤモンドスターズ">
-      </label><br><br>
+  <h2>チーム情報</h2>
+  <form>
+    <label>チーム名：<br>
+      <input type="text" value="ダイヤモンドスターズ">
+    </label><br><br>
 
-      <label>所在地（都道府県）：<br>
-        <input type="text" value="東京都">
-      </label><br><br>
+    <label>所在地（都道府県）：<br>
+      <input type="text" value="東京都">
+    </label><br><br>
 
-      <label>連絡先（メール）：<br>
-        <input type="email" value="sample@example.com">
-      </label><br><br>
+    <label>連絡先（メール）：<br>
+      <input type="email" value="sample@example.com">
+    </label><br><br>
 
-      <label>紹介文（メモ）：<br>
-        <textarea rows="4" cols="40">ここにチーム紹介を書きます。</textarea>
-      </label><br><br>
+    <label>紹介文（メモ）：<br>
+      <textarea rows="4" cols="40">ここにチーム紹介を書きます。</textarea>
+    </label><br><br>
 
-      <button type="submit" disabled>保存する（ダミー）</button>
-      <p style="font-size: small; color: gray;">※現在は保存機能は未対応です</p>
-    </form>
+    <button type="submit" disabled>保存する（ダミー）</button>
+    <p style="font-size: small; color: gray;">※現在は保存機能は未対応です</p>
+  </form>
 
-    <hr>
-    <p>
-      <a href="index.html">← トップに戻る</a> ／
-      <a href="#">ログアウト</a>
-    </p>
-  </main>
+  <hr>
+  <p>
+    <a href="index.html">← トップに戻る</a> ／
+    <a href="#">ログアウト</a>
+  </p>
+</main>
 
-  <!-- 共通フッター挿入 -->
-  <div id="footer-placeholder"></div>
+<!-- 共通フッター挿入 -->
+<div id="footer-placeholder"></div>
 
-  <!-- ヘッダー＆フッター読み込み＋ハンバーガー動作 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダー読み込み
-      fetch('/diamondlink/html/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-          // ハンバーガーメニューの動作を設定
-          const hamburger = document.getElementById('hamburger');
-          const navMenu   = document.getElementById('nav-menu');
-          hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-          });
-        });
-
-      // フッター読み込み
-      fetch('/diamondlink/html/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
-    });
-  </script>
+<!-- ヘッダー＆フッター自動読み込み -->
+<script src="/diamondlink/js/header-loader.js"></script>
 
 </body>
 </html>
