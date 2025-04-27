@@ -3,27 +3,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const navMenu = document.getElementById('nav-menu');
   const overlay = document.getElementById('overlay');
   const loginModal = document.getElementById('login-modal');
-  const openLoginModalButton = document.getElementById('open-login-modal');
 
   // メニュー中身を作成
   navMenu.innerHTML = `
-    <a href="#">メニューを閉じる</a>
+    <a href="#" id="close-menu">メニューを閉じる</a>
     <a href="#" id="open-login-modal">ログイン</a>
     <a href="/diamondlink/html/signup.html">アカウント作成</a>
     <a href="#">チームを探す</a>
     <a href="#">チームを登録する</a>
   `;
 
+  // ▼ここから、メニュー作成が終わったあとにボタンを取得する！
+  const openLoginModalButton = document.getElementById('open-login-modal');
+  const closeMenuButton = document.getElementById('close-menu');
+
   // ハンバーガーメニューをクリック
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
     overlay.classList.toggle('show');
-  });
-
-  // オーバーレイをクリック → モーダルとオーバーレイを閉じる
-  overlay.addEventListener('click', function() {
-    loginModal.classList.remove('show');
-    overlay.classList.remove('show');
   });
 
   // 「ログイン」リンクをクリック → モーダル表示
@@ -34,11 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
     navMenu.classList.remove('show');
   });
 
-  // 「メニューを閉じる」リンクを押したらメニューを閉じる
-  document.addEventListener('click', function(e) {
-    if (e.target.textContent === 'メニューを閉じる') {
-      navMenu.classList.remove('show');
-      overlay.classList.remove('show');
-    }
+  // 「メニューを閉じる」リンクをクリック → メニューを閉じる
+  closeMenuButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    navMenu.classList.remove('show');
+    overlay.classList.remove('show');
+  });
+
+  // オーバーレイをクリック → 全部閉じる
+  overlay.addEventListener('click', function() {
+    loginModal.classList.remove('show');
+    navMenu.classList.remove('show');
+    overlay.classList.remove('show');
   });
 });
