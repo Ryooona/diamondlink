@@ -105,9 +105,8 @@
     </label><br><br>
 
     <label>生年月日<span class="required">*</span><br>
-      <input type="date" id="birthdate" name="birthdate" required>
-    </label><br><br>
-
+      <input type="text" id="birthdate" name="birthdate" placeholder="例）20001215" required pattern="\d{8}">
+</label><br><br>
     <label>性別<span class="required">*</span><br>
       <select name="gender" required>
         <option value="">選択してください</option>
@@ -185,16 +184,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // 生年月日入力補助（8桁入力対応）
-  const birthInput = document.getElementById('birthdate');
-  if (birthInput) {
-    birthInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, ''); // 数字以外除去
-      if (value.length >= 8) {
-        value = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6, 8);
-      }
+const birthInput = document.getElementById('birthdate');
+if (birthInput) {
+  birthInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, ''); // 数字以外除去
+
+    if (value.length > 8) {
+      value = value.slice(0, 8); // 8桁までしか許可しない
+    }
+
+    if (value.length === 8) {
+      const year = value.slice(0, 4);
+      const month = value.slice(4, 6);
+      const day = value.slice(6, 8);
+      e.target.value = `${year}/${month}/${day}`; // スラッシュ付きに変換
+    } else {
       e.target.value = value;
-    });
-  }
+    }
+  });
+}
 });
 </script>
 </body>
