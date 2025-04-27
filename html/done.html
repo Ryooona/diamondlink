@@ -10,9 +10,10 @@
 </head>
 <body>
 
+  <!-- 共通ヘッダー読み込み -->
   <div id="header-placeholder"></div>
 
-<main class="container" style="text-align: center; margin-top: 50px; padding-top: 80px;">
+  <main class="container" style="text-align: center; margin-top: 50px; padding-top: 80px;">
     <h1>登録が完了しました！</h1>
     <p>ご登録ありがとうございます。</p>
     <p>引き続き、DiamondLinkをお楽しみください！</p>
@@ -21,31 +22,11 @@
     <a href="/diamondlink/html/index.html" class="button">トップへ戻る</a>
   </main>
 
+  <!-- 共通フッター読み込み -->
   <div id="footer-placeholder"></div>
 
-  <script>
-    // 共通ヘッダー・フッター読み込み
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('/diamondlink/html/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-          const hamburger = document.getElementById('hamburger');
-          const navMenu = document.getElementById('nav-menu');
-          if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
-              navMenu.classList.toggle('show');
-            });
-          }
-        });
-
-      fetch('/diamondlink/html/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
-    });
-  </script>
+  <!-- ヘッダー＆フッター ローダー -->
+  <script src="/diamondlink/js/header-loader.js"></script>
 
 </body>
 </html>
