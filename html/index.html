@@ -35,7 +35,7 @@
 
 <body>
 
-<header>
+<header class="header">
   <div class="header-inner">
     <button id="menu-button">☰</button>
     <nav id="menu">
@@ -49,56 +49,57 @@
   </div>
 </header>
 
-  <!-- メインコンテンツ -->
-  <main class="container">
+<!-- メインコンテンツ -->
+<main class="container">
 
-    <!-- スライドショー -->
-    <div class="slideshow-container">
-      <img src="https://placehold.co/1200x400?text=チームA" class="slide active">
-      <img src="https://placehold.co/1200x400?text=チームB" class="slide">
-      <img src="https://placehold.co/1200x400?text=チームC" class="slide">
-    </div>
-    <br>
+  <!-- スライドショー -->
+  <div class="slideshow-container">
+    <img src="https://placehold.co/1200x400?text=チームA" class="slide active">
+    <img src="https://placehold.co/1200x400?text=チームB" class="slide">
+    <img src="https://placehold.co/1200x400?text=チームC" class="slide">
+  </div>
+  <br>
 
-    <!-- キャッチコピー -->
-    <p class="catch">
-      野球・ソフトボールをもっと身近に。<br>
-      あなたにピッタリのチームがきっと見つかる。
-    </p>
+  <!-- キャッチコピー -->
+  <p class="catch">
+    野球・ソフトボールをもっと身近に。<br>
+    あなたにピッタリのチームがきっと見つかる。
+  </p>
 
-    <!-- ボタン -->
-    <div class="button-group">
-      <a href="teams.html" class="main-button">チームを探す</a>
-      <a href="register.html" class="main-button">チームを登録する</a>
-    </div>
+  <!-- ボタン -->
+  <div class="button-group">
+    <a href="teams.html" class="main-button">チームを探す</a>
+    <a href="register.html" class="main-button">チームを登録する</a>
+  </div>
 
-  </main>
+</main>
 
-  <!-- 共通フッター挿入 -->
-  <div id="footer-placeholder"></div>
+<!-- 共通フッター挿入 -->
+<div id="footer-placeholder"></div>
 
-  <!-- JavaScriptまとめ -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+<!-- JavaScriptまとめ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
 
-      // フッター読み込み
-      fetch('/diamondlink/html/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
+    // フッター読み込み
+    fetch('/diamondlink/html/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      });
 
-      // スライドショー
-      const slides = document.querySelectorAll('.slide');
-      let currentIndex = 0;
+    // スライドショー
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
 
-      setInterval(() => {
-        slides[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % slides.length;
-        slides[currentIndex].classList.add('active');
-      }, 3000);
-    });
-  </script>
+    setInterval(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, 3000);
+  });
+</script>
 <script src="/diamondlink/js/header.js"></script>
+
 </body>
 </html>
