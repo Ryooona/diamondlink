@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // メニュー中身を作成
   navMenu.innerHTML = `
     <a href="#">メニューを閉じる</a>
-    <a href="/diamondlink/login.html">ログイン</a>
+    <a href="#" id="open-login-modal">ログイン</a>
     <a href="/diamondlink/signup.html">アカウント作成</a>
     <a href="#">チームを探す</a>
     <a href="#">チームを登録する</a>
