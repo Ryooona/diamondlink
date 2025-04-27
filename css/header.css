@@ -24,14 +24,9 @@
   height: 40px;
 }
 
-/* ナビゲーション共通 */
-.nav-menu {
-  display: flex;
-  gap: 20px;
-}
-
 /* オーバーレイ（背景暗くするやつ） */
-.overlay {
+.overlay,
+.menu-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -42,7 +37,8 @@
   z-index: 1000;
 }
 
-.overlay.show {
+.overlay.show,
+.menu-overlay.show {
   display: block;
 }
 
@@ -58,22 +54,24 @@
   }
 
   .nav-menu {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: fixed;
     top: 0;
-    right: -250px; /* 最初は隠す */
+    right: -250px; /* 最初は画面外 */
     width: 250px;
     height: 100%;
     background: #333;
-    padding: 60px 20px 20px;
+    padding: 60px 20px;
     box-shadow: -2px 0 8px rgba(0,0,0,0.2);
     transition: right 0.3s ease;
+    gap: 20px;
     z-index: 1001;
   }
 
   .nav-menu.show {
-    right: 0; /* 開くとスライドイン */
+    right: 0;
   }
 
   .nav-menu a {
@@ -100,6 +98,7 @@
     box-shadow: none;
     padding: 0;
     margin-left: auto;
+    gap: 20px;
   }
 
   .nav-menu a {
@@ -109,11 +108,11 @@
   }
 }
 
-/* ===========================
+/* =======================================
    ◆ ログインモーダル
-=========================== */
+======================================= */
 .login-modal {
-  display: none; /* 最初は隠す */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -126,7 +125,7 @@
 }
 
 .login-modal.show {
-  display: flex; /* 表示するとき */
+  display: flex;
 }
 
 .login-content {
@@ -179,36 +178,4 @@
 }
 .links a:hover {
   text-decoration: underline;
-}
-/* ===========================
-   ◆ モバイル用ナビゲーションの改善
-=========================== */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* ←★ここ追加！（超大事） */
-    position: fixed;
-    top: 0;
-    right: -250px; /* 最初は画面の外 */
-    width: 250px;
-    height: 100%;
-    background: #333;
-    flex-direction: column;
-    padding: 60px 20px;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.3);
-    transition: right 0.3s ease;
-    gap: 20px;
-    z-index: 1001;
-  }
-
-  .nav-menu.show {
-    display: flex; /* showがついたら初めて表示 */
-    right: 0;
-  }
-
-  .nav-menu a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
 }
