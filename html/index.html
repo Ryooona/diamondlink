@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
-  <link rel="stylesheet" href="/diamondlink/css/header.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink</title>
+  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
+  <link rel="stylesheet" href="/diamondlink/css/header.css">
 
   <style>
     /* スライドショー用のフェード効果 */
@@ -35,19 +35,8 @@
 
 <body>
 
-<header class="header">
-  <div class="header-inner">
-    <button id="menu-button">☰</button>
-    <nav id="menu">
-      <ul>
-        <li><a href="/diamondlink/index.html">ホーム</a></li>
-        <li><a href="/diamondlink/teams.html">チームを探す</a></li>
-        <li><a href="/diamondlink/register.html">チームを登録する</a></li>
-        <li><a href="/diamondlink/signup.html">サインアップ</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<!-- ヘッダー読み込み用 -->
+<div id="header-placeholder"></div>
 
 <!-- メインコンテンツ -->
 <main class="container">
@@ -74,12 +63,23 @@
 
 </main>
 
-<!-- 共通フッター挿入 -->
+<!-- フッター読み込み用 -->
 <div id="footer-placeholder"></div>
 
 <!-- JavaScriptまとめ -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // ヘッダー読み込み
+    fetch('/diamondlink/html/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+
+        // ヘッダー読み込んだらheader.jsを動かす
+        const headerScript = document.createElement('script');
+        headerScript.src = '/diamondlink/js/header.js';
+        document.body.appendChild(headerScript);
+      });
 
     // フッター読み込み
     fetch('/diamondlink/html/footer.html')
@@ -99,7 +99,6 @@
     }, 3000);
   });
 </script>
-<script src="/diamondlink/js/header.js"></script>
 
 </body>
 </html>
