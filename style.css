@@ -108,7 +108,8 @@ a:hover {
     display: none;
   }
 
-  /* ナビは常に横並びで表示 */
+/* PC版：横並びに切り替え */
+@media (min-width: 769px) {
   .nav-menu {
     display: flex !important;
     flex-direction: row;
@@ -118,8 +119,9 @@ a:hover {
     border: none;
     padding: 0;
     margin-left: auto;
-    gap: 20px;
+    gap: 20px; /* メニュー間のスペース */
   }
+}
 
   .nav-menu a {
     margin: 0;
@@ -209,15 +211,18 @@ a:hover {
   cursor: pointer;
 }
 
-/* ハンバーガーメニューが表示された時 */
+/* メニューが表示される時 */
 .nav-menu.show {
-  display: block;
+  display: block; /* メニュー表示 */
   position: absolute;
-  top: 60px; /* メニューがヘッダーの下に表示される */
-  right: 0;
-  background-color: white;
-  padding: 20px;
-  width: 200px; /* 必要に応じて調整 */
+  top: 60px; /* ヘッダー下にメニューが表示 */
+  right: 20px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  gap: 10px;
+  z-index: 1000;
 }
 
 /* スマホ版 */
@@ -225,6 +230,7 @@ a:hover {
   .hamburger {
     display: block; /* スマホ版では表示 */
   }
+}
 
   .nav-menu {
     display: none; /* 初期状態では非表示 */
