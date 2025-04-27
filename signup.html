@@ -150,50 +150,52 @@
 
 <script src="/diamondlink/header-loader.js"></script>
 <script src="/diamondlink/header-menu.js"></script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // フッター読み込み
-    fetch('/diamondlink/footer.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer-placeholder').innerHTML = html;
-      });
-
-    // 都道府県選択時、市区町村を取得（仮）
-    const prefectureSelect = document.getElementById('prefecture');
-    const citySelect = document.getElementById('city-select');
-
-    prefectureSelect.addEventListener('change', function() {
-      const selectedPrefecture = this.value;
-      citySelect.innerHTML = '<option value="">選択してください</option>';
-
-      if (selectedPrefecture) {
-        fetch('prefecture_city.json')
-          .then(response => response.json())
-          .then(data => {
-            if (data[selectedPrefecture]) {
-              data[selectedPrefecture].forEach(city => {
-                const option = document.createElement('option');
-                option.value = city;
-                option.textContent = city;
-                citySelect.appendChild(option);
-              });
-            }
-          });
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  // フッター読み込み
+  fetch('/diamondlink/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
     });
 
-    // 生年月日入力補助（8桁入力対応）
-    const birthdateInput = document.getElementById('birthdate');
-    birthdateInput.addEventListener('input', function(e) {
-      const value = e.target.value.replace(/\D/g, '');
-      if (value.length === 8) {
-        const formatted = value.slice(0,4) + '-' + value.slice(4,6) + '-' + value.slice(6,8);
-        e.target.value = formatted;
-      }
-    });
+  // 都道府県選択時、市区町村を取得
+  const prefectureSelect = document.getElementById('prefecture');
+  const citySelect = document.getElementById('city-select');
+
+  prefectureSelect.addEventListener('change', function() {
+    const selectedPrefecture = this.value;
+    citySelect.innerHTML = '<option value="">選択してください</option>';
+
+    if (selectedPrefecture) {
+      fetch('prefecture_city.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data[selectedPrefecture]) {
+            data[selectedPrefecture].forEach(city => {
+              const option = document.createElement('option');
+              option.value = city;
+              option.textContent = city;
+              citySelect.appendChild(option);
+            });
+          }
+        });
+    }
   });
-</script>
 
+  // 生年月日入力補助（8桁入力対応）
+  const birthInput = document.getElementById('birthdate');
+  if (birthInput) {
+    birthInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, ''); // 数字以外除去
+      if (value.length >= 8) {
+        value = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6, 8);
+      }
+      e.target.value = value;
+    });
+  }
+});
+</script>
 </body>
 </html>
