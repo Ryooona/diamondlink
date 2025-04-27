@@ -223,5 +223,48 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const passwordInput = document.getElementById('password');
+  const strengthBar = document.getElementById('password-strength-bar');
+  const strengthText = document.getElementById('password-strength-text');
+
+  passwordInput.addEventListener('input', function() {
+    const value = passwordInput.value;
+    let strength = 0;
+
+    // 強度判定（英字・数字・記号）
+    if (/[a-z]/.test(value)) strength++;
+    if (/[A-Z]/.test(value)) strength++;
+    if (/[0-9]/.test(value)) strength++;
+    if (/[^a-zA-Z0-9]/.test(value)) strength++;
+
+    // 長さも加味
+    if (value.length >= 8) strength++;
+
+    // 強度に応じたバーとテキスト
+    if (strength <= 2) {
+      strengthBar.style.width = "33%";
+      strengthBar.style.background = "red";
+      strengthText.textContent = "弱い";
+      strengthText.style.color = "red";
+    } else if (strength === 3 || strength === 4) {
+      strengthBar.style.width = "66%";
+      strengthBar.style.background = "orange";
+      strengthText.textContent = "普通";
+      strengthText.style.color = "orange";
+    } else if (strength >= 5) {
+      strengthBar.style.width = "100%";
+      strengthBar.style.background = "green";
+      strengthText.textContent = "強い";
+      strengthText.style.color = "green";
+    } else {
+      strengthBar.style.width = "0%";
+      strengthText.textContent = "パスワードの強度を表示します";
+      strengthText.style.color = "gray";
+    }
+  });
+});
+</script>
 </body>
 </html>
