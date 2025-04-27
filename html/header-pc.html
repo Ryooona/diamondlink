@@ -1,29 +1,6 @@
-<!-- header-pc.html -->
-<header class="site-header">
-  <div class="header-container">
-    <!-- ロゴ -->
-    <div class="logo">
-      <a href="/diamondlink/html/index.html">
-        <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
-      </a>
-    </div>
-
-    <!-- ナビゲーションメニュー（PCは最初から表示） -->
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="/diamondlink/html/search-teams.html">チームを探す</a></li>
-        <li><a href="/diamondlink/html/register-teams.html">チームを登録する</a></li>
-        <li><a href="javascript:void(0);" id="open-login-modal">ログイン</a></li>
-        <li><a href="/diamondlink/html/signup.html">アカウント作成</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<!-- ▼オーバーレイ追加！ここ -->
+<!-- ▼オーバーレイとログインモーダル -->
 <div class="modal-overlay" id="modal-overlay"></div>
 
-<!-- ▼ログインモーダル -->
 <div class="login-modal" id="login-modal">
   <h2>ログイン</h2>
   <form id="login-form">
@@ -39,8 +16,27 @@
   </form>
   <button id="close-login-modal" style="margin-top: 15px;">閉じる</button>
 </div>
-<!-- ▲ログインモーダルここまで -->
+<!-- ▲ここまで -->
 
+<!-- ▼ここからヘッダー -->
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo">
+      <a href="/diamondlink/html/index.html">
+        <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
+      </a>
+    </div>
 
-<!-- スタイルシート（必要ならこのまま） -->
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="/diamondlink/html/search-teams.html">チームを探す</a></li>
+        <li><a href="/diamondlink/html/register-teams.html">チームを登録する</a></li>
+        <li><a href="javascript:void(0);" id="open-login-modal">ログイン</a></li>
+        <li><a href="/diamondlink/html/signup.html">アカウント作成</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ▼CSSリンク -->
 <link rel="stylesheet" href="/diamondlink/css/header.css">
