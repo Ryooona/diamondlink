@@ -16,23 +16,34 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.classList.remove('show'); // 背景ぼかし閉じる
   });
 
-  // メニュー中身を作成（仮ログイン判定）
+ document.addEventListener('DOMContentLoaded', function() {
   const isLoggedIn = false;
-  if (isLoggedIn) {
-    navMenu.innerHTML = `
-      <a href="/diamondlink/index.html">ホーム</a>
-      <a href="/diamondlink/teams.html">チーム検索</a>
-      <a href="/diamondlink/logout.html">ログアウト</a>
-      <div class="user-button">
-        <img src="/diamondlink/images/user-icon.png" alt="ユーザーアイコン" class="user-icon"> ユーザー名
-      </div>
-    `;
-  } else {
-    navMenu.innerHTML = `
-      <a href="/diamondlink/index.html">ホーム</a>
-      <a href="/diamondlink/teams.html">チーム検索</a>
-      <a href="/diamondlink/login.html">ログイン</a>
-      <a href="/diamondlink/signup.html" class="signup-button">新規会員登録</a>
-    `;
-  }
+  const navMenu = document.getElementById('nav-menu');
+  const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('overlay');
+
+  // メニュー中身を作成
+  navMenu.innerHTML = `
+    <a href="#">メニューを閉じる</a>
+    <a href="/diamondlink/login.html">ログイン</a>
+    <a href="/diamondlink/signup.html">登録</a>
+    <a href="#">トーナメント検索</a>
+    <a href="#">ポーカースポット情報</a>
+    <a href="#">スペイディーポーカー</a>
+    <a href="#">インタビュー</a>
+    <a href="#">コラム</a>
+    <a href="#">プレイヤーズカード</a>
+  `;
+
+  // ハンバーガー押したら開く
+  hamburger.addEventListener('click', function() {
+    navMenu.classList.toggle('show');
+    overlay.classList.toggle('show');
+  });
+
+  // オーバーレイ押したら閉じる
+  overlay.addEventListener('click', function() {
+    navMenu.classList.remove('show');
+    overlay.classList.remove('show');
+  });
 });
