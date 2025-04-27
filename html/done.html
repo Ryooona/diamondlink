@@ -17,7 +17,7 @@
     <p>引き続き、DiamondLinkをお楽しみください！</p>
 
     <br>
-    <a href="/diamondlink/index.html" class="button">トップへ戻る</a>
+    <a href="/diamondlink/html/index.html" class="button">トップへ戻る</a>
   </main>
 
   <div id="footer-placeholder"></div>
@@ -25,7 +25,7 @@
   <script>
     // 共通ヘッダー・フッター読み込み
     document.addEventListener('DOMContentLoaded', function() {
-      fetch('/diamondlink/header.html')
+      fetch('/diamondlink/html/header.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('header-placeholder').innerHTML = html;
@@ -38,7 +38,7 @@
           }
         });
 
-      fetch('/diamondlink/footer.html')
+      fetch('/diamondlink/html/footer.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('footer-placeholder').innerHTML = html;
