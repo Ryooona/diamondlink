@@ -66,38 +66,23 @@
 <!-- フッター読み込み用 -->
 <div id="footer-placeholder"></div>
 
-<!-- JavaScriptまとめ -->
+<!-- ヘッダー・フッター読込スクリプト -->
+<script src="/diamondlink/js/header-loader.js"></script>
+
+<!-- ページ固有のスクリプト -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // ヘッダー読み込み
-    fetch('/diamondlink/html/header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-placeholder').innerHTML = html;
-
-        // ヘッダー読み込んだらheader.jsを動かす
-        const headerScript = document.createElement('script');
-        headerScript.src = '/diamondlink/js/header.js';
-        document.body.appendChild(headerScript);
-      });
-
-    // フッター読み込み
-    fetch('/diamondlink/html/footer.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer-placeholder').innerHTML = html;
-      });
-
-    // スライドショー
-    const slides = document.querySelectorAll('.slide');
+document.addEventListener('DOMContentLoaded', function() {
+  // スライドショー
+  const slides = document.querySelectorAll('.slide');
+  if (slides.length > 0) {
     let currentIndex = 0;
-
     setInterval(() => {
       slides[currentIndex].classList.remove('active');
       currentIndex = (currentIndex + 1) % slides.length;
       slides[currentIndex].classList.add('active');
     }, 3000);
-  });
+  }
+});
 </script>
 
 </body>
