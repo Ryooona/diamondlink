@@ -1,16 +1,123 @@
+<!-- header.html -->
 <header class="site-header">
   <div class="header-container">
-    <!-- ロゴ部分 -->
+    <!-- ロゴ -->
     <div class="logo">
       <a href="/diamondlink/index.html">
         <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
       </a>
     </div>
 
-    <!-- モバイル用ハンバーガー -->
+    <!-- ハンバーガーメニュー -->
     <div class="hamburger" id="hamburger">☰</div>
 
-    <!-- メニュー本体（JSであとから中身を入れる） -->
-    <nav class="nav-menu" id="nav-menu"></nav>
+    <!-- ナビゲーションメニュー -->
+    <nav class="nav-menu" id="nav-menu">
+      <!-- JSで中身をあとから作る -->
+    </nav>
   </div>
 </header>
+
+<!-- ヘッダー専用スタイル -->
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    z-index: 1000;
+  }
+
+  .header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #0047ab;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-menu a {
+    text-decoration: none;
+    color: #0047ab;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .signup-button {
+    background-color: #0047ab;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  /* モバイル用 */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .nav-menu.show {
+      display: flex;
+    }
+  }
+</style>
+
+<!-- メニュー作成用スクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const isLoggedIn = false; // 仮でログイン状態を設定（あとで動的にできる）
+
+  const navMenu = document.getElementById('nav-menu');
+
+  if (isLoggedIn) {
+    navMenu.innerHTML = `
+      <a href="/diamondlink/index.html">ホーム</a>
+      <a href="/diamondlink/teams.html">チーム検索</a>
+      <a href="/diamondlink/logout.html">ログアウト</a>
+    `;
+  } else {
+    navMenu.innerHTML = `
+      <a href="/diamondlink/index.html">ホーム</a>
+      <a href="/diamondlink/teams.html">チーム検索</a>
+      <a href="/diamondlink/login.html">ログイン</a>
+      <a href="/diamondlink/signup.html" class="signup-button">アカウント作成</a>
+    `;
+  }
+
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', function() {
+    navMenu.classList.toggle('show');
+  });
+});
+</script>
