@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const prefectureSelect = document.getElementById('prefecture');
 
   if (prefectureSelect) {
-    fetch('/diamondlink/json/prefectures.json')
+    fetch('/diamondlink/json/prefecture.json')
       .then(response => response.json())
       .then(data => {
         prefectureSelect.innerHTML = '<option value="">選択してください</option>';
