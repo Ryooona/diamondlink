@@ -18,8 +18,11 @@
   </div>
 </header>
 
-<!-- 背景ぼかし用 -->
+<!-- 背景を暗くするオーバーレイ -->
 <div class="overlay" id="overlay"></div>
+
+<!-- スタイル -->
+<link rel="stylesheet" href="/diamondlink/css/header.css">
 
 <!-- メニュー作成用スクリプト -->
 <script>
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const isLoggedIn = false;
   const navMenu = document.getElementById('nav-menu');
   const hamburger = document.getElementById('hamburger');
-  const overlay = document.getElementById('overlay'); // ←★これ追加
+  const overlay = document.getElementById('overlay');
 
   // メニュー中身を作る
   if (isLoggedIn) {
@@ -48,10 +51,16 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
   }
 
-  // ハンバーガークリックで開く
+  // ハンバーガークリックで開閉
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
-    overlay.classList.toggle('show'); // ←★オーバーレイも切り替える
+    overlay.classList.toggle('show');
+  });
+
+  // オーバーレイを押しても閉じる
+  overlay.addEventListener('click', function() {
+    navMenu.classList.remove('show');
+    overlay.classList.remove('show');
   });
 });
 </script>
