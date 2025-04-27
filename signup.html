@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-first-name').textContent = '';
     }
-    
+
     // ニックネームのチェック
     const nickname = document.getElementById('nickname').value.trim();
     if (nickname === '') {
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-nickname').textContent = '';
     }
-    
+
     // 都道府県のチェック
     const prefecture = document.getElementById('prefecture').value;
     if (prefecture === '') {
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-city').textContent = '';
     }
-    
+
     // 生年月日のチェック
     const birthdate = document.getElementById('birthdate').value.trim();
     if (birthdate === '') {
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('error-birthdate').textContent = '';
     }
 
-        // 性別のチェック
+    // 性別のチェック
     const gender = document.querySelector('select[name="gender"]').value;
     if (gender === '') {
       document.getElementById('error-gender').textContent = '性別を選択してください。';
@@ -369,8 +369,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-gender').textContent = '';
     }
-    
-        // パスワードのチェック
+
+    // パスワードのチェック
     const password = document.getElementById('password').value;
     if (password.length < 6) {
       document.getElementById('error-password').textContent = 'パスワードは6文字以上で入力してください。';
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('error-password').textContent = '';
     }
 
-        // 現在チーム加入しているかのチェック
+    // 現在チーム加入しているかのチェック
     const teamMemberYes = document.getElementById('team-member-yes').checked;
     const teamMemberNo = document.getElementById('team-member-no').checked;
     if (!teamMemberYes && !teamMemberNo) {
@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-team-member').textContent = '';
     }
-    
+
     // エラーがあったら送信ストップ
     if (hasError) {
       event.preventDefault();
