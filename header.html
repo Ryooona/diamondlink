@@ -1,4 +1,3 @@
-<!-- header.html -->
 <header class="site-header">
   <div class="header-container">
     <!-- ロゴ部分 -->
@@ -7,8 +6,10 @@
         <img src="/diamondlink/images/DL-icon_logo.png" alt="DiamondLink" class="logo-img">
       </a>
     </div>
+
     <!-- モバイル用ハンバーガー -->
     <div class="hamburger" id="hamburger">☰</div>
+
     <!-- メニュー本体（JSであとから中身を入れる） -->
     <nav class="nav-menu" id="nav-menu"></nav>
   </div>
@@ -21,41 +22,50 @@
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .logo a {
     text-decoration: none;
   }
+
   .logo-img {
     height: 40px;
   }
+
   .hamburger {
     display: none;
     cursor: pointer;
     font-size: 30px;
   }
+
   .nav-menu a {
     text-decoration: none;
     padding: 10px 15px;
     color: #333;
     font-size: 16px;
   }
+
   .nav-menu a.signup-button {
     background-color: #007bff;
     color: white;
     border-radius: 5px;
   }
+
   .nav-menu.show {
     display: block;
   }
 
+  /* スマホ版用のスタイル */
   @media (max-width: 768px) {
     .hamburger {
       display: block;
     }
+
     .nav-menu {
       display: none;
       flex-direction: column;
@@ -66,11 +76,11 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const isLoggedIn = false; // ログインしてるか（仮）
-  
+  const isLoggedIn = false; // ログイン状態のフラグ（仮で false としている）
+
   const navMenu = document.getElementById('nav-menu');
-  
-  // ログイン/ログアウト時のメニュー変更
+
+  // ログイン/ログアウト時のメニューを変更
   navMenu.innerHTML = isLoggedIn
     ? `
       <a href="/diamondlink/index.html">ホーム</a>
@@ -86,8 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="/diamondlink/login.html">ログイン</a>
       <a href="/diamondlink/signup.html" class="signup-button">新規会員登録</a>
     `;
-  
-  // ハンバーガーメニューの開閉
+
+  // ハンバーガーメニューの表示/非表示を切り替え
   const hamburger = document.getElementById('hamburger');
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
