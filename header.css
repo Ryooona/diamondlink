@@ -1,1 +1,50 @@
 
+/* 共通（モバイルもPCも） */
+.nav-menu {
+  display: none; /* 最初は隠す！ */
+  gap: 20px;
+}
+
+/* モバイル用 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    color: #0047ab;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+  .nav-menu.show {
+    display: flex; /* ハンバーガー押したときだけ表示 */
+  }
+}
+
+/* PC版 */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none; /* PCではハンバーガー非表示 */
+  }
+
+  .nav-menu {
+    display: flex; /* PCは常に表示 */
+    flex-direction: row;
+    position: static;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }
+}
