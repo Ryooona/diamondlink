@@ -120,7 +120,7 @@
       <input type="email" name="email" required>
     </label><br><br>
 
-<<label>パスワード<span class="required">*</span><br>
+<label>パスワード<span class="required">*</span><br>
   <div style="position: relative; max-width: 300px;">
     <input type="password" name="password" id="password" required style="width: 100%; padding-right: 40px;">
     <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
@@ -211,18 +211,7 @@ if (birthInput) {
 }
 });
 </script>
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const togglePassword = document.getElementById('toggle-password');
-  const passwordInput = document.getElementById('password');
 
-  togglePassword.addEventListener('click', function() {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
-  });
-});
-</script>
   <script>
 document.addEventListener('DOMContentLoaded', function() {
   const passwordInput = document.getElementById('password');
@@ -263,6 +252,18 @@ document.addEventListener('DOMContentLoaded', function() {
       strengthText.textContent = "パスワードの強度を表示します";
       strengthText.style.color = "gray";
     }
+  });
+});
+</script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const togglePassword = document.getElementById('toggle-password');
+  const passwordInput = document.getElementById('password');
+
+  togglePassword.addEventListener('click', function() {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
   });
 });
 </script>
