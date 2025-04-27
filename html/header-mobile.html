@@ -13,20 +13,16 @@
   </div>
 </header>
 
-<!-- モーダル（ハンバーガーメニューの中身） -->
-<div class="nav-modal" id="nav-modal" style="display: none;">
-  <nav class="nav-menu">
-    <ul>
-      <li><a href="#">チームを探す</a></li>
-      <li><a href="#">チームを登録する</a></li>
-      <li><a href="#">ログイン</a></li>
-      <li><a href="#">アカウント作成</a></li>
-    </ul>
+<!-- モバイルメニュー本体 -->
+<div id="mobile-menu" class="mobile-menu">
+  <nav class="mobile-nav">
+    <a href="/diamondlink/html/teams.html">チームを探す</a>
+    <a href="/diamondlink/html/register.html">チームを登録する</a>
+    <a href="/diamondlink/html/login.html">ログイン</a>
+    <a href="/diamondlink/html/signup.html">アカウント作成</a>
+    <button id="close-menu">閉じる</button>
   </nav>
 </div>
 
-<!-- 背景を暗くするオーバーレイ -->
-<div class="overlay" id="overlay" style="display: none;"></div>
-
-<!-- スタイル読み込み -->
-<link rel="stylesheet" href="/diamondlink/css/header.css">
+<!-- オーバーレイ -->
+<div id="menu-overlay" class="menu-overlay"></div>
