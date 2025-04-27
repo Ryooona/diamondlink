@@ -292,6 +292,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+  </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('account-form');
+
+  form.addEventListener('submit', function(event) {
+    let hasError = false;
+
+    // 姓のチェック
+    const lastName = document.getElementById('last-name').value.trim();
+    if (lastName === '') {
+      document.getElementById('error-last-name').textContent = '姓を入力してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-last-name').textContent = '';
+    }
+
+    // 名のチェック
+    const firstName = document.getElementById('first-name').value.trim();
+    if (firstName === '') {
+      document.getElementById('error-first-name').textContent = '名を入力してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-first-name').textContent = '';
+    }
+
+    // 都道府県のチェック
+    const prefecture = document.getElementById('prefecture').value;
+    if (prefecture === '') {
+      document.getElementById('error-prefecture').textContent = '都道府県を選択してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-prefecture').textContent = '';
+    }
+
+    // 市区町村のチェック
+    const city = document.getElementById('city-select').value;
+    if (city === '') {
+      document.getElementById('error-city').textContent = '市区町村を選択してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-city').textContent = '';
+    }
+
+    // エラーがあったら送信ストップ
+    if (hasError) {
+      event.preventDefault();
+    }
+  });
+});
 </script>
 </body>
 </html>
