@@ -27,4 +27,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-<script src="/diamondlink/js/header-mobile.js"></script>
