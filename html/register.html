@@ -24,8 +24,8 @@
       </label><br><br>
 
       <!-- 活動地域 -->
-      <fieldset>
-        <legend>活動地域</legend>
+<fieldset>
+<legend>活動地域</legend>
 
         <!-- 都道府県 -->
         <label>都道府県<span class="required">*</span><br>
@@ -44,7 +44,7 @@
         </label><br><br>
       </fieldset><br>
 
-　　　 <fieldset>
+<fieldset>
         <legend>チーム構成</legend>
       
       <!-- 競技種別 -->
@@ -215,6 +215,43 @@
       });
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // ここは今まで通り（都道府県、市区町村、競技種別の処理）
 
+    // ▼ SNS URLのバリデーション追加
+    const form = document.getElementById('team-registration-form');
+
+    form.addEventListener('submit', function(event) {
+      let hasError = false;
+
+      const xUrl = form.querySelector('input[name="x-url"]').value.trim();
+      const instagramUrl = form.querySelector('input[name="instagram-url"]').value.trim();
+      const youtubeUrl = form.querySelector('input[name="youtube-url"]').value.trim();
+
+      // X (旧Twitter) チェック
+      if (xUrl && !xUrl.startsWith('https://twitter.com/')) {
+        alert('X（旧Twitter）のURLは「https://twitter.com/〜」で始まる必要があります。');
+        hasError = true;
+      }
+
+      // Instagram チェック
+      if (instagramUrl && !instagramUrl.startsWith('https://instagram.com/') && !instagramUrl.startsWith('https://www.instagram.com/')) {
+        alert('InstagramのURLは「https://instagram.com/〜」で始まる必要があります。');
+        hasError = true;
+      }
+
+      // YouTube チェック
+      if (youtubeUrl && !youtubeUrl.startsWith('https://youtube.com/') && !youtubeUrl.startsWith('https://www.youtube.com/')) {
+        alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
+        hasError = true;
+      }
+
+      if (hasError) {
+        event.preventDefault(); // エラーがあったら送信ストップ
+      }
+    });
+  });
+</script>
 </body>
 </html>
