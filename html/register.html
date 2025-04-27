@@ -27,18 +27,24 @@
       <fieldset>
         <legend>活動地域</legend>
 
-        <label>都道府県<span class="required">*</span><br>
-          <select name="prefecture" id="prefecture" required>
-            <option value="">選択してください</option>
-          </select>
-        </label><br><br>
+<label>都道府県<span class="required">*</span><br>
+      <select name="prefecture" id="prefecture" required>
+        <option value="">選択してください</option>
+      </select>
+      <div class="error-message" id="error-prefecture"></div>
+    </label><br><br>
 
-        <label>市区町村<span class="required">*</span><br>
-          <select name="city" id="city-select" required>
-            <option value="">選択してください</option>
-          </select>
-        </label>
-      </fieldset><br>
+  
+    <label>市区町村<span class="required">*</span><br>
+      <select name="city" id="city-select" required>
+        <option value="">選択してください</option>
+      </select>
+      <div class="error-message" id="error-city"></div>
+    </label><br><br>
+
+
+
+      
 
       <!-- 競技種別 -->
       <label>競技種別<span class="required">*</span><br>
