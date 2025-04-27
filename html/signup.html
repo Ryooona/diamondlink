@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink | アカウント作成</title>
   <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
-  <link rel="stylesheet" href="/diamondlink/style.css?v=2">
+  <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .required {
@@ -177,13 +177,13 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="/diamondlink/header-loader.js"></script>
-<script src="/diamondlink/header-menu.js"></script>
+<script src="/diamondlink/js/header-loader.js"></script>
+<script src="/diamondlink/js/header-menu.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // フッター読み込み
-  fetch('/diamondlink/footer.html')
+  fetch('/diamondlink/html/footer.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('footer-placeholder').innerHTML = html;
