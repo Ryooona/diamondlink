@@ -26,13 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
   navMenu.innerHTML = `
     <a href="#">メニューを閉じる</a>
     <a href="/diamondlink/login.html">ログイン</a>
-    <a href="/diamondlink/signup.html">登録</a>
-    <a href="#">トーナメント検索</a>
-    <a href="#">ポーカースポット情報</a>
-    <a href="#">スペイディーポーカー</a>
-    <a href="#">インタビュー</a>
-    <a href="#">コラム</a>
-    <a href="#">プレイヤーズカード</a>
+    <a href="/diamondlink/signup.html">アカウント作成</a>
+    <a href="#">チームを探す</a>
+    <a href="#">チームを登録する</a>
   `;
 
   // ハンバーガー押したら開く
