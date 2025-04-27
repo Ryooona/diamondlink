@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   navMenu.innerHTML = `
     <a href="#">メニューを閉じる</a>
     <a href="#" id="open-login-modal">ログイン</a>
-    <a href="/diamondlink/signup.html">アカウント作成</a>
+    <a href="/diamondlink/html/signup.html">アカウント作成</a>
     <a href="#">チームを探す</a>
     <a href="#">チームを登録する</a>
   `;
