@@ -91,7 +91,43 @@
   <!-- JavaScriptまとめ -->
   <script src="/diamondlink/js/header-loader.js"></script>
   <script src="/diamondlink/js/header-mobile.js"></script>
-  <script src="/diamondlink/js/prefecture-loader.js"></script> <!-- ⭐ 都道府県＋市区町村ロード用 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 競技種別によって区分の選択肢を更新
+      const sportType = document.getElementById('sport-type');
+      const division = document.getElementById('division');
+
+      sportType.addEventListener('change', function() {
+        division.innerHTML = '<option value="">選択してください</option>'; // 既存の選択肢をクリア
+
+        if (sportType.value === "baseball") {
+          division.disabled = false;
+          const options = ["指定なし", "軟式", "準硬式", "硬式"];
+          options.forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            division.appendChild(option);
+          });
+        } else if (sportType.value === "softball") {
+          division.disabled = false;
+          const options = ["指定なし", "ゴム", "革"];
+          options.forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            division.appendChild(option);
+          });
+        } else {
+          division.disabled = true;
+          const option = document.createElement('option');
+          option.value = "";
+          option.textContent = "選択してください";
+          division.appendChild(option);
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
