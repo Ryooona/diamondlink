@@ -22,15 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // オーバーレイをクリック → モーダルとオーバーレイを閉じる
   overlay.addEventListener('click', function() {
-    loginModal.classList.remove('show'); // モーダルを非表示にする
-    overlay.classList.remove('show'); // オーバーレイを非表示にする
+    loginModal.classList.remove('show');
+    overlay.classList.remove('show');
   });
 
   // 「ログイン」リンクをクリック → モーダル表示
   openLoginModalButton.addEventListener('click', function(e) {
     e.preventDefault();
-    loginModal.classList.add('show'); // モーダル表示
-    overlay.classList.add('show'); // オーバーレイ表示
-    navMenu.classList.remove('show'); // メニューは閉じる
+    loginModal.classList.add('show');
+    overlay.classList.add('show');
+    navMenu.classList.remove('show');
+  });
+
+  // 「メニューを閉じる」リンクを押したらメニューを閉じる
+  document.addEventListener('click', function(e) {
+    if (e.target.textContent === 'メニューを閉じる') {
+      navMenu.classList.remove('show');
+      overlay.classList.remove('show');
+    }
   });
 });
