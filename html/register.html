@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 都道府県選択肢の読み込み
   const prefectureSelect = document.getElementById('prefecture');
   
-  fetch('/diamondlink/json/prefectures.json')
+  fetch('/diamondlink/json/prefecture.json')
     .then(response => response.json())
     .then(data => {
       prefectureSelect.innerHTML = '<option value="">選択してください</option>';
