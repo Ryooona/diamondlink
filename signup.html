@@ -32,15 +32,15 @@
 
 <form id="account-form" action="https://formspree.io/f/xqaqaloa" method="POST">
 
-    <label>氏名<span class="required">*</span><br>
-  姓 <input type="text" name="last-name" id="last-name" required>
+   <label>氏名<span class="required">*</span><br>
+  姓 <input type="text" name="last-name" id="last-name">
   <div class="error-message" id="error-last-name"></div>
-  名 <input type="text" name="first-name" id="first-name" required>
+  名 <input type="text" name="first-name" id="first-name">
   <div class="error-message" id="error-first-name"></div>
 </label><br><br>
 
-    <label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
-  <input type="text" name="nickname" id="nickname" required>
+<label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
+  <input type="text" name="nickname" id="nickname">
   <div class="error-message" id="error-nickname"></div>
 </label><br><br>
 
@@ -119,11 +119,12 @@
 </label><br><br>
 
     <label>生年月日<span class="required">*</span><br>
-  <input type="text" id="birthdate" name="birthdate" placeholder="例）20001215" required pattern="\d{8}"inputmode="numeric">
+  <input type="text" id="birthdate" name="birthdate" placeholder="例）20001215" pattern="\d{8}" inputmode="numeric">
   <div class="error-message" id="error-birthdate"></div>
 </label><br><br>
-    <label>性別<span class="required">*</span><br>
-  <select name="gender" required>
+
+<label>性別<span class="required">*</span><br>
+  <select name="gender">
     <option value="">選択してください</option>
     <option value="male">男性</option>
     <option value="female">女性</option>
@@ -132,40 +133,39 @@
   <div class="error-message" id="error-gender"></div>
 </label><br><br>
 
-    <label>メールアドレス<span class="required">*</span><br>
-      <input type="email" name="email" required>
-    </label><br><br>
+<label>メールアドレス<span class="required">*</span><br>
+  <input type="email" name="email">
+</label><br><br>
 
 <label>パスワード<span class="required">*</span><br>
   <div style="position: relative; max-width: 300px;">
-    <input type="password" name="password" id="password" required style="width: 100%; padding-right: 40px;">
+    <input type="password" name="password" id="password" style="width: 100%; padding-right: 40px;">
     <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
-  <i class="fa-solid fa-eye"></i>
-</button>
+      <i class="fa-solid fa-eye"></i>
+    </button>
 
     <div id="password-strength" style="height: 8px; background: #ccc; border-radius: 4px; margin-top: 10px; overflow: hidden;">
       <div id="password-strength-bar" style="height: 100%; width: 0%; background: red; transition: width 0.3s;"></div>
     </div>
     <p id="password-strength-text" style="margin: 5px 0 0; font-size: 0.9em; color: gray;">パスワードの強度を表示します</p>
-    </div>
+  </div>
   <div class="error-message" id="error-password"></div>
 </label><br><br>
 
-  <label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
-  <input type="radio" name="team-member" id="team-member-yes" value="はい" required> はい
-  <input type="radio" name="team-member" id="team-member-no" value="いいえ" required> いいえ
+<label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
+  <input type="radio" name="team-member" id="team-member-yes" value="はい"> はい
+  <input type="radio" name="team-member" id="team-member-no" value="いいえ"> いいえ
 </label>
 <div class="error-message" id="error-team-member"></div><br><br>
 
-    <label>利用目的（複数選択可）<span class="required">*</span><br>
-      <input type="checkbox" name="purpose" value="join-team"> 本格的な加入チームを探したい<br>
-      <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
-      <input type="checkbox" name="purpose" value="practice-only"> 練習だけ参加できるチームを探したい<br>
-      <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
-      <input type="checkbox" name="purpose" value="other"> その他<br>
-      <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
-    </label><br><br>
-
+<label>利用目的（複数選択可）<span class="required">*</span><br>
+  <input type="checkbox" name="purpose" value="join-team"> 本格的な加入チームを探したい<br>
+  <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
+  <input type="checkbox" name="purpose" value="practice-only"> 練習だけ参加できるチームを探したい<br>
+  <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
+  <input type="checkbox" name="purpose" value="other"> その他<br>
+  <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
+</label><br><br>
     <button type="submit">アカウント作成（ダミー）</button>
     <p style="font-size: small; color: gray;">※まだ送信機能は有効になっていません</p>
 
