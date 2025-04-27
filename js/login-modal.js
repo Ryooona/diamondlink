@@ -1,6 +1,7 @@
 // login-modal.js
 document.addEventListener('DOMContentLoaded', function() {
   const loginModal = document.getElementById('login-modal');
+  const modalOverlay = document.getElementById('modal-overlay');
   const openLoginModalBtn = document.getElementById('open-login-modal');
   const closeLoginModalBtn = document.getElementById('close-login-modal');
 
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (openLoginModalBtn) {
     openLoginModalBtn.addEventListener('click', function() {
       loginModal.classList.add('show');
+      modalOverlay.classList.add('show'); // オーバーレイも表示
     });
   }
 
@@ -15,13 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
   if (closeLoginModalBtn) {
     closeLoginModalBtn.addEventListener('click', function() {
       loginModal.classList.remove('show');
+      modalOverlay.classList.remove('show'); // オーバーレイも非表示
     });
   }
 
-  // モーダルの外側をクリックしたら閉じる（おまけ機能）
-  window.addEventListener('click', function(event) {
-    if (event.target === loginModal) {
+  // オーバーレイをクリックしたら閉じる
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', function() {
       loginModal.classList.remove('show');
-    }
-  });
+      modalOverlay.classList.remove('show');
+    });
+  }
 });
