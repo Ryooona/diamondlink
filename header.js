@@ -1,13 +1,23 @@
-// header.js
-
 document.addEventListener('DOMContentLoaded', function() {
-  const isLoggedIn = false; // ← 仮でfalse。あとで本物に変えられる！
-
-  const navMenu = document.getElementById('nav-menu');
+  // メニューとオーバーレイを取得
   const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
   const overlay = document.getElementById('overlay');
 
-  // メニュー中身を作成
+  // ハンバーガーメニューをクリックしたら
+  hamburger.addEventListener('click', function() {
+    navMenu.classList.toggle('show'); // メニュー開閉
+    overlay.classList.toggle('show'); // 背景ぼかし開閉
+  });
+
+  // オーバーレイをクリックしたら
+  overlay.addEventListener('click', function() {
+    navMenu.classList.remove('show'); // メニュー閉じる
+    overlay.classList.remove('show'); // 背景ぼかし閉じる
+  });
+
+  // メニュー中身を作成（仮ログイン判定）
+  const isLoggedIn = false;
   if (isLoggedIn) {
     navMenu.innerHTML = `
       <a href="/diamondlink/index.html">ホーム</a>
@@ -25,16 +35,4 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="/diamondlink/signup.html" class="signup-button">新規会員登録</a>
     `;
   }
-
-  // ハンバーガーをクリックしたとき
-  hamburger.addEventListener('click', function() {
-    navMenu.classList.toggle('show');
-    overlay.classList.toggle('show');
-  });
-
-  // オーバーレイをクリックしたとき
-  overlay.addEventListener('click', function() {
-    navMenu.classList.remove('show');
-    overlay.classList.remove('show');
-  });
 });
