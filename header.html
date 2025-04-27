@@ -18,12 +18,16 @@
   </div>
 </header>
 
+<!-- 背景ぼかし用 -->
+<div class="overlay" id="overlay"></div>
+
 <!-- メニュー作成用スクリプト -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const isLoggedIn = false;
   const navMenu = document.getElementById('nav-menu');
   const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('overlay'); // ←★これ追加
 
   // メニュー中身を作る
   if (isLoggedIn) {
@@ -47,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // ハンバーガークリックで開く
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
+    overlay.classList.toggle('show'); // ←★オーバーレイも切り替える
   });
 });
 </script>
