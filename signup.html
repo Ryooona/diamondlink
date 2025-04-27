@@ -335,7 +335,34 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-city').textContent = '';
     }
+    
+    // 生年月日のチェック
+    const birthdate = document.getElementById('birthdate').value.trim();
+    if (birthdate === '') {
+      document.getElementById('error-birthdate').textContent = '生年月日を入力してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-birthdate').textContent = '';
+    }
 
+        // 性別のチェック
+    const gender = document.querySelector('select[name="gender"]').value;
+    if (gender === '') {
+      document.getElementById('error-gender').textContent = '性別を選択してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-gender').textContent = '';
+    }
+    
+        // パスワードのチェック
+    const password = document.getElementById('password').value;
+    if (password.length < 6) {
+      document.getElementById('error-password').textContent = 'パスワードは6文字以上で入力してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-password').textContent = '';
+    }
+    
     // エラーがあったら送信ストップ
     if (hasError) {
       event.preventDefault();
