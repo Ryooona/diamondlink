@@ -120,12 +120,17 @@
       <input type="email" name="email" required>
     </label><br><br>
 
-<label>パスワード<span class="required">*</span><br>
+<<label>パスワード<span class="required">*</span><br>
   <div style="position: relative; max-width: 300px;">
     <input type="password" name="password" id="password" required style="width: 100%; padding-right: 40px;">
     <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
       👁️
     </button>
+
+    <div id="password-strength" style="height: 8px; background: #ccc; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+      <div id="password-strength-bar" style="height: 100%; width: 0%; background: red; transition: width 0.3s;"></div>
+    </div>
+    <p id="password-strength-text" style="margin: 5px 0 0; font-size: 0.9em; color: gray;">パスワードの強度を表示します</p>
   </div>
 </label><br><br>
 
