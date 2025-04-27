@@ -1,4 +1,4 @@
-<!-- header.html -->
+<!-- header-pc.html -->
 <header class="site-header">
   <div class="header-container">
     <!-- ロゴ -->
@@ -8,36 +8,17 @@
       </a>
     </div>
 
-    <!-- ハンバーガーメニュー -->
-    <div class="hamburger" id="hamburger">☰</div>
-
-    <!-- ナビゲーションメニュー -->
-    <nav class="nav-menu" id="nav-menu">
-      <!-- JSで中身をあとから作る -->
+    <!-- ナビゲーションメニュー（PCは最初から表示） -->
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="/diamondlink/search-team.html">チームを探す</a></li>
+        <li><a href="/diamondlink/register-team.html">チームを登録する</a></li>
+        <li><a href="/diamondlink/login.html">ログイン</a></li>
+        <li><a href="/diamondlink/signup.html">アカウント作成</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<div class="login-modal" id="login-modal" style="display: none;">
-  <div class="login-content">
-    <h2>ログイン</h2>
-    <input type="email" placeholder="メールアドレス">
-    <input type="password" placeholder="パスワード">
-    <div class="checkbox-group">
-      <label><input type="checkbox"> ログイン状態を保存する</label>
-    </div>
-    <button class="login-button">ログイン</button>
-    <div class="links">
-      <a href="#">アカウント作成</a> |
-      <a href="#">パスワードを忘れた方</a>
-    </div>
-  </div>
-</div>
-
-<!-- 背景を暗くするオーバーレイ -->
-<div class="overlay" id="overlay"></div>
-
-<!-- スタイル -->
+<!-- スタイルシート（必要ならこのまま） -->
 <link rel="stylesheet" href="/diamondlink/css/header.css">
-
-<!-- メニュー作成用スクリプト -->
