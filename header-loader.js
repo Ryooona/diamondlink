@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // ヘッダー読み込み
-  fetch('/diamondlink/header.html') // 必要なヘッダー部分を読み込み
+  // ヘッダーを読み込む
+  fetch('/diamondlink/header.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('header-placeholder').innerHTML = html;
-    });
-  
-  // ここは他のスクリプトに影響を与えないように変更なし
+    })
+    .catch(error => console.error('ヘッダーの読み込みに失敗しました:', error));
+
+  // フッターを読み込む
+  fetch('/diamondlink/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    })
+    .catch(error => console.error('フッターの読み込みに失敗しました:', error));
 });
