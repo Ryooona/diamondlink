@@ -17,7 +17,7 @@ a:hover {
 }
 
 /* =======================================
-   ◆ ヘッダー
+   ◆ ヘッダー全体
 ======================================= */
 .site-header {
   position: fixed;
@@ -25,70 +25,57 @@ a:hover {
   left: 0;
   width: 100%;
   background: white;
-  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
 .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 60px;
 }
 
-/* ロゴ */
+/* ロゴ部分 */
+.logo a {
+  text-decoration: none;
+}
+
 .logo-img {
-  max-height: 50px;
+  height: 40px;  /* ロゴサイズ調整 */
 }
 
 /* =======================================
-   ◆ ハンバーガー（モバイルのみ表示）
+   ◆ ハンバーガーメニュー（モバイル用）
 ======================================= */
 .hamburger {
-  display: block;
+  display: none;  /* 初期状態では非表示 */
   font-size: 30px;
   cursor: pointer;
-  color: #0047ab;
 }
 
-/* =======================================
-   ◆ ナビゲーション（共通／モバイル）
-======================================= */
 .nav-menu {
-  display: none;           /* 最初は隠す */
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  gap: 10px;
-  z-index: 1000;
+  display: flex; /* PC版は横並び */
+  gap: 20px; /* リンク間のスペース */
 }
 
-.nav-menu.show {
-  display: flex;           /* ハンバーガー押したときだけ表示 */
-}
-
-/* ナビ内リンク */
 .nav-menu a {
-  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
 }
 
-/* 新規会員登録ボタン風 */
-.nav-menu .signup-button {
-  background-color: #0047ab;
-  color: white !important;
-  padding: 6px 12px;
-  border-radius: 6px;
+/* 新規会員登録ボタン */
+.nav-menu a.signup-button {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
 }
 
-/* ユーザーボタン風（ログイン時） */
+/* ユーザー情報ボタン（ログイン時） */
 .nav-menu .user-button {
   background-color: #0047ab;
   color: white;
@@ -100,139 +87,52 @@ a:hover {
 }
 
 /* =======================================
-   ◆ PC版：横並びに切り替え
+   ◆ スマホ版のメニュー（ハンバーガー表示）
 ======================================= */
-@media (min-width: 769px) {
-  /* ハンバーガーを非表示に */
+@media (max-width: 768px) {
   .hamburger {
-    display: none;
+    display: block; /* ハンバーガーを表示 */
   }
 
-/* PC版：横並びに切り替え */
-@media (min-width: 769px) {
   .nav-menu {
-    display: flex !important;
+    display: none;  /* 初期状態で非表示 */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .nav-menu.show {
+    display: block;  /* メニューが表示される時 */
+  }
+}
+
+/* =======================================
+   ◆ PC版用（横並び）
+======================================= */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;  /* PC版ではハンバーガー非表示 */
+  }
+
+  .nav-menu {
+    display: flex;
     flex-direction: row;
     position: static;
     background: none;
-    box-shadow: none;
-    border: none;
     padding: 0;
     margin-left: auto;
-    gap: 20px; /* メニュー間のスペース */
   }
-}
 
   .nav-menu a {
     margin: 0;
     color: #0047ab;
-  }
-}
-
-/* =======================================
-   ◆ コンテンツ本体の位置調整
-======================================= */
-.container {
-  margin-top: 80px;  /* ヘッダー分を下げる */
-  padding: 20px;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* =======================================
-   ◆ フッター
-======================================= */
-.site-footer {
-  background: #f1f1f1;
-  padding: 20px 0;
-  margin-top: 60px;
-}
-
-.footer-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.footer-nav a {
-  margin: 0 8px;
-  color: #0047ab;
-}
-
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-
-/* スマホ時フッターリンク縦並び */
-@media (max-width: 600px) {
-  .footer-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-  }
-}
-/* PC版 */
-.site-header .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-menu {
-  display: flex; /* 横並びにするために必要 */
-  gap: 20px; /* 各リンク間のスペース */
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: black; /* 適宜、リンクの色を変更 */
-  font-size: 16px;
-}
-
-.nav-menu .user-button {
-  display: flex;
-  align-items: center;
-}
-
-.nav-menu .user-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-/* ハンバーガーメニューのスタイル */
-.hamburger {
-  display: none; /* 初期状態では非表示 */
-  font-size: 30px;
-  cursor: pointer;
-}
-
-/* メニューが表示される時 */
-.nav-menu.show {
-  display: block; /* メニュー表示 */
-  position: absolute;
-  top: 60px; /* ヘッダー下にメニューが表示 */
-  right: 20px;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  gap: 10px;
-  z-index: 1000;
-}
-
-/* スマホ版 */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; /* スマホ版では表示 */
-  }
-}
-
-  .nav-menu {
-    display: none; /* 初期状態では非表示 */
   }
 }
