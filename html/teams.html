@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink | チーム検索</title>
+  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="/diamondlink/css/header.css">
 </head>
@@ -18,129 +18,92 @@
     <h1>チームを探す</h1>
 
     <h2>検索フォーム</h2>
-    <form>
+    <form id="search-form">
       <div class="search-form">
-  <!-- 都道府県 -->
-  <label for="search-prefecture">都道府県：</label>
-  <select id="search-prefecture" name="search-prefecture">
-    <option value="">選択してください</option>
-    <option value="北海道">北海道</option>
-    <option value="青森県">青森県</option>
-    <option value="岩手県">岩手県</option>
-    <option value="宮城県">宮城県</option>
-    <option value="秋田県">秋田県</option>
-    <option value="山形県">山形県</option>
-    <option value="福島県">福島県</option>
-    <option value="茨城県">茨城県</option>
-    <option value="栃木県">栃木県</option>
-    <option value="群馬県">群馬県</option>
-    <option value="埼玉県">埼玉県</option>
-    <option value="千葉県">千葉県</option>
-    <option value="東京都">東京都</option>
-    <option value="神奈川県">神奈川県</option>
-    <option value="新潟県">新潟県</option>
-    <option value="富山県">富山県</option>
-    <option value="石川県">石川県</option>
-    <option value="福井県">福井県</option>
-    <option value="山梨県">山梨県</option>
-    <option value="長野県">長野県</option>
-    <option value="岐阜県">岐阜県</option>
-    <option value="静岡県">静岡県</option>
-    <option value="愛知県">愛知県</option>
-    <option value="三重県">三重県</option>
-    <option value="滋賀県">滋賀県</option>
-    <option value="京都府">京都府</option>
-    <option value="大阪府">大阪府</option>
-    <option value="兵庫県">兵庫県</option>
-    <option value="奈良県">奈良県</option>
-    <option value="和歌山県">和歌山県</option>
-    <option value="鳥取県">鳥取県</option>
-    <option value="島根県">島根県</option>
-    <option value="岡山県">岡山県</option>
-    <option value="広島県">広島県</option>
-    <option value="山口県">山口県</option>
-    <option value="徳島県">徳島県</option>
-    <option value="香川県">香川県</option>
-    <option value="愛媛県">愛媛県</option>
-    <option value="高知県">高知県</option>
-    <option value="福岡県">福岡県</option>
-    <option value="佐賀県">佐賀県</option>
-    <option value="長崎県">長崎県</option>
-    <option value="熊本県">熊本県</option>
-    <option value="大分県">大分県</option>
-    <option value="宮崎県">宮崎県</option>
-    <option value="鹿児島県">鹿児島県</option>
-    <option value="沖縄県">沖縄県</option>
-  </select><br><br>
 
-  <!-- 競技種別 -->
-  <label for="search-competition">競技種別：</label>
-  <select id="search-competition" name="search-competition">
-    <option value="">指定なし</option>
-    <option value="野球">野球</option>
-    <option value="ソフトボール">ソフトボール</option>
-  </select><br><br>
+        <!-- 都道府県 -->
+        <label for="search-prefecture">都道府県：</label>
+        <select id="search-prefecture" name="search-prefecture">
+          <option value="">選択してください</option>
+          <option value="北海道">北海道</option>
+          <option value="青森県">青森県</option>
+          <option value="岩手県">岩手県</option>
+          <option value="宮城県">宮城県</option>
+          <option value="秋田県">秋田県</option>
+          <option value="山形県">山形県</option>
+          <option value="福島県">福島県</option>
+          <option value="茨城県">茨城県</option>
+          <option value="栃木県">栃木県</option>
+          <option value="群馬県">群馬県</option>
+          <option value="埼玉県">埼玉県</option>
+          <option value="千葉県">千葉県</option>
+          <option value="東京都">東京都</option>
+          <option value="神奈川県">神奈川県</option>
+          <option value="新潟県">新潟県</option>
+          <option value="富山県">富山県</option>
+          <option value="石川県">石川県</option>
+          <option value="福井県">福井県</option>
+          <option value="山梨県">山梨県</option>
+          <option value="長野県">長野県</option>
+          <option value="岐阜県">岐阜県</option>
+          <option value="静岡県">静岡県</option>
+          <option value="愛知県">愛知県</option>
+          <option value="三重県">三重県</option>
+          <option value="滋賀県">滋賀県</option>
+          <option value="京都府">京都府</option>
+          <option value="大阪府">大阪府</option>
+          <option value="兵庫県">兵庫県</option>
+          <option value="奈良県">奈良県</option>
+          <option value="和歌山県">和歌山県</option>
+          <option value="鳥取県">鳥取県</option>
+          <option value="島根県">島根県</option>
+          <option value="岡山県">岡山県</option>
+          <option value="広島県">広島県</option>
+          <option value="山口県">山口県</option>
+          <option value="徳島県">徳島県</option>
+          <option value="香川県">香川県</option>
+          <option value="愛媛県">愛媛県</option>
+          <option value="高知県">高知県</option>
+          <option value="福岡県">福岡県</option>
+          <option value="佐賀県">佐賀県</option>
+          <option value="長崎県">長崎県</option>
+          <option value="熊本県">熊本県</option>
+          <option value="大分県">大分県</option>
+          <option value="宮崎県">宮崎県</option>
+          <option value="鹿児島県">鹿児島県</option>
+          <option value="沖縄県">沖縄県</option>
+        </select><br><br>
 
-  <!-- 区分 -->
-  <label for="search-division">区分：</label>
-  <select id="search-division" name="search-division" disabled>
-    <option value="">選択してください</option>
-  </select><br><br>
+        <!-- 競技種別 -->
+        <label for="search-competition">競技種別：</label>
+        <select id="search-competition" name="search-competition">
+          <option value="">指定なし</option>
+          <option value="野球">野球</option>
+          <option value="ソフトボール">ソフトボール</option>
+        </select><br><br>
 
-  <!-- チーム構成 -->
-  <label for="search-team">チーム構成：</label>
-  <select id="search-team" name="search-team">
-    <option value="">指定なし</option>
-    <option value="男子">男子</option>
-    <option value="女子">女子</option>
-    <option value="混合">混合</option>
-  </select><br><br>
+        <!-- 区分 -->
+        <label for="search-division">区分：</label>
+        <select id="search-division" name="search-division" disabled>
+          <option value="">選択してください</option>
+        </select><br><br>
 
-  <!-- フリーワード検索 -->
-  <label for="search-keyword">フリーワード検索：</label>
-  <input type="text" id="search-keyword" name="search-keyword">
-</div>
+        <!-- チーム構成 -->
+        <label for="search-team">チーム構成：</label>
+        <select id="search-team" name="search-team">
+          <option value="">指定なし</option>
+          <option value="男子">男子</option>
+          <option value="女子">女子</option>
+          <option value="混合">混合</option>
+        </select><br><br>
 
-<!-- ▼ 競技種別に応じて区分内容を切り替えるJS -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const competition = document.getElementById('search-competition');
-  const division = document.getElementById('search-division');
+        <!-- フリーワード -->
+        <label for="search-keyword">フリーワード検索：</label>
+        <input type="text" id="search-keyword" name="search-keyword"><br><br>
 
-  competition.addEventListener('change', function() {
-    division.innerHTML = '';
-
-    if (competition.value === "野球") {
-      division.disabled = false;
-      const options = ["指定なし", "軟式", "準硬式", "硬式"];
-      options.forEach(opt => {
-        const option = document.createElement('option');
-        option.value = opt;
-        option.textContent = opt;
-        division.appendChild(option);
-      });
-    } else if (competition.value === "ソフトボール") {
-      division.disabled = false;
-      const options = ["指定なし", "ゴム", "革"];
-      options.forEach(opt => {
-        const option = document.createElement('option');
-        option.value = opt;
-        option.textContent = opt;
-        division.appendChild(option);
-      });
-    } else {
-      division.disabled = true;
-      const option = document.createElement('option');
-      option.value = "";
-      option.textContent = "選択してください";
-      division.appendChild(option);
-    }
-  });
-});
-</script>
-
-      <button type="submit" disabled>検索（※ダミー）</button>
-      <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
+        <button type="submit" disabled>検索（※ダミー）</button>
+        <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
+      </div>
     </form>
 
     <hr>
@@ -157,103 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <!-- 共通フッター挿入 -->
   <div id="footer-placeholder"></div>
 
-  <!-- JavaScript（チームデータとページネーション） -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ヘッダーとフッター読み込み
-      fetch('/diamondlink/html/header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-          const hamburger = document.getElementById('hamburger');
-          const navMenu = document.getElementById('nav-menu');
-          hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-          });
-        });
-
-      fetch('/diamondlink/html/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer-placeholder').innerHTML = html;
-        });
-
-      // チームデータ
-      const teams = [
-  { name: "ダイヤモンドスターズ", area: "東京都", type: "一般", category: "軟式", thumbnail: "https://placehold.co/80x80" },
-  { name: "ブルースカイズ", area: "大阪府", type: "学生", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-  { name: "サンライズソフトボールクラブ", area: "愛知県", type: "女子", category: "ゴムボール", thumbnail: "https://placehold.co/80x80" },
-  { name: "レッドファイヤーズ", area: "北海道", type: "一般", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-  { name: "グリーングラス", area: "福岡県", type: "学生", category: "軟式", thumbnail: "https://placehold.co/80x80" },
-  { name: "ブラックシャドウズ", area: "京都府", type: "女子", category: "ゴムボール", thumbnail: "https://placehold.co/80x80" },
-  { name: "イエローベアーズ", area: "沖縄県", type: "一般", category: "軟式", thumbnail: "https://placehold.co/80x80" },
-  { name: "パープルウルフ", area: "埼玉県", type: "学生", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-  { name: "オレンジスターズ", area: "兵庫県", type: "一般", category: "ゴムボール", thumbnail: "https://placehold.co/80x80" },
-  { name: "ホワイトライオンズ", area: "千葉県", type: "女子", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-  { name: "シルバーフェニックス", area: "宮城県", type: "学生", category: "軟式", thumbnail: "https://placehold.co/80x80" },
-  { name: "ゴールデンホークス", area: "長野県", type: "一般", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-  { name: "ブラウンクロウズ", area: "熊本県", type: "女子", category: "ゴムボール", thumbnail: "https://placehold.co/80x80" },
-  { name: "ピンクパンサーズ", area: "静岡県", type: "学生", category: "軟式", thumbnail: "https://placehold.co/80x80" },
-  { name: "ブルーホエールズ", area: "広島県", type: "一般", category: "硬式", thumbnail: "https://placehold.co/80x80" },
-];
-
-      const teamList = document.getElementById('team-list');
-      const pagination = document.getElementById('pagination');
-      const teamsPerPage = 10;
-      let currentPage = 1;
-
-      function displayTeams(page) {
-        teamList.innerHTML = '';
-        const start = (page - 1) * teamsPerPage;
-        const end = start + teamsPerPage;
-        const pageTeams = teams.slice(start, end);
-
-        pageTeams.forEach(team => {
-          const li = document.createElement('li');
-          li.innerHTML = `
-            <img src="${team.thumbnail}" alt="${team.name}" class="team-thumb">
-            <div class="team-info">
-              <strong>${team.name}</strong><br>
-             ${team.prefecture}${team.city}・${team.teamType}・${team.sportType}（${team.ballType}）
-            </div>
-          `;
-          teamList.appendChild(li);
-        });
-      }
-
-      function setupPagination() {
-        pagination.innerHTML = '';
-        const pageCount = Math.ceil(teams.length / teamsPerPage);
-
-        if (pageCount > 1) {
-          const first = document.createElement('button');
-          first.textContent = '最初へ';
-          first.onclick = () => { currentPage = 1; update(); };
-          pagination.appendChild(first);
-
-          for (let i = 1; i <= pageCount; i++) {
-            const btn = document.createElement('button');
-            btn.textContent = i;
-            if (i === currentPage) btn.disabled = true;
-            btn.onclick = () => { currentPage = i; update(); };
-            pagination.appendChild(btn);
-          }
-
-          const last = document.createElement('button');
-          last.textContent = '最後へ';
-          last.onclick = () => { currentPage = pageCount; update(); };
-          pagination.appendChild(last);
-        }
-      }
-
-      function update() {
-        displayTeams(currentPage);
-        setupPagination();
-      }
-
-      update();
-    });
-  </script>
+  <!-- JavaScript -->
+  <script src="/diamondlink/js/header-loader.js"></script>
+  <script src="/diamondlink/js/team-list.js"></script> <!-- チーム表示用（次に作ります） -->
 
 </body>
 </html>
