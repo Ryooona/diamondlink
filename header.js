@@ -1,26 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // メニューとオーバーレイを取得
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('nav-menu');
-  const overlay = document.getElementById('overlay');
-
-  // ハンバーガーメニューをクリックしたら
-  hamburger.addEventListener('click', function() {
-    navMenu.classList.toggle('show'); // メニュー開閉
-    overlay.classList.toggle('show'); // 背景ぼかし開閉
-  });
-
-  // オーバーレイをクリックしたら
-  overlay.addEventListener('click', function() {
-    navMenu.classList.remove('show'); // メニュー閉じる
-    overlay.classList.remove('show'); // 背景ぼかし閉じる
-  });
-
- document.addEventListener('DOMContentLoaded', function() {
   const isLoggedIn = false;
-  const navMenu = document.getElementById('nav-menu');
   const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
   const overlay = document.getElementById('overlay');
+  const loginModal = document.getElementById('login-modal');
 
   // メニュー中身を作成
   navMenu.innerHTML = `
@@ -31,15 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="#">チームを登録する</a>
   `;
 
-  // ハンバーガー押したら開く
+  // ハンバーガーメニューをクリック
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('show');
     overlay.classList.toggle('show');
   });
 
-  // オーバーレイ押したら閉じる
+  // オーバーレイをクリック
   overlay.addEventListener('click', function() {
     navMenu.classList.remove('show');
     overlay.classList.remove('show');
+    loginModal.classList.remove('show'); // モーダルも閉じる
+  });
+
+  // 「ログイン」リンクをクリック
+  document.addEventListener('click', function(e) {
+    if (e.target.id === 'open-login-modal') {
+      e.preventDefault();
+      loginModal.classList.add('show');
+      overlay.classList.add('show');
+      navMenu.classList.remove('show'); // メニューは閉じる
+    }
   });
 });
