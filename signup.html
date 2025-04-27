@@ -306,11 +306,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', function(event) {
     let hasError = false;
+    let errorMessages = [];  // エラーメッセージをためておく配列
 
     // 姓のチェック
     const lastName = document.getElementById('last-name').value.trim();
     if (lastName === '') {
       document.getElementById('error-last-name').textContent = '姓を入力してください。';
+      errorMessages.push('姓を入力してください。');
       hasError = true;
     } else {
       document.getElementById('error-last-name').textContent = '';
@@ -320,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const firstName = document.getElementById('first-name').value.trim();
     if (firstName === '') {
       document.getElementById('error-first-name').textContent = '名を入力してください。';
+      errorMessages.push('名を入力してください。');
       hasError = true;
     } else {
       document.getElementById('error-first-name').textContent = '';
@@ -329,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nickname = document.getElementById('nickname').value.trim();
     if (nickname === '') {
       document.getElementById('error-nickname').textContent = 'ニックネームを入力してください。';
+      errorMessages.push('ニックネームを入力してください。');
       hasError = true;
     } else {
       document.getElementById('error-nickname').textContent = '';
@@ -338,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prefecture = document.getElementById('prefecture').value;
     if (prefecture === '') {
       document.getElementById('error-prefecture').textContent = '都道府県を選択してください。';
+      errorMessages.push('都道府県を選択してください。');
       hasError = true;
     } else {
       document.getElementById('error-prefecture').textContent = '';
@@ -347,6 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const city = document.getElementById('city-select').value;
     if (city === '') {
       document.getElementById('error-city').textContent = '市区町村を選択してください。';
+      errorMessages.push('市区町村を選択してください。');
       hasError = true;
     } else {
       document.getElementById('error-city').textContent = '';
@@ -356,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const birthdate = document.getElementById('birthdate').value.trim();
     if (birthdate === '') {
       document.getElementById('error-birthdate').textContent = '生年月日を入力してください。';
+      errorMessages.push('生年月日を入力してください。');
       hasError = true;
     } else {
       document.getElementById('error-birthdate').textContent = '';
@@ -365,6 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gender = document.querySelector('select[name="gender"]').value;
     if (gender === '') {
       document.getElementById('error-gender').textContent = '性別を選択してください。';
+      errorMessages.push('性別を選択してください。');
       hasError = true;
     } else {
       document.getElementById('error-gender').textContent = '';
@@ -374,6 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const password = document.getElementById('password').value;
     if (password.length < 6) {
       document.getElementById('error-password').textContent = 'パスワードは6文字以上で入力してください。';
+      errorMessages.push('パスワードは6文字以上で入力してください。');
       hasError = true;
     } else {
       document.getElementById('error-password').textContent = '';
@@ -384,14 +393,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const teamMemberNo = document.getElementById('team-member-no').checked;
     if (!teamMemberYes && !teamMemberNo) {
       document.getElementById('error-team-member').textContent = 'チーム加入状況を選択してください。';
+      errorMessages.push('チーム加入状況を選択してください。');
       hasError = true;
     } else {
       document.getElementById('error-team-member').textContent = '';
     }
 
-    // エラーがあったら送信ストップ
+    // エラーがあった場合、スクロールしてエラーメッセージを表示
     if (hasError) {
       event.preventDefault();
+
+      // エラーメッセージを最上部に追加
+      const errorSummary = document.createElement('div');
+      errorSummary.style.color = 'red';
+      errorSummary.style.marginTop = '20px';
+      errorSummary.style.padding = '10px';
+      errorSummary.style.border = '1px solid red';
+      errorSummary.style.backgroundColor = '#fff0f0'; // 背景色を軽く赤みがかるように
+      errorSummary.innerHTML = '<strong>以下の項目にエラーがあります：</strong><br>' + errorMessages.join('<br>');
+      form.prepend(errorSummary); // フォームの一番上にエラーメッセージを追加
+
+      // エラーメッセージ表示後、最初のエラー項目にスクロール
+      errorSummary.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
