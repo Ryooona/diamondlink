@@ -1,53 +1,35 @@
+/* =======================================
+   ◆ ヘッダー：共通スタイル
+======================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #ccc;
+  z-index: 1000;
+}
 
-/* 共通（モバイルもPCも） */
+.header-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+/* ナビゲーション共通 */
 .nav-menu {
-  display: none; /* 最初は隠す！ */
+  display: none;
   gap: 20px;
 }
 
-/* モバイル用 */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    font-size: 30px;
-    cursor: pointer;
-    color: #0047ab;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: white;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-  }
-
-  .nav-menu.show {
-    display: flex; /* ハンバーガー押したときだけ表示 */
-  }
-}
-
-/* PC版 */
-@media (min-width: 769px) {
-  .hamburger {
-    display: none; /* PCではハンバーガー非表示 */
-  }
-
-  .nav-menu {
-    display: flex; /* PCは常に表示 */
-    flex-direction: row;
-    position: static;
-    background: none;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    margin-left: auto;
-  }
-}
 /* オーバーレイ（背景暗くするやつ） */
 .overlay {
   display: none;
@@ -62,4 +44,55 @@
 
 .overlay.show {
   display: block;
+}
+
+/* =======================================
+   ◆ モバイル用（幅768px以下）
+======================================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    color: #0047ab;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -250px; /* 初期は画面外に隠す */
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 60px 20px 20px;
+    transition: right 0.3s ease;
+    z-index: 1001;
+  }
+
+  .nav-menu.show {
+    right: 0; /* 表示時は画面内にスライド */
+  }
+}
+
+/* =======================================
+   ◆ PC用（幅769px以上）
+======================================= */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+  }
 }
