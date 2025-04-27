@@ -9,19 +9,14 @@
   <link rel="stylesheet" href="/diamondlink/css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .required {
-      color: red;
-      margin-left: 5px;
-    }
-    .error-message {
-      color: red;
-      font-size: 0.9em;
-      margin-top: 5px;
-    }
+    .required { color: red; margin-left: 5px; }
+    .error-message { color: red; font-size: 0.9em; margin-top: 5px; }
   </style>
 </head>
+
 <body>
 
+<!-- 共通ヘッダー -->
 <div id="header-placeholder"></div>
 
 <main class="container">
@@ -29,6 +24,8 @@
   <p>以下の情報を入力してください（※現在はダミーです）。</p>
 
   <form id="account-form" action="https://formspree.io/f/xqaqaloa" method="POST">
+    
+    <!-- 氏名 -->
     <label>氏名<span class="required">*</span><br>
       姓 <input type="text" name="last-name" id="last-name">
       <div class="error-message" id="error-last-name"></div>
@@ -36,11 +33,13 @@
       <div class="error-message" id="error-first-name"></div>
     </label><br><br>
 
+    <!-- ニックネーム -->
     <label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
       <input type="text" name="nickname" id="nickname">
       <div class="error-message" id="error-nickname"></div>
     </label><br><br>
 
+    <!-- お住まいの地域 -->
     <label>お住まいの地域<span class="required">*</span><br>
       <select name="prefecture" id="prefecture" required>
         <option value="">選択してください</option>
@@ -48,18 +47,21 @@
       <div class="error-message" id="error-prefecture"></div>
     </label><br><br>
 
+    <!-- 市区町村 -->
     <label>市区町村<span class="required">*</span><br>
-      <select name="city" id="city-select">
+      <select name="city" id="city-select" required>
         <option value="">選択してください</option>
       </select>
       <div class="error-message" id="error-city"></div>
     </label><br><br>
 
+    <!-- 生年月日 -->
     <label>生年月日<span class="required">*</span><br>
       <input type="text" id="birthdate" name="birthdate" placeholder="例）20001215" pattern="\d{8}" inputmode="numeric">
       <div class="error-message" id="error-birthdate"></div>
     </label><br><br>
 
+    <!-- 性別 -->
     <label>性別<span class="required">*</span><br>
       <select name="gender" required>
         <option value="">選択してください</option>
@@ -70,10 +72,12 @@
       <div class="error-message" id="error-gender"></div>
     </label><br><br>
 
+    <!-- メールアドレス -->
     <label>メールアドレス<span class="required">*</span><br>
       <input type="email" name="email" required>
     </label><br><br>
 
+    <!-- パスワード -->
     <label>パスワード<span class="required">*</span><br>
       <div style="position: relative; max-width: 300px;">
         <input type="password" name="password" id="password" style="width: 100%; padding-right: 40px;">
@@ -88,17 +92,19 @@
       <div class="error-message" id="error-password"></div>
     </label><br><br>
 
+    <!-- チーム加入 -->
     <label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
-      <input type="radio" name="team-member" id="team-member-yes" value="はい"> はい
-      <input type="radio" name="team-member" id="team-member-no" value="いいえ"> いいえ
+      <input type="radio" name="team-member" value="はい"> はい
+      <input type="radio" name="team-member" value="いいえ"> いいえ
       <div class="error-message" id="error-team-member"></div>
     </label><br><br>
 
+    <!-- 利用目的 -->
     <label>利用目的（複数選択可）<span class="required">*</span><br>
       <input type="checkbox" name="purpose" value="join-team"> メンバーを募集しているチームを探したい<br>
       <input type="checkbox" name="purpose" value="practice-only"> 練習に参加できるチームを探したい<br>
       <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
-      <input type="checkbox" name="purpose" value="practice-only"> 移籍先のチームを探したい<br>
+      <input type="checkbox" name="purpose" value="transfer-team"> 移籍先のチームを探したい<br>
       <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
       <input type="checkbox" name="purpose" value="other"> その他<br>
       <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
@@ -111,12 +117,13 @@
   <p>すでにアカウントをお持ちの方は <a href="#">こちらからログイン</a></p>
 </main>
 
+<!-- 共通フッター -->
 <div id="footer-placeholder"></div>
 
 <!-- JavaScript -->
 <script src="/diamondlink/js/header-loader.js"></script>
 <script src="/diamondlink/js/header-mobile.js"></script>
-<script src="/diamondlink/js/account-form.js"></script>
-<script src="/diamondlink/js/prefecture-loader.js"></script> <!-- ⭐NEW!! 都道府県ロード用 -->
+<script src="/diamondlink/js/prefecture-loader.js"></script> <!-- ⭐ 都道府県＋市区町村ロード用 -->
+
 </body>
 </html>
