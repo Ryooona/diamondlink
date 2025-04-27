@@ -151,6 +151,12 @@
   <div class="error-message" id="error-password"></div>
 </label><br><br>
 
+  <label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
+  <input type="radio" name="team-member" id="team-member-yes" value="はい" required> はい
+  <input type="radio" name="team-member" id="team-member-no" value="いいえ" required> いいえ
+</label>
+<div class="error-message" id="error-team-member"></div><br><br>
+
     <label>利用目的（複数選択可）<span class="required">*</span><br>
       <input type="checkbox" name="purpose" value="join-team"> 本格的な加入チームを探したい<br>
       <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
@@ -370,6 +376,16 @@ document.addEventListener('DOMContentLoaded', function() {
       hasError = true;
     } else {
       document.getElementById('error-password').textContent = '';
+    }
+
+        // 現在チーム加入しているかのチェック
+    const teamMemberYes = document.getElementById('team-member-yes').checked;
+    const teamMemberNo = document.getElementById('team-member-no').checked;
+    if (!teamMemberYes && !teamMemberNo) {
+      document.getElementById('error-team-member').textContent = 'チーム加入状況を選択してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-team-member').textContent = '';
     }
     
     // エラーがあったら送信ストップ
