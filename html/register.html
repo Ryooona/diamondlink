@@ -1,140 +1,118 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>DiamondLink | チーム登録</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiamondLink | アカウント作成</title>
+  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="/diamondlink/css/header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .required {
-      color: red;
-      margin-left: 5px;
-    }
+    .required { color: red; margin-left: 5px; }
   </style>
 </head>
+
 <body>
 
+<!-- 共通ヘッダー -->
 <div id="header-placeholder"></div>
 
 <main class="container">
-  <h1>チーム登録</h1>
+  <h1>アカウント作成</h1>
+  <p>以下の情報を入力してください（※現在はダミーです）。</p>
 
-  <form id="team-registration-form">
-    <!-- チーム名 -->
-    <label>チーム名<span class="required">*</span><br>
-      <input type="text" name="team-name" required>
+  <form id="account-form" action="https://formspree.io/f/xqaqaloa" method="POST">
+    
+    <!-- 氏名 -->
+    <label>氏名<span class="required">*</span><br>
+      姓 <input type="text" name="last-name" id="last-name">
+      <div class="error-message" id="error-last-name"></div>
+      名 <input type="text" name="first-name" id="first-name">
+      <div class="error-message" id="error-first-name"></div>
     </label><br><br>
 
-    <!-- 活動地域 -->
-    <fieldset>
-      <legend>活動地域</legend>
-
-      <label>都道府県<span class="required">*</span><br>
-        <select name="prefecture" id="prefecture" required>
-          <option value="">選択してください</option>
-          <option value="北海道">北海道</option>
-          <option value="青森県">青森県</option>
-          <option value="岩手県">岩手県</option>
-          <option value="宮城県">宮城県</option>
-          <option value="秋田県">秋田県</option>
-          <option value="山形県">山形県</option>
-          <option value="福島県">福島県</option>
-          <option value="茨城県">茨城県</option>
-          <option value="栃木県">栃木県</option>
-          <option value="群馬県">群馬県</option>
-          <option value="埼玉県">埼玉県</option>
-          <option value="千葉県">千葉県</option>
-          <option value="東京都">東京都</option>
-          <option value="神奈川県">神奈川県</option>
-          <option value="新潟県">新潟県</option>
-          <option value="富山県">富山県</option>
-          <option value="石川県">石川県</option>
-          <option value="福井県">福井県</option>
-          <option value="山梨県">山梨県</option>
-          <option value="長野県">長野県</option>
-          <option value="岐阜県">岐阜県</option>
-          <option value="静岡県">静岡県</option>
-          <option value="愛知県">愛知県</option>
-          <option value="三重県">三重県</option>
-          <option value="滋賀県">滋賀県</option>
-          <option value="京都府">京都府</option>
-          <option value="大阪府">大阪府</option>
-          <option value="兵庫県">兵庫県</option>
-          <option value="奈良県">奈良県</option>
-          <option value="和歌山県">和歌山県</option>
-          <option value="鳥取県">鳥取県</option>
-          <option value="島根県">島根県</option>
-          <option value="岡山県">岡山県</option>
-          <option value="広島県">広島県</option>
-          <option value="山口県">山口県</option>
-          <option value="徳島県">徳島県</option>
-          <option value="香川県">香川県</option>
-          <option value="愛媛県">愛媛県</option>
-          <option value="高知県">高知県</option>
-          <option value="福岡県">福岡県</option>
-          <option value="佐賀県">佐賀県</option>
-          <option value="長崎県">長崎県</option>
-          <option value="熊本県">熊本県</option>
-          <option value="大分県">大分県</option>
-          <option value="宮崎県">宮崎県</option>
-          <option value="鹿児島県">鹿児島県</option>
-          <option value="沖縄県">沖縄県</option>
-        </select>
-      </label><br><br>
-
-      <label>市区町村<span class="required">*</span><br>
-        <select name="city" id="city-select" required>
-          <option value="">選択してください</option>
-        </select>
-      </label>
-    </fieldset><br>
-
-    <!-- 競技種別 -->
-    <label>競技種別<span class="required">*</span><br>
-      <select name="sport-type" id="sport-type" required>
-        <option value="">選択してください</option>
-        <option value="baseball">野球</option>
-        <option value="softball">ソフトボール</option>
-      </select>
+    <!-- ニックネーム -->
+    <label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
+      <input type="text" name="nickname" id="nickname">
+      <div class="error-message" id="error-nickname"></div>
     </label><br><br>
 
-    <!-- 区分 -->
-    <label>区分<span class="required">*</span><br>
-      <select name="division" id="division" required disabled>
+    <!-- お住まいの地域 -->
+    <label>お住まいの地域<span class="required">*</span><br>
+      <select name="prefecture" id="prefecture" required>
         <option value="">選択してください</option>
       </select>
+      <div class="error-message" id="error-prefecture"></div>
     </label><br><br>
 
-    <!-- チーム構成 -->
-    <label>チーム構成<span class="required">*</span><br>
-      <select name="team-structure" required>
+    <!-- 市区町村 -->
+    <label>市区町村<span class="required">*</span><br>
+      <select name="city" id="city-select" required>
         <option value="">選択してください</option>
-        <option value="male">男子</option>
-        <option value="female">女子</option>
-        <option value="mixed">混合</option>
       </select>
+      <div class="error-message" id="error-city"></div>
     </label><br><br>
 
-    <!-- 代表者名 -->
-    <label>代表者名<span class="required">*</span><br>
-      <input type="text" name="manager-name" required>
+    <!-- 生年月日 -->
+    <label>生年月日<span class="required">*</span><br>
+      <input type="text" id="birthdate" name="birthdate" placeholder="例）20001215" pattern="\d{8}" inputmode="numeric">
+      <div class="error-message" id="error-birthdate"></div>
+    </label><br><br>
+
+    <!-- 性別 -->
+    <label>性別<span class="required">*</span><br>
+      <select name="gender" required>
+        <option value="">選択してください</option>
+        <option value="male">男性</option>
+        <option value="female">女性</option>
+        <option value="other">その他</option>
+      </select>
+      <div class="error-message" id="error-gender"></div>
     </label><br><br>
 
     <!-- メールアドレス -->
-    <label>連絡先（メールアドレス）<span class="required">*</span><br>
+    <label>メールアドレス<span class="required">*</span><br>
       <input type="email" name="email" required>
     </label><br><br>
 
-    <!-- チーム紹介 -->
-    <label>チーム紹介（自由記入欄）<br>
-      <textarea name="team-introduction" rows="4" placeholder="例：私たちのチームは楽しく活動することをモットーにしています！"></textarea>
+    <!-- パスワード -->
+    <label>パスワード<span class="required">*</span><br>
+      <div style="position: relative; max-width: 300px;">
+        <input type="password" name="password" id="password" style="width: 100%; padding-right: 40px;">
+        <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <div id="password-strength" style="height: 8px; background: #ccc; border-radius: 4px; margin-top: 10px;">
+          <div id="password-strength-bar" style="height: 100%; width: 0%; background: red; transition: width 0.3s;"></div>
+        </div>
+        <p id="password-strength-text" style="margin: 5px 0 0; font-size: 0.9em; color: gray;">パスワードの強度を表示します</p>
+      </div>
+      <div class="error-message" id="error-password"></div>
     </label><br><br>
 
-    <button type="submit" disabled>送信（ダミー）</button>
-    <p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
+    <!-- チーム加入 -->
+    <label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
+      <input type="radio" name="team-member" value="はい"> はい
+      <input type="radio" name="team-member" value="いいえ"> いいえ
+      <div class="error-message" id="error-team-member"></div>
+    </label><br><br>
+
+    <!-- 利用目的 -->
+    <label>利用目的（複数選択可）<span class="required">*</span><br>
+      <input type="checkbox" name="purpose" value="join-team"> メンバーを募集しているチームを探したい<br>
+      <input type="checkbox" name="purpose" value="practice-only"> 練習に参加できるチームを探したい<br>
+      <input type="checkbox" name="purpose" value="publish-team"> 自分のチーム情報を掲載したい<br>
+      <input type="checkbox" name="purpose" value="transfer-team"> 移籍先のチームを探したい<br>
+      <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
+      <input type="checkbox" name="purpose" value="other"> その他<br>
+      <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
+    </label><br><br>
+
+    <button type="submit">アカウント作成（ダミー）</button>
+    <p style="font-size: small; color: gray;">※まだ送信機能は有効になっていません</p>
   </form>
+
 </main>
 
 <div id="footer-placeholder"></div>
@@ -145,42 +123,34 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 区分切り替え
-  const sportType = document.getElementById('sport-type');
-  const division = document.getElementById('division');
-
-  sportType.addEventListener('change', function() {
-    division.innerHTML = '';
-
-    if (sportType.value === "baseball") {
-      division.disabled = false;
-      ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
-        const option = document.createElement('option');
-        option.value = opt;
-        option.textContent = opt;
-        division.appendChild(option);
-      });
-    } else if (sportType.value === "softball") {
-      division.disabled = false;
-      ["指定なし", "ゴム", "革"].forEach(opt => {
-        const option = document.createElement('option');
-        option.value = opt;
-        option.textContent = opt;
-        division.appendChild(option);
-      });
-    } else {
-      division.disabled = true;
-      const option = document.createElement('option');
-      option.value = "";
-      option.textContent = "選択してください";
-      division.appendChild(option);
-    }
-  });
-
-  // 都道府県 → 市区町村切り替え
+  // 都道府県選択肢の読み込み
   const prefectureSelect = document.getElementById('prefecture');
-  const citySelect = document.getElementById('city-select');
+  
+  fetch('/diamondlink/json/prefectures.json')
+    .then(response => response.json())
+    .then(data => {
+      prefectureSelect.innerHTML = '<option value="">選択してください</option>';
+      
+      for (const region in data) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = region;
 
+        data[region].forEach(pref => {
+          const option = document.createElement('option');
+          option.value = pref;
+          option.textContent = pref;
+          optgroup.appendChild(option);
+        });
+
+        prefectureSelect.appendChild(optgroup);
+      }
+    })
+    .catch(error => {
+      console.error('都道府県リストの読み込みに失敗しました:', error);
+    });
+
+  // 市区町村の切り替え
+  const citySelect = document.getElementById('city-select');
   prefectureSelect.addEventListener('change', function() {
     const selectedPrefecture = this.value;
     citySelect.innerHTML = '<option value="">選択してください</option>';
