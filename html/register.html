@@ -44,6 +44,9 @@
         </label><br><br>
       </fieldset><br>
 
+　　　 <fieldset>
+        <legend>チーム構成</legend>
+      
       <!-- 競技種別 -->
       <label>競技種別<span class="required">*</span><br>
         <select name="sport-type" id="sport-type" required>
@@ -65,25 +68,27 @@
 <label>性別<span class="required">*</span><br>
   <select name="gender" required>
     <option value="">選択してください</option>
-    <option value="male">男性</option>
-    <option value="female">女性</option>
-    <option value="other">その他</option>
+    <option value="male">男子</option>
+    <option value="female">女子</option>
+    <option value="mixed">混合</option>
   </select>
   <div class="error-message" id="error-gender"></div>
 </label><br><br>
 
-<!-- 年齢層 -->
+<!-- 年齢区分 -->
 <label>年齢層<span class="required">*</span><br>
   <select name="age-group" required>
     <option value="">選択してください</option>
-    <option value="junior">ジュニア</option>
+    <option value="adult">一般</option>
     <option value="high-school">高校生</option>
-    <option value="adult">成人</option>
-    <option value="senior">シニア</option>
+    <option value="junior high-school">中学生</option>
+    <option value="elementary school">小学生</option>
+    <option value="other">その他</option>
   </select>
   <div class="error-message" id="error-age-group"></div>
 </label><br><br>
-
+</fieldset><br>
+      
       <!-- 代表者名 -->
       <label>代表者名<span class="required">*</span><br>
         <input type="text" name="manager-name" required>
