@@ -1,0 +1,62 @@
+/* login-modal.css */
+
+.login-modal {
+  display: none; /* 最初は非表示 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1001;
+  border-radius: 8px;
+  max-width: 300px;
+  width: 90%;
+}
+
+.login-modal.show {
+  display: block; /* showクラスがついたら表示 */
+}
+
+.login-content input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background: #0047ab;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  background: #003080;
+}
+
+.checkbox-group {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.links {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.links a {
+  color: #0047ab;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
