@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   // ヘッダーを読み込む
-  fetch('/diamondlink/header.html')
+  fetch('/diamondlink/html/header.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('header-placeholder').innerHTML = html;
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('ヘッダーの読み込みに失敗しました:', error));
 
   // フッターを読み込む
-  fetch('/diamondlink/footer.html')
+  fetch('/diamondlink/html/footer.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('footer-placeholder').innerHTML = html;
