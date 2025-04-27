@@ -39,8 +39,8 @@
   <div class="error-message" id="error-first-name"></div>
 </label><br><br>
 
-    <label>ニックネーム（あとから変更できます）<br>
-  <input type="text" name="nickname">
+    <label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
+  <input type="text" name="nickname" id="nickname" required>
   <div class="error-message" id="error-nickname"></div>
 </label><br><br>
 
@@ -317,7 +317,16 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       document.getElementById('error-first-name').textContent = '';
     }
-
+    
+    // ニックネームのチェック
+    const nickname = document.getElementById('nickname').value.trim();
+    if (nickname === '') {
+      document.getElementById('error-nickname').textContent = 'ニックネームを入力してください。';
+      hasError = true;
+    } else {
+      document.getElementById('error-nickname').textContent = '';
+    }
+    
     // 都道府県のチェック
     const prefecture = document.getElementById('prefecture').value;
     if (prefecture === '') {
