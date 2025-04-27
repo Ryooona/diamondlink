@@ -228,7 +228,7 @@ if (birthInput) {
       const year = value.slice(0, 4);
       const month = value.slice(4, 6);
       const day = value.slice(6, 8);
-      e.target.value = ${year}/${month}/${day}; // スラッシュ付きに変換
+      e.target.value =  `${year}/${month}/${day}`; // 
     } else {
       e.target.value = value;
     }
