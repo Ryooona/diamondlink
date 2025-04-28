@@ -103,6 +103,36 @@ body::before {
   <!-- モーダル管理-->
 <script src="/diamondlink/js/login-modal.js"></script>
 <script src="/diamondlink/js/common.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sportType = document.getElementById('search-competition');
+  const division = document.getElementById('search-division');
+
+  sportType.addEventListener('change', function() {
+    division.innerHTML = '<option value="">選択してください</option>';
+    if (sportType.value === "野球") {
+      division.disabled = false;
+      ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else if (sportType.value === "ソフトボール") {
+      division.disabled = false;
+      ["指定なし", "ゴム", "革"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else {
+      division.disabled = true;
+    }
+  });
+});
+</script>
   
 </body>
 </html>
