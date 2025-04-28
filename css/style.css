@@ -266,3 +266,10 @@ a:hover {
   transform: translateY(0);
   visibility: visible;
 }
+
+/* =======================================
+   ◆ふんわりスクロール
+======================================= */
+html {
+  scroll-behavior: smooth;
+}
