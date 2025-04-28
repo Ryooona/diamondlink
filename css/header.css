@@ -271,3 +271,35 @@
 .login-modal.show {
   display: block;
 }
+/* ログインボタン（フォーム内） */
+#login-form button[type="submit"] {
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#login-form button[type="submit"]:hover {
+  background-color: #0d74d1;
+}
+
+/* 閉じるボタン */
+#close-login-modal {
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#close-login-modal:hover {
+  background-color: #aaa;
+}
