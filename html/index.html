@@ -125,6 +125,22 @@
       color: white;
     }
   </style>
+
+<style>
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    visibility: hidden;
+  }
+
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+</style>
+  
 </head>
 
 <body>
@@ -148,29 +164,21 @@
 
 
     <!-- サービス紹介セクション -->
-    <div id="section-1" class="section active">
+    <div id="section-1" class="section fade-in-section">
       <h2>DiamondLinkって何？</h2>
       <p>DiamondLinkは、野球・ソフトボールのチームを探す全ての方に向けたオンラインプラットフォームです。自分の地域で活動しているチームを簡単に検索し、興味のあるチームにコンタクトを取ることができます。</p>
     </div>
 
-    <div id="section-2" class="section">
+    <div id="section-2" class="section fade-in-section">
       <h2>どうやって使うの？</h2>
       <p>あなたがお住まいの地域で検索をして、気になったチームに問い合わせたり、あなたが運営するチームの情報を掲載することができます。簡単にアクセスして、新しいチームメイトを見つけましょう。</p>
     </div>
 
-    <div id="section-3" class="section">
+    <div id="section-3" class="section fade-in-section">
       <h2>誰でも使えるの？</h2>
       <p>無料のアカウント作成をすればどなたでもご利用いただけます。まずは「アカウントを作成する（無料）」ボタンから簡単に登録できます。</p>
       <a href="signup.html" class="main-button">アカウントを作成する（無料）</a>
     </div>
-
-    <!-- セクションナビゲーション -->
-    <div class="navigation">
-      <button id="nav-1" class="active" onclick="showSection(1)">DiamondLinkって何？</button>
-      <button id="nav-2" onclick="showSection(2)">どうやって使うの？</button>
-      <button id="nav-3" onclick="showSection(3)">誰でも使えるの？</button>
-    </div>
-  </main>
 
   <!-- フッター読み込み用 -->
   <div id="footer-placeholder"></div>
@@ -181,40 +189,43 @@
   <script src="/diamondlink/js/login-modal.js"></script>
 
   <!-- ページ固有のスクリプト（スライドショーおよびセクション切り替え） -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // スライドショー
-      const slides = document.querySelectorAll('.slide');
-      let currentIndex = 0;
 
-      setInterval(() => {
-        slides[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % slides.length;
-        slides[currentIndex].classList.add('active');
-      }, 3000);
-      
-      // セクション切り替え
-      function showSection(sectionNumber) {
-        // セクションを全て非表示
-        const sections = document.querySelectorAll('.section');
-        sections.forEach((section) => {
-          section.classList.remove('active');
-        });
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // スライドショー
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
 
-        // 対象のセクションを表示
-        document.getElementById(`section-${sectionNumber}`).classList.add('active');
+    setInterval(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, 3000);
 
-        // ナビゲーションボタンのスタイル変更
-        const buttons = document.querySelectorAll('.navigation button');
-        buttons.forEach((button) => {
-          button.classList.remove('active');
-        });
-        document.getElementById(`nav-${sectionNumber}`).classList.add('active');
-      }
-      
-      // 初期表示設定
-      showSection(1);
+    // フェードイン処理
+    const faders = document.querySelectorAll('.fade-in-section');
+
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
     });
-  </script>
+  });
+</script>
+    
 </body>
 </html>
