@@ -16,24 +16,22 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(html => {
         headerPlaceholder.innerHTML = html;
 
-        // 🌟 ヘッダーを読み込んだあとに login-modal.js を動かす！
-        const script = document.createElement('script');
-        script.src = '/diamondlink/js/login-modal.js';
-        document.body.appendChild(script);
-      });
+        // 🌟 ヘッダー読み込み後にモーダル初期化！
+        if (typeof setupLoginModal === 'function') {
+          setupLoginModal();
+        }
+      })
+      .catch(error => console.error('ヘッダーの読み込みエラー:', error));
   }
 
-  loadHeader();
-
-  window.addEventListener('resize', function() {
-    loadHeader();
-  });
+  loadHeader(); // 最初だけ
 
   if (footerPlaceholder) {
     fetch('/diamondlink/html/footer.html')
       .then(res => res.text())
       .then(html => {
         footerPlaceholder.innerHTML = html;
-      });
+      })
+      .catch(error => console.error('フッターの読み込みエラー:', error));
   }
 });
