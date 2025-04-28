@@ -442,18 +442,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const end = document.getElementById(day + '-end');
 
     checkbox.addEventListener('change', function() {
-      const enabled = checkbox.checked;
-      frequency.disabled = !enabled;
-      start.disabled = !enabled;
-      end.disabled = !enabled;
-      if (!enabled) {
-        weekCheckboxes.style.display = 'none';
-        // 第1〜第5・不定のチェックも外す
-        weekCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(weekCheckbox => {
-          weekCheckbox.checked = false;
-        });
-      }
+  const enabled = checkbox.checked;
+  frequency.disabled = !enabled;
+  start.disabled = !enabled;
+  end.disabled = !enabled;
+  
+  if (enabled) {
+    // チェックONになったとき
+    if (frequency.value === 'monthly') {
+      weekCheckboxes.style.display = 'inline-block';
+    } else {
+      weekCheckboxes.style.display = 'none';
+    }
+  } else {
+    // チェックOFFになったとき
+    weekCheckboxes.style.display = 'none';
+    weekCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(weekCheckbox => {
+      weekCheckbox.checked = false;
     });
+  }
+});
 
     frequency.addEventListener('change', function() {
       if (frequency.value === 'monthly') {
