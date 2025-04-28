@@ -14,6 +14,21 @@
 
   <!-- ページ固有のスタイル（スライドショー用） -->
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* スライドショーのスタイル */
     .slideshow-container {
       position: relative;
       width: 100%;
@@ -21,6 +36,7 @@
       margin: auto;
       overflow: hidden;
     }
+
     .slide {
       width: 100%;
       height: auto;
@@ -30,15 +46,88 @@
       opacity: 0;
       transition: opacity 1s ease;
     }
+
     .slide.active {
       opacity: 1;
       z-index: 1;
+    }
+
+    /* キャッチコピー */
+    .catch {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .main-button {
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .main-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* セクションのスタイル */
+    .section {
+      display: none;
+      padding: 40px;
+      background-color: #fff;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .active {
+      display: block;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .navigation button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .navigation button.active {
+      background-color: #007bff;
+      color: white;
     }
   </style>
 </head>
 
 <body>
-
   <!-- ヘッダー読み込み用 -->
   <div id="header-placeholder"></div>
 
@@ -50,7 +139,6 @@
       <img src="https://placehold.co/1200x400?text=チームB" class="slide">
       <img src="https://placehold.co/1200x400?text=チームC" class="slide">
     </div>
-    <br>
 
     <!-- キャッチコピー -->
     <p class="catch">
@@ -63,6 +151,30 @@
       <a href="teams.html" class="main-button">チームを探す</a>
       <a href="register.html" class="main-button">チームを登録する</a>
     </div>
+
+    <!-- サービス紹介セクション -->
+    <div id="section-1" class="section active">
+      <h2>DiamondLinkって何？</h2>
+      <p>DiamondLinkは、野球・ソフトボールのチームを探す全ての方に向けたオンラインプラットフォームです。自分の地域で活動しているチームを簡単に検索し、興味のあるチームにコンタクトを取ることができます。</p>
+    </div>
+
+    <div id="section-2" class="section">
+      <h2>どうやって使うの？</h2>
+      <p>あなたがお住まいの地域で検索をして、気になったチームに問い合わせたり、あなたが運営するチームの情報を掲載することができます。簡単にアクセスして、新しいチームメイトを見つけましょう。</p>
+    </div>
+
+    <div id="section-3" class="section">
+      <h2>誰でも使えるの？</h2>
+      <p>無料のアカウント作成をすればどなたでもご利用いただけます。まずは「アカウントを作成する（無料）」ボタンから簡単に登録できます。</p>
+      <a href="#" class="main-button">アカウントを作成する（無料）</a>
+    </div>
+
+    <!-- セクションナビゲーション -->
+    <div class="navigation">
+      <button id="nav-1" class="active" onclick="showSection(1)">DiamondLinkって何？</button>
+      <button id="nav-2" onclick="showSection(2)">どうやって使うの？</button>
+      <button id="nav-3" onclick="showSection(3)">誰でも使えるの？</button>
+    </div>
   </main>
 
   <!-- フッター読み込み用 -->
@@ -73,20 +185,41 @@
   <script src="/diamondlink/js/header-mobile.js"></script>
   <script src="/diamondlink/js/login-modal.js"></script>
 
-  <!-- ページ固有のスクリプト（例：スライドショー） -->
+  <!-- ページ固有のスクリプト（スライドショーおよびセクション切り替え） -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // スライドショー
       const slides = document.querySelectorAll('.slide');
-      if (slides.length > 0) {
-        let currentIndex = 0;
-        setInterval(() => {
-          slides[currentIndex].classList.remove('active');
-          currentIndex = (currentIndex + 1) % slides.length;
-          slides[currentIndex].classList.add('active');
-        }, 3000);
+      let currentIndex = 0;
+
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3000);
+      
+      // セクション切り替え
+      function showSection(sectionNumber) {
+        // セクションを全て非表示
+        const sections = document.querySelectorAll('.section');
+        sections.forEach((section) => {
+          section.classList.remove('active');
+        });
+
+        // 対象のセクションを表示
+        document.getElementById(`section-${sectionNumber}`).classList.add('active');
+
+        // ナビゲーションボタンのスタイル変更
+        const buttons = document.querySelectorAll('.navigation button');
+        buttons.forEach((button) => {
+          button.classList.remove('active');
+        });
+        document.getElementById(`nav-${sectionNumber}`).classList.add('active');
       }
+      
+      // 初期表示設定
+      showSection(1);
     });
   </script>
-
 </body>
 </html>
