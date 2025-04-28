@@ -2,46 +2,77 @@
 
 function setupLoginModal() {
   const loginModal = document.getElementById('login-modal');
+  const signupModal = document.getElementById('signup-modal');
   const modalOverlay = document.getElementById('modal-overlay');
-  const loginLink = document.getElementById('login-link'); // 「ログイン」ボタン
-  const closeButton = loginModal ? loginModal.querySelector('.close-button') : null;
+  const loginLink = document.getElementById('login-link');
+  const signupLink = document.getElementById('signup-link');
+  const loginCloseButton = loginModal ? loginModal.querySelector('.close-button') : null;
+  const signupCloseButton = signupModal ? signupModal.querySelector('.close-button') : null;
 
-  if (!loginModal || !modalOverlay) return; // どちらか無かったら何もしない
+  if (!modalOverlay) return;
 
-  if (loginLink) {
-    loginLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      modalOverlay.classList.add('show');
-      modalOverlay.style.display = 'block';
-      loginModal.style.display = 'flex';
-      modalOverlay.style.opacity = 0;
-      loginModal.style.opacity = 0;
-      setTimeout(() => {
-        modalOverlay.style.opacity = 1;
-        loginModal.style.opacity = 1;
-        modalOverlay.style.transition = 'opacity 0.3s';
-        loginModal.style.transition = 'opacity 0.3s, transform 0.3s';
-      }, 10);
-    });
+  // 共通：モーダルを開く関数
+  function openModal(modal) {
+    if (!modal) return;
+    modalOverlay.classList.add('show');
+    modalOverlay.style.display = 'block';
+    modal.style.display = 'flex';
+    modalOverlay.style.opacity = 0;
+    modal.style.opacity = 0;
+    setTimeout(() => {
+      modalOverlay.style.opacity = 1;
+      modal.style.opacity = 1;
+      modalOverlay.style.transition = 'opacity 0.3s';
+      modal.style.transition = 'opacity 0.3s, transform 0.3s';
+    }, 10);
   }
 
-  function closeModalFunc() {
-    loginModal.style.opacity = 0;
+  // 共通：モーダルを閉じる関数
+  function closeModal() {
+    [loginModal, signupModal].forEach(modal => {
+      if (modal) {
+        modal.style.opacity = 0;
+      }
+    });
     modalOverlay.style.opacity = 0;
     modalOverlay.classList.remove('show');
     setTimeout(() => {
-      loginModal.style.display = 'none';
+      [loginModal, signupModal].forEach(modal => {
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      });
       modalOverlay.style.display = 'none';
     }, 300);
   }
 
-  if (closeButton) {
-    closeButton.addEventListener('click', closeModalFunc);
+  // ログインボタン押したら開く
+  if (loginLink && loginModal) {
+    loginLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      openModal(loginModal);
+    });
   }
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', closeModalFunc);
+
+  // サインアップボタン押したら開く
+  if (signupLink && signupModal) {
+    signupLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      openModal(signupModal);
+    });
   }
+
+  // 閉じるボタン
+  if (loginCloseButton) {
+    loginCloseButton.addEventListener('click', closeModal);
+  }
+  if (signupCloseButton) {
+    signupCloseButton.addEventListener('click', closeModal);
+  }
+
+  // オーバーレイをクリックしたら閉じる
+  modalOverlay.addEventListener('click', closeModal);
 }
 
-// グローバルに公開
+// グローバル公開
 window.setupLoginModal = setupLoginModal;
