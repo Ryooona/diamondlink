@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiamondLink</title>
+
+  <!-- ファビコン -->
   <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="/diamondlink/css/header.css">
 
+  <!-- ページ固有のスタイル（スライドショー用） -->
   <style>
-    /* スライドショー用のフェード効果 */
     .slideshow-container {
       position: relative;
       width: 100%;
@@ -35,60 +39,54 @@
 
 <body>
 
-<!-- ヘッダー読み込み用 -->
-<div id="header-placeholder"></div>
+  <!-- ヘッダー読み込み用 -->
+  <div id="header-placeholder"></div>
 
-<!-- メインコンテンツ -->
-<main class="container">
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <!-- スライドショー -->
+    <div class="slideshow-container">
+      <img src="https://placehold.co/1200x400?text=チームA" class="slide active">
+      <img src="https://placehold.co/1200x400?text=チームB" class="slide">
+      <img src="https://placehold.co/1200x400?text=チームC" class="slide">
+    </div>
+    <br>
 
-  <!-- スライドショー -->
-  <div class="slideshow-container">
-    <img src="https://placehold.co/1200x400?text=チームA" class="slide active">
-    <img src="https://placehold.co/1200x400?text=チームB" class="slide">
-    <img src="https://placehold.co/1200x400?text=チームC" class="slide">
-  </div>
-  <br>
+    <!-- キャッチコピー -->
+    <p class="catch">
+      野球・ソフトボールをもっと身近に。<br>
+      あなたにピッタリのチームがきっと見つかる。
+    </p>
 
-  <!-- キャッチコピー -->
-  <p class="catch">
-    野球・ソフトボールをもっと身近に。<br>
-    あなたにピッタリのチームがきっと見つかる。
-  </p>
+    <!-- ボタン -->
+    <div class="button-group">
+      <a href="teams.html" class="main-button">チームを探す</a>
+      <a href="register.html" class="main-button">チームを登録する</a>
+    </div>
+  </main>
 
-  <!-- ボタン -->
-  <div class="button-group">
-    <a href="teams.html" class="main-button">チームを探す</a>
-    <a href="register.html" class="main-button">チームを登録する</a>
-  </div>
+  <!-- フッター読み込み用 -->
+  <div id="footer-placeholder"></div>
 
-</main>
+  <!-- JSはここにまとめる！ -->
+  <script src="/diamondlink/js/header-loader.js"></script>
+  <script src="/diamondlink/js/header-mobile.js"></script>
+  <script src="/diamondlink/js/login-modal.js"></script>
 
-<!-- フッター読み込み用 -->
-<div id="footer-placeholder"></div>
+  <!-- ページ固有のスクリプト（スライドショー） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length > 0) {
+        let currentIndex = 0;
+        setInterval(() => {
+          slides[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].classList.add('active');
+        }, 3000);
+      }
+    });
+  </script>
 
-<!-- ヘッダー・フッター読込スクリプト -->
-<script src="/diamondlink/js/header-loader.js"></script>
-<script src="/diamondlink/js/header-mobile.js"></script>
-
-<!-- ページ固有のスクリプト -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // スライドショー
-  const slides = document.querySelectorAll('.slide');
-  if (slides.length > 0) {
-    let currentIndex = 0;
-    setInterval(() => {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add('active');
-    }, 3000);
-  }
-});
-</script>
-  
-  <!-- モーダル管理-->
-<script src="/diamondlink/js/login-modal.js"></script>
-
-  
 </body>
 </html>
