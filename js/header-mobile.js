@@ -1,35 +1,28 @@
+// header-mobile.js
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger');
-  const navMenu = document.querySelector('.nav-menu');
-  const overlay = document.getElementById('overlay');
+  const mobileMenu = document.getElementById('mobile-menu');
   const closeMenuBtn = document.getElementById('close-menu');
-  const menuLinks = document.querySelectorAll('.nav-menu a');
+  const menuOverlay = document.getElementById('menu-overlay');
 
-  if (hamburger && navMenu && overlay && closeMenuBtn) {
-    // ハンバーガー押したら開く
+  if (hamburger && mobileMenu && closeMenuBtn && menuOverlay) {
+
+    // ハンバーガー押したらメニュー開く
     hamburger.addEventListener('click', function() {
-      navMenu.classList.add('show');
-      overlay.classList.add('show');
+      mobileMenu.classList.add('show');
+      menuOverlay.classList.add('show');
     });
 
     // 閉じるボタン押したら閉じる
     closeMenuBtn.addEventListener('click', function() {
-      navMenu.classList.remove('show');
-      overlay.classList.remove('show');
+      mobileMenu.classList.remove('show');
+      menuOverlay.classList.remove('show');
     });
 
     // オーバーレイ押したら閉じる
-    overlay.addEventListener('click', function() {
-      navMenu.classList.remove('show');
-      overlay.classList.remove('show');
-    });
-
-    // メニュー内リンクを押しても閉じる
-    menuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('show');
-        overlay.classList.remove('show');
-      });
+    menuOverlay.addEventListener('click', function() {
+      mobileMenu.classList.remove('show');
+      menuOverlay.classList.remove('show');
     });
   }
 });
