@@ -310,14 +310,14 @@ html {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%); /* 最初はちょっと下から */
   background: #fff;
   padding: 40px 30px;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   z-index: 999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   width: 90%;
   max-width: 400px;
 }
@@ -345,4 +345,30 @@ html {
 
 .close-button:hover {
   color: #000;
+}
+
+/* モーダルが表示されるときに位置もスッと上がる */
+.modal.show {
+  transform: translate(-50%, -50%); /* 真ん中に戻る */
+  opacity: 1;
+}
+/* =======================================
+   ◆ モーダル内ボタン
+======================================= */
+.modal-content button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
