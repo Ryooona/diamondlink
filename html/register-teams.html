@@ -86,14 +86,24 @@
   <!-- 月曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="monday-frequency" id="monday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-monday" id="monday" class="practice-checkbox">
       月曜日
     </label>
-    <select name="monday-frequency" id="monday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="monday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="monday-week1">第1週</label>
+      <label><input type="checkbox" name="monday-week2">第2週</label>
+      <label><input type="checkbox" name="monday-week3">第3週</label>
+      <label><input type="checkbox" name="monday-week4">第4週</label>
+      <label><input type="checkbox" name="monday-week5">第5週</label>
+      <label><input type="checkbox" name="monday-week-etc">不定</label>
+    </div>
     <input type="time" name="monday-start" id="monday-start" disabled>
     <input type="time" name="monday-end" id="monday-end" disabled>
   </div>
@@ -101,14 +111,24 @@
   <!-- 火曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="tuesday-frequency" id="tuesday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-tuesday" id="tuesday" class="practice-checkbox">
       火曜日
     </label>
-    <select name="tuesday-frequency" id="tuesday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="tuesday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="tuesday-week1">第1週</label>
+      <label><input type="checkbox" name="tuesday-week2">第2週</label>
+      <label><input type="checkbox" name="tuesday-week3">第3週</label>
+      <label><input type="checkbox" name="tuesday-week4">第4週</label>
+      <label><input type="checkbox" name="tuesday-week5">第5週</label>
+      <label><input type="checkbox" name="tuesday-week-etc">不定</label>
+    </div>
     <input type="time" name="tuesday-start" id="tuesday-start" disabled>
     <input type="time" name="tuesday-end" id="tuesday-end" disabled>
   </div>
@@ -116,14 +136,24 @@
   <!-- 水曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="wednesday-frequency" id="wednesday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-wednesday" id="wednesday" class="practice-checkbox">
       水曜日
     </label>
-    <select name="wednesday-frequency" id="wednesday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="wednesday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="wednesday-week1">第1週</label>
+      <label><input type="checkbox" name="wednesday-week2">第2週</label>
+      <label><input type="checkbox" name="wednesday-week3">第3週</label>
+      <label><input type="checkbox" name="wednesday-week4">第4週</label>
+      <label><input type="checkbox" name="wednesday-week5">第5週</label>
+      <label><input type="checkbox" name="wednesday-week-etc">不定</label>
+    </div>
     <input type="time" name="wednesday-start" id="wednesday-start" disabled>
     <input type="time" name="wednesday-end" id="wednesday-end" disabled>
   </div>
@@ -131,14 +161,24 @@
   <!-- 木曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="thursday-frequency" id="thursday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-thursday" id="thursday" class="practice-checkbox">
       木曜日
     </label>
-    <select name="thursday-frequency" id="thursday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="thursday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="thursday-week1">第1週</label>
+      <label><input type="checkbox" name="thursday-week2">第2週</label>
+      <label><input type="checkbox" name="thursday-week3">第3週</label>
+      <label><input type="checkbox" name="thursday-week4">第4週</label>
+      <label><input type="checkbox" name="thursday-week5">第5週</label>
+      <label><input type="checkbox" name="thursday-week-etc">不定</label>
+    </div>
     <input type="time" name="thursday-start" id="thursday-start" disabled>
     <input type="time" name="thursday-end" id="thursday-end" disabled>
   </div>
@@ -146,14 +186,24 @@
   <!-- 金曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="friday-frequency" id="friday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-friday" id="friday" class="practice-checkbox">
       金曜日
     </label>
-    <select name="friday-frequency" id="friday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="friday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="friday-week1">第1週</label>
+      <label><input type="checkbox" name="friday-week2">第2週</label>
+      <label><input type="checkbox" name="friday-week3">第3週</label>
+      <label><input type="checkbox" name="friday-week4">第4週</label>
+      <label><input type="checkbox" name="friday-week5">第5週</label>
+      <label><input type="checkbox" name="friday-week-etc">不定</label>
+    </div>
     <input type="time" name="friday-start" id="friday-start" disabled>
     <input type="time" name="friday-end" id="friday-end" disabled>
   </div>
@@ -161,14 +211,24 @@
   <!-- 土曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="saturday-frequency" id="saturday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-saturday" id="saturday" class="practice-checkbox">
       土曜日
     </label>
-    <select name="saturday-frequency" id="saturday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="saturday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="saturday-week1">第1週</label>
+      <label><input type="checkbox" name="saturday-week2">第2週</label>
+      <label><input type="checkbox" name="saturday-week3">第3週</label>
+      <label><input type="checkbox" name="saturday-week4">第4週</label>
+      <label><input type="checkbox" name="saturday-week5">第5週</label>
+      <label><input type="checkbox" name="saturday-week-etc">不定</label>
+    </div>
     <input type="time" name="saturday-start" id="saturday-start" disabled>
     <input type="time" name="saturday-end" id="saturday-end" disabled>
   </div>
@@ -176,14 +236,24 @@
   <!-- 日曜日 -->
   <div class="practice-day-row">
     <label>
+      <select name="sunday-frequency" id="sunday-frequency" class="practice-frequency" disabled>
+        <option value="weekly">毎週</option>
+        <option value="biweekly">隔週</option>
+        <option value="monthly">毎月第⚪︎</option>
+      </select>
+    </label>
+    <label>
       <input type="checkbox" name="practice-sunday" id="sunday" class="practice-checkbox">
       日曜日
     </label>
-    <select name="sunday-frequency" id="sunday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
+    <div class="sunday-weeks week-checkboxes" style="display:none;">
+      <label><input type="checkbox" name="sunday-week1">第1週</label>
+      <label><input type="checkbox" name="sunday-week2">第2週</label>
+      <label><input type="checkbox" name="sunday-week3">第3週</label>
+      <label><input type="checkbox" name="sunday-week4">第4週</label>
+      <label><input type="checkbox" name="sunday-week5">第5週</label>
+      <label><input type="checkbox" name="sunday-week-etc">不定</label>
+    </div>
     <input type="time" name="sunday-start" id="sunday-start" disabled>
     <input type="time" name="sunday-end" id="sunday-end" disabled>
   </div>
