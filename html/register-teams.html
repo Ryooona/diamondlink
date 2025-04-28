@@ -36,13 +36,40 @@ body::before {
     <div class="fade-in-section">
     <h1>チームを登録する</h1>
 
-    <form id="team-registration-form">
-      <!-- チーム名 -->
-      <label>チーム名<span class="required">*</span><br>
-        <input type="text" name="team-name" required>
-      </label><br><br>
+<form id="team-registration-form">
+      
+    <!-- チーム情報（カード） -->
+<div class="card fade-in-section">
+  <fieldset>
+    <legend>チーム情報</legend>
 
-      <!-- 活動地域 -->
+    <!-- チーム名 -->
+    <label>チーム名<span class="required">*</span><br>
+      <input type="text" name="team-name" required>
+    </label><br><br>
+
+    <!-- 代表者氏名 -->
+    <label>姓<span class="required">*</span><br>
+      <input type="text" name="last-name" id="last-name" required>
+    </label><br><br>
+
+    <label>名<span class="required">*</span><br>
+      <input type="text" name="first-name" id="first-name" required>
+    </label><br><br>
+
+    <!-- 連絡先（メールアドレス） -->
+    <label>連絡先（メールアドレス）<span class="required">*</span><br>
+      <input type="email" name="email" required>
+    </label><br><br>
+
+    <!-- チーム紹介 -->
+    <label>チーム紹介（自由記入欄）<br>
+      <textarea name="team-introduction" rows="15" cols="100" placeholder="例：私たちのチームは楽しく活動することをモットーにしています！"></textarea>
+    </label><br><br>
+  </fieldset>
+</div>
+
+      <!-- 活動地域（カード）-->
       <div class="card fade-in-section">
       <fieldset>
         <legend>活動地域</legend>
@@ -60,9 +87,8 @@ body::before {
         </label><br><br>
       </fieldset>
       </div>
-      <br>
 
-      <!-- チーム構成 -->
+      <!-- チーム構成（カード） -->
       <div class="card fade-in-section">
       <fieldset>
         <legend>チーム構成</legend>
@@ -102,9 +128,8 @@ body::before {
         </label><br><br>
       </fieldset>
         </div>
-        <br>
 
-     <!--「練習日設定」セクション -->
+     <!--「練習日」（カード） -->
 <div class="card fade-in-section">
       <fieldset>
   <legend>練習日</legend>
@@ -283,28 +308,11 @@ body::before {
     <input type="time" name="sunday-start" id="sunday-start" disabled>
     <input type="time" name="sunday-end" id="sunday-end" disabled>
   </div>
-
 </fieldset>
   </div>
-  <br>
-
-      <!-- 代表者氏名 -->
-      <fieldset>
-        <legend>代表者氏名</legend>
-        <label>姓<span class="required">*</span><br>
-          <input type="text" name="last-name" id="last-name" required>
-        </label><br><br>
-        <label>名<span class="required">*</span><br>
-          <input type="text" name="first-name" id="first-name" required>
-        </label><br><br>
-      </fieldset><br>
-
-      <!-- メールアドレス -->
-      <label>連絡先（メールアドレス）<span class="required">*</span><br>
-        <input type="email" name="email" required>
-      </label><br><br>
-
-      <!-- SNSアカウント -->
+      
+      <!-- SNSアカウント（カード） -->
+  <div class="card fade-in-section">
       <fieldset>
         <legend>SNSアカウント（任意）</legend>
         <label>X（旧Twitter）URL<br>
@@ -318,17 +326,15 @@ body::before {
         <label>YouTube URL<br>
           <input type="url" name="youtube-url" class="long-input" placeholder="https://youtube.com/@example">
         </label><br><br>
-      </fieldset><br>
+      </fieldset>
+      </div>
+      <br>
 
-      <!-- チーム紹介 -->
-      <label>チーム紹介（自由記入欄）<br>
-        <textarea name="team-introduction" rows="15" cols="100" placeholder="例：私たちのチームは楽しく活動することをモットーにしています！"></textarea>
-      </label><br><br>
-
-      <button type="submit" disabled>送信（ダミー）</button>
-      <p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
-    </form>
-    </div>
+  <!-- 送信ボタン-->
+<button type="submit" disabled>送信（ダミー）</button>
+<p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
+</form> 
+  
   </main>
 
   <div id="footer-placeholder"></div>
