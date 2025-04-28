@@ -147,6 +147,21 @@
   </div>
 </main>
 
+  <!-- ログインモーダル -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>ログイン</h2>
+    <form>
+      <label>メールアドレス</label><br>
+      <input type="email" required><br><br>
+      <label>パスワード</label><br>
+      <input type="password" required><br><br>
+      <button type="submit">ログイン</button>
+    </form>
+  </div>
+</div>
+
 <div id="footer-placeholder"></div>
 
 <!-- JavaScript -->
@@ -252,6 +267,38 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+  // ▼ ログインモーダル開閉
+const loginLink = document.getElementById('login-link');
+const loginModal = document.getElementById('login-modal');
+const closeModal = document.querySelector('.close-button');
+
+if (loginLink && loginModal && closeModal) {
+  loginLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    loginModal.style.display = 'flex';
+    loginModal.style.opacity = 0;
+    setTimeout(() => {
+      loginModal.style.opacity = 1;
+      loginModal.style.transition = 'opacity 0.3s';
+    }, 10);
+  });
+
+  closeModal.addEventListener('click', function() {
+    loginModal.style.opacity = 0;
+    setTimeout(() => {
+      loginModal.style.display = 'none';
+    }, 300);
+  });
+
+  window.addEventListener('click', function(e) {
+    if (e.target === loginModal) {
+      loginModal.style.opacity = 0;
+      setTimeout(() => {
+        loginModal.style.display = 'none';
+      }, 300);
+    }
+  });
+}
 });
 </script>
 </body>
