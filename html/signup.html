@@ -290,8 +290,28 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+// ▼ 生年月日 自動ハイフン挿入
+  const birthdateInput = document.getElementById('birthdate');
+
+  if (birthdateInput) {
+    birthdateInput.addEventListener('input', function() {
+      let value = birthdateInput.value.replace(/\D/g, '');
+      if (value.length > 8) {
+        value = value.slice(0, 8);
+      }
+      if (value.length >= 5) {
+        birthdateInput.value = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6);
+      } else if (value.length >= 3) {
+        birthdateInput.value = value.slice(0, 4) + '-' + value.slice(4);
+      } else {
+        birthdateInput.value = value;
+      }
+    });
+  }
 });
 </script>
+
+  
 
 </body>
 </html>
