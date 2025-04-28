@@ -287,13 +287,14 @@ a:hover {
 html {
   scroll-behavior: smooth;
 }
+
 /* =======================================
-   ◆ カード風デザイン
+   ◆ カードデザイン
 ======================================= */
 .card {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  background-color: #fff;
   margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
