@@ -372,3 +372,33 @@ html {
   background-color: #0056b3;
   transform: scale(1.05);
 }
+/* =======================================
+   ◆ モーダルのスマホ最適化
+======================================= */
+@media (max-width: 480px) {
+  .modal {
+    width: 95%;
+    padding: 30px 20px;
+  }
+
+  .modal-content {
+    gap: 15px;
+  }
+
+  .modal-content button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+/* =======================================
+   ◆ オーバーレイの基本スタイル
+======================================= */
+#modal-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* オーバーレイが表示されるとき */
+#modal-overlay.show {
+  opacity: 1;
+}
