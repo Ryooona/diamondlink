@@ -394,3 +394,33 @@
 #menu-overlay.show {
   display: block;
 }
+
+/* =======================================
+   ◆ モバイルメニュー用：アニメーション追記
+======================================= */
+
+/* ▼モバイルメニューの初期状態（非表示・ふわっと下） */
+.mobile-menu {
+  opacity: 0;
+  transform: translateY(20px); /* 最初は下に20pxずれてる */
+  pointer-events: none; /* 押せない */
+  transition: all 0.3s ease; /* なめらかに変化する */
+}
+
+/* ▼メニューが開いたとき（表示・まっすぐ上がる） */
+.mobile-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ▼オーバーレイもふわっと */
+.menu-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ▼オーバーレイが出るとき */
+.menu-overlay.show {
+  opacity: 1;
+}
