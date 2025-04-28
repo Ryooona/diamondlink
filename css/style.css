@@ -266,6 +266,20 @@ a:hover {
   transform: translateY(0);
   visibility: visible;
 }
+.main-button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.main-button:hover {
+  transform: scale(1.05);
+  background-color: #0056b3;
+}
 
 /* =======================================
    ◆ふんわりスクロール
