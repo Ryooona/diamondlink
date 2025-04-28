@@ -296,24 +296,57 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-// ▼ 生年月日 自動ハイフン挿入
+  
+// ▼ 生年月日関連
   const birthdateInput = document.getElementById('birthdate');
 
-  if (birthdateInput) {
-    birthdateInput.addEventListener('input', function() {
-      let value = birthdateInput.value.replace(/\D/g, '');
-      if (value.length > 8) {
-        value = value.slice(0, 8);
+if (birthdateInput) {
+  birthdateInput.addEventListener('input', function() {
+    // 全角数字→半角に変換
+    let value = birthdateInput.value.replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 65248));
+    value = value.replace(/\D/g, ''); // 数字以外を除去
+
+    if (value.length > 8) {
+      value = value.slice(0, 8);
+    }
+
+    // 自動ハイフン挿入
+    let formatted = value;
+    if (value.length >= 7) {
+      formatted = `${value.slice(0,4)}-${value.slice(4,6)}-${value.slice(6,8)}`;
+    } else if (value.length >= 5) {
+      formatted = `${value.slice(0,4)}-${value.slice(4,6)}`;
+    } else {
+      formatted = value;
+    }
+
+    birthdateInput.value = formatted;
+  });
+
+  birthdateInput.addEventListener('blur', function() {
+    // フォーカス外れた時（日付の妥当性チェック）
+    const val = birthdateInput.value.replace(/\D/g, '');
+    if (val.length === 8) {
+      const year = parseInt(val.slice(0, 4), 10);
+      const month = parseInt(val.slice(4, 6), 10);
+      const day = parseInt(val.slice(6, 8), 10);
+      const date = new Date(year, month - 1, day);
+
+      // 日付が存在しない or 範囲外
+      if (
+        date.getFullYear() !== year ||
+        date.getMonth() + 1 !== month ||
+        date.getDate() !== day
+      ) {
+        alert('正しい日付を入力してください');
+        birthdateInput.value = '';
       }
-      if (value.length >= 5) {
-        birthdateInput.value = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6);
-      } else if (value.length >= 3) {
-        birthdateInput.value = value.slice(0, 4) + '-' + value.slice(4);
-      } else {
-        birthdateInput.value = value;
-      }
-    });
-  }
+    } else if (val.length > 0) {
+      alert('生年月日は8桁で入力してください');
+      birthdateInput.value = '';
+    }
+  });
+}
 });
 </script>
 
