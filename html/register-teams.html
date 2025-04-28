@@ -308,9 +308,9 @@
  <script src="/diamondlink/js/header-loader.js"></script>
 <script src="/diamondlink/js/header-mobile.js"></script>
 
+<!-- 都道府県・市区町村 読み込み -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 都道府県選択肢の読み込み
   const prefectureSelect = document.getElementById('prefecture');
   const citySelect = document.getElementById('city-select');
 
@@ -334,7 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('都道府県リストの読み込みに失敗しました:', error);
     });
 
-  // 市区町村選択肢の読み込み
   prefectureSelect.addEventListener('change', function() {
     const selectedPrefecture = this.value;
     citySelect.innerHTML = '<option value="">選択してください</option>';
@@ -357,10 +356,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
   });
+});
+</script>
 
-  // 競技種別による区分選択肢の変更
+<!-- 競技種別と区分の連動 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
   const sportType = document.getElementById('sport-type');
   const division = document.getElementById('division');
+
   sportType.addEventListener('change', function() {
     division.innerHTML = '<option value="">選択してください</option>';
     if (sportType.value === "baseball") {
@@ -383,9 +387,14 @@ document.addEventListener('DOMContentLoaded', function() {
       division.disabled = true;
     }
   });
+});
+</script>
 
-  // SNS URLチェック
+<!-- SNS URLチェック -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('team-registration-form');
+
   form.addEventListener('submit', function(event) {
     let hasError = false;
     const xUrl = form.querySelector('input[name="x-url"]').value.trim();
@@ -404,17 +413,27 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
       hasError = true;
     }
+
     if (hasError) {
       event.preventDefault();
     }
   });
+});
+</script>
 
-  // ログインユーザー情報（仮）
+<!-- ログインユーザー情報（仮入力） -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('last-name').value = '山田';
   document.getElementById('first-name').value = '太郎';
+});
+</script>
 
-  // 練習日セクション
+<!-- 練習日設定（チェックボックス・プルダウン・週選択の連動） -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
   days.forEach(day => {
     const checkbox = document.getElementById(day);
     const frequency = document.getElementById(day + '-frequency');
@@ -422,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const start = document.getElementById(day + '-start');
     const end = document.getElementById(day + '-end');
 
-    // 曜日のチェックボックスON/OFF
     checkbox.addEventListener('change', function() {
       const enabled = checkbox.checked;
       frequency.disabled = !enabled;
@@ -430,15 +448,22 @@ document.addEventListener('DOMContentLoaded', function() {
       end.disabled = !enabled;
       if (!enabled) {
         weekCheckboxes.style.display = 'none';
+        // 第1〜第5・不定のチェックも外す
+        weekCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(weekCheckbox => {
+          weekCheckbox.checked = false;
+        });
       }
     });
 
-    // 頻度プルダウン変更時
     frequency.addEventListener('change', function() {
       if (frequency.value === 'monthly') {
-        weekCheckboxes.style.display = 'block';
+        weekCheckboxes.style.display = 'inline-block'; // 横並びしやすいように
       } else {
         weekCheckboxes.style.display = 'none';
+        // 選択肢もリセット
+        weekCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(weekCheckbox => {
+          weekCheckbox.checked = false;
+        });
       }
     });
   });
