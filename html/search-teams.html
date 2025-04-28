@@ -25,6 +25,19 @@ body::before {
 }
 </style>
 
+  <style>
+.flex-fields {
+  display: flex;
+  gap: 20px; /* 並びの間のすき間（お好みで調整可） */
+  align-items: flex-end; /* ラベルの下ラインを揃える */
+}
+
+.flex-fields label {
+  display: flex;
+  flex-direction: column; /* ラベルと入力欄は縦並び */
+}
+</style>
+
 </head>
 <body>
 
@@ -47,19 +60,21 @@ body::before {
       <option value="">選択してください</option>
     </select><br><br>
 
-    <!-- 競技種別 -->
-    <label for="search-competition">競技種別：</label>
-    <select id="search-competition" name="search-competition">
-      <option value="">指定なし</option>
-      <option value="野球">野球</option>
-      <option value="ソフトボール">ソフトボール</option>
-    </select><br><br>
+    <!-- 競技種別と区分 -->
+<div class="flex-fields">
+  <label for="search-competition">競技種別：</label>
+  <select id="search-competition" name="search-competition">
+    <option value="">指定なし</option>
+    <option value="野球">野球</option>
+    <option value="ソフトボール">ソフトボール</option>
+  </select>
 
-    <!-- 区分 -->
-    <label for="search-division">区分：</label>
-    <select id="search-division" name="search-division" disabled>
-      <option value="">選択してください</option>
-    </select><br><br>
+  <label for="search-division">区分：</label>
+  <select id="search-division" name="search-division" disabled>
+    <option value="">選択してください</option>
+  </select>
+</div>
+<br><br>
 
     <!-- チーム構成 -->
     <label for="search-team">チーム構成：</label>
