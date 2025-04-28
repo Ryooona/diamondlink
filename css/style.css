@@ -243,3 +243,14 @@ a:hover {
   margin: 5px 0;
   box-sizing: border-box;
 }
+.practice-day-row {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* ちょっと間をあける */
+  flex-wrap: wrap; /* ←これがあると狭い画面で自動で折り返す */
+}
+.week-checkboxes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
