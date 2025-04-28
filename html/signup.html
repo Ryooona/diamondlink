@@ -269,10 +269,12 @@ body::before {
   <!-- 都道府県と市町村連動-->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // --- 都道府県＆市区町村ロード ---
   const prefectureSelect = document.getElementById('prefecture');
   const citySelect = document.getElementById('city-select');
 
-  citySelect.disabled = true; // 最初は市区町村をグレーアウトしておく
+if (prefectureSelect && citySelect) {
+  citySelect.disabled = true;
 
   fetch('/diamondlink/json/prefecture.json')
     .then(response => response.json())
@@ -299,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
     citySelect.innerHTML = '<option value="">選択してください</option>';
 
     if (selectedPrefecture) {
-      citySelect.disabled = false; // 都道府県が選ばれたら市区町村を有効化
+      citySelect.disabled = false;
       fetch('/diamondlink/json/prefecture_city.json')
         .then(response => response.json())
         .then(data => {
@@ -316,9 +318,66 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('市区町村データの読み込みに失敗しました:', error);
         });
     } else {
-      citySelect.disabled = true; // 都道府県が未選択ならまたグレーアウト
+      citySelect.disabled = true;
     }
   });
+
+  // --- パスワード目玉＆強度バー ---
+  const togglePasswordBtn = document.getElementById('toggle-password');
+  const passwordInput = document.getElementById('password');
+
+  if (togglePasswordBtn && passwordInput) {
+    togglePasswordBtn.addEventListener('click', function() {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    });
+  }
+
+  if (passwordInput) {
+    const strengthBar = document.getElementById('password-strength-bar');
+    const strengthText = document.getElementById('password-strength-text');
+
+    passwordInput.addEventListener('input', function() {
+      const value = passwordInput.value;
+      let strength = 0;
+
+      if (value.length >= 8) strength++;
+      if (/[A-Z]/.test(value)) strength++;
+      if (/[0-9]/.test(value)) strength++;
+      if (/[^A-Za-z0-9]/.test(value)) strength++;
+
+      switch (strength) {
+        case 0:
+          strengthBar.style.width = '0%';
+          strengthBar.style.background = 'red';
+          strengthText.textContent = 'パスワードを入力してください';
+          break;
+        case 1:
+          strengthBar.style.width = '25%';
+          strengthBar.style.background = 'red';
+          strengthText.textContent = '弱いパスワードです';
+          break;
+        case 2:
+          strengthBar.style.width = '50%';
+          strengthBar.style.background = 'orange';
+          strengthText.textContent = '普通のパスワードです';
+          break;
+        case 3:
+          strengthBar.style.width = '75%';
+          strengthBar.style.background = 'yellowgreen';
+          strengthText.textContent = '強めのパスワードです';
+          break;
+        case 4:
+          strengthBar.style.width = '100%';
+          strengthBar.style.background = 'green';
+          strengthText.textContent = '非常に強いパスワードです';
+          break;
+      }
+    });
+  }
 });
 </script>
   
