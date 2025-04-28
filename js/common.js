@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loginLink.addEventListener('click', function(e) {
   e.preventDefault();
+  overlay.classList.add('show'); // ← ここが新しい！
   overlay.style.display = 'block';
   loginModal.style.display = 'flex';
   overlay.style.opacity = 0;
@@ -52,18 +53,19 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.style.opacity = 1;
     loginModal.style.opacity = 1;
     overlay.style.transition = 'opacity 0.3s';
-    loginModal.style.transition = 'opacity 0.3s';
+    loginModal.style.transition = 'opacity 0.3s, transform 0.3s';
   }, 10);
 });
 
-    function closeModalFunc() {
-      loginModal.style.opacity = 0;
-      overlay.style.opacity = 0;
-      setTimeout(() => {
-        loginModal.style.display = 'none';
-        overlay.style.display = 'none';
-      }, 300);
-    }
+function closeModalFunc() {
+  loginModal.style.opacity = 0;
+  overlay.style.opacity = 0;
+  overlay.classList.remove('show'); // ← ここが新しい！
+  setTimeout(() => {
+    loginModal.style.display = 'none';
+    overlay.style.display = 'none';
+  }, 300);
+}
 
     closeModal.addEventListener('click', closeModalFunc);
     overlay.addEventListener('click', closeModalFunc);
