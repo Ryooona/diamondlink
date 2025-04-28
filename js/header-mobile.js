@@ -7,25 +7,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuLinks = document.querySelectorAll('.mobile-nav a');
 
   if (hamburger && mobileMenu && menuOverlay && closeMenuBtn) {
-    // ハンバーガー押したら開く
     hamburger.addEventListener('click', function() {
       mobileMenu.classList.add('show');
       menuOverlay.classList.add('show');
     });
 
-    // 閉じるボタン押したら閉じる
     closeMenuBtn.addEventListener('click', function() {
       mobileMenu.classList.remove('show');
       menuOverlay.classList.remove('show');
     });
 
-    // オーバーレイ押したら閉じる
     menuOverlay.addEventListener('click', function() {
       mobileMenu.classList.remove('show');
       menuOverlay.classList.remove('show');
     });
 
-    // メニュー内リンク押したら閉じる
     menuLinks.forEach(link => {
       link.addEventListener('click', function() {
         mobileMenu.classList.remove('show');
