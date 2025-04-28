@@ -305,177 +305,141 @@
   <div id="footer-placeholder"></div>
 
   <!-- JavaScriptまとめ -->
-  <script src="/diamondlink/js/header-loader.js"></script>
-  <script src="/diamondlink/js/header-mobile.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // 都道府県選択肢の読み込み
-      const prefectureSelect = document.getElementById('prefecture');
-      const citySelect = document.getElementById('city-select');
-      fetch('/diamondlink/json/prefecture.json')
-        .then(response => response.json())
-        .then(data => {
-          prefectureSelect.innerHTML = '<option value="">選択してください</option>';
-          for (const region in data) {
-            const optgroup = document.createElement('optgroup');
-            optgroup.label = region;
-            data[region].forEach(pref => {
-              const option = document.createElement('option');
-              option.value = pref;
-              option.textContent = pref;
-              optgroup.appendChild(option);
-            });
-            prefectureSelect.appendChild(optgroup);
-          }
-        })
-        .catch(error => {
-          console.error('都道府県リストの読み込みに失敗しました:', error);
-        });
-
-      // 市区町村の表示
-      prefectureSelect.addEventListener('change', function() {
-        const selectedPrefecture = this.value;
-        citySelect.innerHTML = '<option value="">選択してください</option>';
-
-        if (selectedPrefecture) {
-          fetch('/diamondlink/json/prefecture_city.json')
-            .then(response => response.json())
-            .then(data => {
-              if (data[selectedPrefecture]) {
-                data[selectedPrefecture].forEach(city => {
-                  const option = document.createElement('option');
-                  option.value = city;
-                  option.textContent = city;
-                  citySelect.appendChild(option);
-                });
-              }
-            })
-            .catch(error => {
-              console.error('市区町村データの読み込みに失敗しました:', error);
-            });
-        }
-      });
-
-      // 競技種別による区分選択肢の変更
-      const sportType = document.getElementById('sport-type');
-      const division = document.getElementById('division');
-      sportType.addEventListener('change', function() {
-        division.innerHTML = '<option value="">選択してください</option>';
-        if (sportType.value === "baseball") {
-          division.disabled = false;
-          const options = ["指定なし", "軟式", "準硬式", "硬式"];
-          options.forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt;
-            option.textContent = opt;
-            division.appendChild(option);
-          });
-        } else if (sportType.value === "softball") {
-          division.disabled = false;
-          const options = ["指定なし", "ゴム", "革"];
-          options.forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt;
-            option.textContent = opt;
-            division.appendChild(option);
-          });
-        } else {
-          division.disabled = true;
-          const option = document.createElement('option');
-          option.value = "";
-          option.textContent = "選択してください";
-          division.appendChild(option);
-        }
-      });
-    });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('team-registration-form');
-      form.addEventListener('submit', function(event) {
-        let hasError = false;
-        const xUrl = form.querySelector('input[name="x-url"]').value.trim();
-        const instagramUrl = form.querySelector('input[name="instagram-url"]').value.trim();
-        const youtubeUrl = form.querySelector('input[name="youtube-url"]').value.trim();
-
-        if (xUrl && !xUrl.startsWith('https://twitter.com/')) {
-          alert('X（旧Twitter）のURLは「https://twitter.com/〜」で始まる必要があります。');
-          hasError = true;
-        }
-
-        if (instagramUrl && !instagramUrl.startsWith('https://instagram.com/') && !instagramUrl.startsWith('https://www.instagram.com/')) {
-          alert('InstagramのURLは「https://instagram.com/〜」で始まる必要があります。');
-          hasError = true;
-        }
-
-        if (youtubeUrl && !youtubeUrl.startsWith('https://youtube.com/') && !youtubeUrl.startsWith('https://www.youtube.com/')) {
-          alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
-          hasError = true;
-        }
-
-        if (hasError) {
-          event.preventDefault();
-        }
-      });
-    });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const userFirstName = '太郎';
-      const userLastName = '山田';
-      document.getElementById('last-name').value = userLastName;
-      document.getElementById('first-name').value = userFirstName;
-    });
-  </script>
+ <script src="/diamondlink/js/header-loader.js"></script>
+<script src="/diamondlink/js/header-mobile.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // チェックボックスがチェックされたときにグレーアウトを解除する
-  const practiceCheckboxes = document.querySelectorAll('.practice-checkbox');
-  
-  practiceCheckboxes.forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-      const day = this.id; // 月曜日、火曜日など
-      const frequency = document.getElementById(day + '-frequency');
-      const startTime = document.getElementById(day + '-start');
-      const endTime = document.getElementById(day + '-end');
+  // 都道府県選択肢の読み込み
+  const prefectureSelect = document.getElementById('prefecture');
+  const citySelect = document.getElementById('city-select');
 
-      // チェックが入っている場合
-      if (this.checked) {
-        frequency.disabled = false;
-        startTime.disabled = false;
-        endTime.disabled = false;
-      } else {
-        frequency.disabled = true;
-        startTime.disabled = true;
-        endTime.disabled = true;
+  fetch('/diamondlink/json/prefecture.json')
+    .then(response => response.json())
+    .then(data => {
+      prefectureSelect.innerHTML = '<option value="">選択してください</option>';
+      for (const region in data) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = region;
+        data[region].forEach(pref => {
+          const option = document.createElement('option');
+          option.value = pref;
+          option.textContent = pref;
+          optgroup.appendChild(option);
+        });
+        prefectureSelect.appendChild(optgroup);
       }
+    })
+    .catch(error => {
+      console.error('都道府県リストの読み込みに失敗しました:', error);
     });
+
+  // 市区町村選択肢の読み込み
+  prefectureSelect.addEventListener('change', function() {
+    const selectedPrefecture = this.value;
+    citySelect.innerHTML = '<option value="">選択してください</option>';
+
+    if (selectedPrefecture) {
+      fetch('/diamondlink/json/prefecture_city.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data[selectedPrefecture]) {
+            data[selectedPrefecture].forEach(city => {
+              const option = document.createElement('option');
+              option.value = city;
+              option.textContent = city;
+              citySelect.appendChild(option);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('市区町村データの読み込みに失敗しました:', error);
+        });
+    }
   });
 
-  // 時間スライダーの値を時間形式に変換して表示
-  function updateTimeDisplay(slider, timeSpan) {
-    const hours = slider.value;
-    const minutes = "00";  // 分は固定
-    timeSpan.textContent = `${hours}:${minutes}`;
-  }
+  // 競技種別による区分選択肢の変更
+  const sportType = document.getElementById('sport-type');
+  const division = document.getElementById('division');
+  sportType.addEventListener('change', function() {
+    division.innerHTML = '<option value="">選択してください</option>';
+    if (sportType.value === "baseball") {
+      division.disabled = false;
+      ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else if (sportType.value === "softball") {
+      division.disabled = false;
+      ["指定なし", "ゴム", "革"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else {
+      division.disabled = true;
+    }
+  });
 
-  // 各曜日のスライダー
+  // SNS URLチェック
+  const form = document.getElementById('team-registration-form');
+  form.addEventListener('submit', function(event) {
+    let hasError = false;
+    const xUrl = form.querySelector('input[name="x-url"]').value.trim();
+    const instagramUrl = form.querySelector('input[name="instagram-url"]').value.trim();
+    const youtubeUrl = form.querySelector('input[name="youtube-url"]').value.trim();
+
+    if (xUrl && !xUrl.startsWith('https://twitter.com/')) {
+      alert('X（旧Twitter）のURLは「https://twitter.com/〜」で始まる必要があります。');
+      hasError = true;
+    }
+    if (instagramUrl && !(instagramUrl.startsWith('https://instagram.com/') || instagramUrl.startsWith('https://www.instagram.com/'))) {
+      alert('InstagramのURLは「https://instagram.com/〜」で始まる必要があります。');
+      hasError = true;
+    }
+    if (youtubeUrl && !(youtubeUrl.startsWith('https://youtube.com/') || youtubeUrl.startsWith('https://www.youtube.com/'))) {
+      alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
+      hasError = true;
+    }
+    if (hasError) {
+      event.preventDefault();
+    }
+  });
+
+  // ログインユーザー情報（仮）
+  document.getElementById('last-name').value = '山田';
+  document.getElementById('first-name').value = '太郎';
+
+  // 練習日セクション
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   days.forEach(day => {
-    const startSlider = document.getElementById(day + '-start');
-    const endSlider = document.getElementById(day + '-end');
-    const startTime = document.getElementById(day + '-start-time');
-    const endTime = document.getElementById(day + '-end-time');
+    const checkbox = document.getElementById(day);
+    const frequency = document.getElementById(day + '-frequency');
+    const weekCheckboxes = document.querySelector('.' + day + '-weeks');
+    const start = document.getElementById(day + '-start');
+    const end = document.getElementById(day + '-end');
 
-    startSlider.addEventListener('input', function() {
-      updateTimeDisplay(startSlider, startTime);
+    // 曜日のチェックボックスON/OFF
+    checkbox.addEventListener('change', function() {
+      const enabled = checkbox.checked;
+      frequency.disabled = !enabled;
+      start.disabled = !enabled;
+      end.disabled = !enabled;
+      if (!enabled) {
+        weekCheckboxes.style.display = 'none';
+      }
     });
-    endSlider.addEventListener('input', function() {
-      updateTimeDisplay(endSlider, endTime);
+
+    // 頻度プルダウン変更時
+    frequency.addEventListener('change', function() {
+      if (frequency.value === 'monthly') {
+        weekCheckboxes.style.display = 'block';
+      } else {
+        weekCheckboxes.style.display = 'none';
+      }
     });
   });
 });
