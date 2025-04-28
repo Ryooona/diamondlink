@@ -30,3 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+hamburger.addEventListener('click', function() {
+  console.log('Hamburger clicked'); // これでハンバーガーがクリックされたか確認できる
+  mobileMenu.classList.add('show');
+  menuOverlay.classList.add('show');
+});
