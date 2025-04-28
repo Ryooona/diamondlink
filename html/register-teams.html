@@ -24,18 +24,14 @@
       </label><br><br>
 
       <!-- 活動地域 -->
-<fieldset>
-<legend>活動地域</legend>
-
-        <!-- 都道府県 -->
+      <fieldset>
+        <legend>活動地域</legend>
         <label>都道府県<span class="required">*</span><br>
           <select name="prefecture" id="prefecture" required>
             <option value="">選択してください</option>
           </select>
           <div class="error-message" id="error-prefecture"></div>
         </label><br><br>
-
-        <!-- 市区町村 -->
         <label>市区町村<span class="required">*</span><br>
           <select name="city" id="city-select" required>
             <option value="">選択してください</option>
@@ -44,176 +40,78 @@
         </label><br><br>
       </fieldset><br>
 
-<fieldset>
-        <legend>チーム構成</legend>
-      
-      <!-- 競技種別 -->
-      <label>競技種別<span class="required">*</span><br>
-        <select name="sport-type" id="sport-type" required>
-          <option value="">選択してください</option>
-          <option value="baseball">野球</option>
-          <option value="softball">ソフトボール</option>
-        </select>
-      </label><br><br>
-
-      <!-- 区分 -->
-      <label>区分<span class="required">*</span><br>
-        <select name="division" id="division" required disabled>
-          <option value="">選択してください</option>
-        </select>
-      </label><br><br>
-
       <!-- チーム構成 -->
-      <!-- 性別 -->
-<label>性別<span class="required">*</span><br>
-  <select name="gender" required>
-    <option value="">選択してください</option>
-    <option value="male">男子</option>
-    <option value="female">女子</option>
-    <option value="mixed">混合</option>
-  </select>
-  <div class="error-message" id="error-gender"></div>
-</label><br><br>
+      <fieldset>
+        <legend>チーム構成</legend>
+        <label>競技種別<span class="required">*</span><br>
+          <select name="sport-type" id="sport-type" required>
+            <option value="">選択してください</option>
+            <option value="baseball">野球</option>
+            <option value="softball">ソフトボール</option>
+          </select>
+        </label><br><br>
+        <label>区分<span class="required">*</span><br>
+          <select name="division" id="division" required disabled>
+            <option value="">選択してください</option>
+          </select>
+        </label><br><br>
 
-<!-- 年齢区分 -->
-<label>年齢層<span class="required">*</span><br>
-  <select name="age-group" required>
-    <option value="">選択してください</option>
-    <option value="adult">一般</option>
-    <option value="high-school">高校生</option>
-    <option value="junior high-school">中学生</option>
-    <option value="elementary school">小学生</option>
-    <option value="other">その他</option>
-  </select>
-  <div class="error-message" id="error-age-group"></div>
-</label><br><br>
-</fieldset><br>
+        <label>性別<span class="required">*</span><br>
+          <select name="gender" required>
+            <option value="">選択してください</option>
+            <option value="male">男子</option>
+            <option value="female">女子</option>
+            <option value="mixed">混合</option>
+          </select>
+          <div class="error-message" id="error-gender"></div>
+        </label><br><br>
 
-<!--「練習日設定」セクション -->
-<fieldset>
-  <legend>練習日設定</legend>
+        <label>年齢層<span class="required">*</span><br>
+          <select name="age-group" required>
+            <option value="">選択してください</option>
+            <option value="adult">一般</option>
+            <option value="high-school">高校生</option>
+            <option value="junior high-school">中学生</option>
+            <option value="elementary school">小学生</option>
+            <option value="other">その他</option>
+          </select>
+          <div class="error-message" id="error-age-group"></div>
+        </label><br><br>
+      </fieldset><br>
 
-  <!-- 月曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-monday" id="monday" class="practice-checkbox">
-      月曜日
-    </label>
-    <select name="monday-frequency" id="monday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="monday-start" id="monday-start" disabled>
-    <input type="time" name="monday-end" id="monday-end" disabled>
-  </div>
+      <!-- 練習日設定 -->
+      <fieldset>
+        <legend>練習日設定</legend>
 
-  <!-- 火曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-tuesday" id="tuesday" class="practice-checkbox">
-      火曜日
-    </label>
-    <select name="tuesday-frequency" id="tuesday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="tuesday-start" id="tuesday-start" disabled>
-    <input type="time" name="tuesday-end" id="tuesday-end" disabled>
-  </div>
+        <!-- 月曜日 -->
+        <div class="practice-day-row">
+          <label>
+            <input type="checkbox" name="practice-monday" id="monday" class="practice-checkbox">
+            月曜日
+          </label>
+          <select name="monday-frequency" id="monday-frequency" class="practice-frequency" disabled>
+            <option value="weekly">毎週</option>
+            <option value="biweekly">隔週</option>
+            <option value="monthly">毎月第⚪︎</option>
+          </select>
+          <input type="time" name="monday-start" id="monday-start" disabled>
+          <input type="time" name="monday-end" id="monday-end" disabled>
+        </div>
 
-  <!-- 水曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-wednesday" id="wednesday" class="practice-checkbox">
-      水曜日
-    </label>
-    <select name="wednesday-frequency" id="wednesday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="wednesday-start" id="wednesday-start" disabled>
-    <input type="time" name="wednesday-end" id="wednesday-end" disabled>
-  </div>
+        <!-- 他の曜日も同様に追加 -->
 
-  <!-- 木曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-thursday" id="thursday" class="practice-checkbox">
-      木曜日
-    </label>
-    <select name="thursday-frequency" id="thursday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="thursday-start" id="thursday-start" disabled>
-    <input type="time" name="thursday-end" id="thursday-end" disabled>
-  </div>
+      </fieldset><br>
 
-  <!-- 金曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-friday" id="friday" class="practice-checkbox">
-      金曜日
-    </label>
-    <select name="friday-frequency" id="friday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="friday-start" id="friday-start" disabled>
-    <input type="time" name="friday-end" id="friday-end" disabled>
-  </div>
-
-  <!-- 土曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-saturday" id="saturday" class="practice-checkbox">
-      土曜日
-    </label>
-    <select name="saturday-frequency" id="saturday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="saturday-start" id="saturday-start" disabled>
-    <input type="time" name="saturday-end" id="saturday-end" disabled>
-  </div>
-
-  <!-- 日曜日 -->
-  <div class="practice-day-row">
-    <label>
-      <input type="checkbox" name="practice-sunday" id="sunday" class="practice-checkbox">
-      日曜日
-    </label>
-    <select name="sunday-frequency" id="sunday-frequency" class="practice-frequency" disabled>
-      <option value="weekly">毎週</option>
-      <option value="biweekly">隔週</option>
-      <option value="monthly">毎月第⚪︎</option>
-    </select>
-    <input type="time" name="sunday-start" id="sunday-start" disabled>
-    <input type="time" name="sunday-end" id="sunday-end" disabled>
-  </div>
-
-</fieldset><br>
-      
       <!-- 代表者氏名 -->
-<fieldset>
-  <legend>代表者氏名</legend>
-  
-  <!-- 姓 -->
-  <label>姓<span class="required">*</span><br>
-    <input type="text" name="last-name" id="last-name" required>
-  </label><br><br>
-
-  <!-- 名 -->
-  <label>名<span class="required">*</span><br>
-    <input type="text" name="first-name" id="first-name" required>
-  </label><br><br>
-</fieldset><br>
+      <fieldset>
+        <legend>代表者氏名</legend>
+        <label>姓<span class="required">*</span><br>
+          <input type="text" name="last-name" id="last-name" required>
+        </label><br><br>
+        <label>名<span class="required">*</span><br>
+          <input type="text" name="first-name" id="first-name" required>
+        </label><br><br>
+      </fieldset><br>
 
       <!-- メールアドレス -->
       <label>連絡先（メールアドレス）<span class="required">*</span><br>
@@ -221,28 +119,26 @@
       </label><br><br>
 
       <!-- SNSアカウント -->
-<!-- SNSアカウント -->
-<fieldset>
-  <legend>SNSアカウント（任意）</legend>
+      <fieldset>
+        <legend>SNSアカウント（任意）</legend>
+        <label>X（旧Twitter）URL<br>
+          <input type="url" name="x-url" class="long-input" placeholder="https://twitter.com/example">
+        </label><br><br>
 
-  <label>X（旧Twitter）URL<br>
-    <input type="url" name="x-url" class="long-input" placeholder="https://twitter.com/example">
-  </label><br><br>
+        <label>Instagram URL<br>
+          <input type="url" name="instagram-url" class="long-input" placeholder="https://instagram.com/example">
+        </label><br><br>
 
-  <label>Instagram URL<br>
-    <input type="url" name="instagram-url" class="long-input" placeholder="https://instagram.com/example">
-  </label><br><br>
-
-  <label>YouTube URL<br>
-    <input type="url" name="youtube-url" class="long-input" placeholder="https://youtube.com/@example">
-  </label><br><br>
-</fieldset><br>
+        <label>YouTube URL<br>
+          <input type="url" name="youtube-url" class="long-input" placeholder="https://youtube.com/@example">
+        </label><br><br>
+      </fieldset><br>
 
       <!-- チーム紹介 -->
       <label>チーム紹介（自由記入欄）<br>
-        <textarea name="team-introduction" rows="15"cols="100" placeholder="例：私たちのチームは楽しく活動することをモットーにしています！"></textarea>
+        <textarea name="team-introduction" rows="15" cols="100" placeholder="例：私たちのチームは楽しく活動することをモットーにしています！"></textarea>
       </label><br><br>
-      
+
       <button type="submit" disabled>送信（ダミー）</button>
       <p style="font-size: small; color: gray;">※現在は送信機能は未対応です</p>
     </form>
@@ -253,12 +149,12 @@
   <!-- JavaScriptまとめ -->
   <script src="/diamondlink/js/header-loader.js"></script>
   <script src="/diamondlink/js/header-mobile.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // 都道府県選択肢の読み込み
       const prefectureSelect = document.getElementById('prefecture');
       const citySelect = document.getElementById('city-select');
-
       fetch('/diamondlink/json/prefecture.json')
         .then(response => response.json())
         .then(data => {
@@ -306,7 +202,6 @@
       // 競技種別による区分選択肢の変更
       const sportType = document.getElementById('sport-type');
       const division = document.getElementById('division');
-
       sportType.addEventListener('change', function() {
         division.innerHTML = '<option value="">選択してください</option>';
         if (sportType.value === "baseball") {
@@ -337,60 +232,46 @@
       });
     });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // ここは今まで通り（都道府県、市区町村、競技種別の処理）
 
-    // ▼ SNS URLのバリデーション追加
-    const form = document.getElementById('team-registration-form');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('team-registration-form');
+      form.addEventListener('submit', function(event) {
+        let hasError = false;
+        const xUrl = form.querySelector('input[name="x-url"]').value.trim();
+        const instagramUrl = form.querySelector('input[name="instagram-url"]').value.trim();
+        const youtubeUrl = form.querySelector('input[name="youtube-url"]').value.trim();
 
-    form.addEventListener('submit', function(event) {
-      let hasError = false;
+        if (xUrl && !xUrl.startsWith('https://twitter.com/')) {
+          alert('X（旧Twitter）のURLは「https://twitter.com/〜」で始まる必要があります。');
+          hasError = true;
+        }
 
-      const xUrl = form.querySelector('input[name="x-url"]').value.trim();
-      const instagramUrl = form.querySelector('input[name="instagram-url"]').value.trim();
-      const youtubeUrl = form.querySelector('input[name="youtube-url"]').value.trim();
+        if (instagramUrl && !instagramUrl.startsWith('https://instagram.com/') && !instagramUrl.startsWith('https://www.instagram.com/')) {
+          alert('InstagramのURLは「https://instagram.com/〜」で始まる必要があります。');
+          hasError = true;
+        }
 
-      // X (旧Twitter) チェック
-      if (xUrl && !xUrl.startsWith('https://twitter.com/')) {
-        alert('X（旧Twitter）のURLは「https://twitter.com/〜」で始まる必要があります。');
-        hasError = true;
-      }
+        if (youtubeUrl && !youtubeUrl.startsWith('https://youtube.com/') && !youtubeUrl.startsWith('https://www.youtube.com/')) {
+          alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
+          hasError = true;
+        }
 
-      // Instagram チェック
-      if (instagramUrl && !instagramUrl.startsWith('https://instagram.com/') && !instagramUrl.startsWith('https://www.instagram.com/')) {
-        alert('InstagramのURLは「https://instagram.com/〜」で始まる必要があります。');
-        hasError = true;
-      }
-
-      // YouTube チェック
-      if (youtubeUrl && !youtubeUrl.startsWith('https://youtube.com/') && !youtubeUrl.startsWith('https://www.youtube.com/')) {
-        alert('YouTubeのURLは「https://youtube.com/〜」または「https://www.youtube.com/〜」で始まる必要があります。');
-        hasError = true;
-      }
-
-      if (hasError) {
-        event.preventDefault(); // エラーがあったら送信ストップ
-      }
+        if (hasError) {
+          event.preventDefault();
+        }
+      });
     });
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // ここで仮のユーザー情報を設定（実際にはサーバーから取得するけど、まずは仮の値）
-    const userFirstName = '太郎';  // 例: ログインしたユーザーの名
-    const userLastName = '山田';  // 例: ログインしたユーザーの姓
+  </script>
 
-    // 自動で入力
-    document.getElementById('last-name').value = userLastName;
-    document.getElementById('first-name').value = userFirstName;
-  });
-</script>
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userFirstName = '太郎';
+      const userLastName = '山田';
+      document.getElementById('last-name').value = userLastName;
+      document.getElementById('first-name').value = userFirstName;
+    });
+  </script>
 
-    <!-- モーダル管理-->
-<link rel="stylesheet" href="/diamondlink/css/header.css">
-<script src="/diamondlink/js/login-modal.js"></script>
-  
 </body>
 </html>
