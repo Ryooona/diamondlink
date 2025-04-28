@@ -49,13 +49,18 @@ body::before {
     </label><br><br>
 
     <!-- 代表者氏名 -->
-    <label>姓<span class="required">*</span><br>
-      <input type="text" name="last-name" id="last-name" required>
-    </label><br><br>
-
-    <label>名<span class="required">*</span><br>
-      <input type="text" name="first-name" id="first-name" required>
-    </label><br><br>
+<div class="representative-name">
+  <span>代表者氏名：</span><br><br>
+  <label>
+    姓<span class="required">*</span><br>
+    <input type="text" name="last-name" id="last-name" required>
+  </label>
+  <label style="margin-left: 20px;">
+    名<span class="required">*</span><br>
+    <input type="text" name="first-name" id="first-name" required>
+  </label>
+</div>
+<br><br>
 
     <!-- 連絡先（メールアドレス） -->
     <label>連絡先（メールアドレス）<span class="required">*</span><br>
