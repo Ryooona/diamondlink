@@ -25,6 +25,22 @@ body::before {
 }
 </style>
 
+  <style>
+.long-input {
+  width: 400px; /* 入力枠を横長にする */
+}
+
+.name-fields {
+  display: flex;
+  gap: 20px; /* 姓と名の間に20pxくらいスペース */
+}
+
+.name-fields label {
+  display: flex;
+  flex-direction: column; /* ラベルと入力欄を縦に並べる */
+}
+</style>
+
 </head>
 <body>
 
@@ -45,26 +61,26 @@ body::before {
 
     <!-- チーム名 -->
     <label>チーム名<span class="required">*</span><br>
-      <input type="text" name="team-name" required>
+      <input type="text" name="team-name" class="long-input" required>
     </label><br><br>
 
     <!-- 代表者氏名 -->
 <div class="representative-name">
   <span>代表者氏名：</span><br><br>
-  <label>
-    姓<span class="required">*</span><br>
+  <div class="name-fields">
+  <label>姓<span class="required">*</span><br>
     <input type="text" name="last-name" id="last-name" required>
   </label>
-  <label style="margin-left: 20px;">
-    名<span class="required">*</span><br>
+  <label>名<span class="required">*</span><br>
     <input type="text" name="first-name" id="first-name" required>
   </label>
+ </div>
 </div>
 <br><br>
 
     <!-- 連絡先（メールアドレス） -->
     <label>連絡先（メールアドレス）<span class="required">*</span><br>
-      <input type="email" name="email" required>
+      <input type="email" name="email" class="long-input" placeholder="例：diamondlink@example.com" required>
     </label><br><br>
 
     <!-- チーム紹介 -->
