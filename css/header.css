@@ -303,3 +303,24 @@
 #close-login-modal:hover {
   background-color: #aaa;
 }
+/* モーダル本体 */
+.login-modal {
+  opacity: 0;
+  transform: translate(-50%, -45%); /* ちょっと上からふわっと */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.login-modal.show {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* オーバーレイ */
+.modal-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+}
