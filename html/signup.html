@@ -244,8 +244,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (togglePasswordBtn && passwordInput) {
     togglePasswordBtn.addEventListener('click', function() {
-      passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
-    });
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+  } else {
+    passwordInput.type = 'password';
+    this.innerHTML = '<i class="fa-solid fa-eye"></i>';
+  }
+});
   }
 
   if (passwordInput) {
