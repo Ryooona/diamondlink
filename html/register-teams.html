@@ -43,6 +43,7 @@ body::before {
       </label><br><br>
 
       <!-- 活動地域 -->
+      <div class="card fade-in-section">
       <fieldset>
         <legend>活動地域</legend>
         <label>都道府県<span class="required">*</span><br>
@@ -57,9 +58,12 @@ body::before {
           </select>
           <div class="error-message" id="error-city"></div>
         </label><br><br>
-      </fieldset><br>
+      </fieldset>
+      </div>
+      <br>
 
       <!-- チーム構成 -->
+      <div class="card fade-in-section">
       <fieldset>
         <legend>チーム構成</legend>
         <label>競技種別<span class="required">*</span><br>
@@ -96,11 +100,14 @@ body::before {
           </select>
           <div class="error-message" id="error-age-group"></div>
         </label><br><br>
-      </fieldset><br>
+      </fieldset>
+        </div>
+        <br>
 
      <!--「練習日設定」セクション -->
-<fieldset>
-  <legend>練習日設定</legend>
+<div class="card fade-in-section">
+      <fieldset>
+  <legend>練習日</legend>
 
   <!-- 月曜日 -->
   <div class="practice-day-row">
@@ -277,7 +284,9 @@ body::before {
     <input type="time" name="sunday-end" id="sunday-end" disabled>
   </div>
 
-</fieldset><br>
+</fieldset>
+  </div>
+  <br>
 
       <!-- 代表者氏名 -->
       <fieldset>
