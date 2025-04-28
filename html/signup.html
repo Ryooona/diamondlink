@@ -149,6 +149,62 @@ body::before {
 <script src="/diamondlink/js/login-modal.js"></script>
 
 <script src="/diamondlink/js/common.js"></script> 
+
+  <!-- 都道府県と市町村連動-->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const prefectureSelect = document.getElementById('prefecture');
+  const citySelect = document.getElementById('city-select');
+
+  citySelect.disabled = true; // 最初は市区町村をグレーアウトしておく
+
+  fetch('/diamondlink/json/prefecture.json')
+    .then(response => response.json())
+    .then(data => {
+      prefectureSelect.innerHTML = '<option value="">選択してください</option>';
+      for (const region in data) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = region;
+        data[region].forEach(pref => {
+          const option = document.createElement('option');
+          option.value = pref;
+          option.textContent = pref;
+          optgroup.appendChild(option);
+        });
+        prefectureSelect.appendChild(optgroup);
+      }
+    })
+    .catch(error => {
+      console.error('都道府県リストの読み込みに失敗しました:', error);
+    });
+
+  prefectureSelect.addEventListener('change', function() {
+    const selectedPrefecture = this.value;
+    citySelect.innerHTML = '<option value="">選択してください</option>';
+
+    if (selectedPrefecture) {
+      citySelect.disabled = false; // 都道府県が選ばれたら市区町村を有効化
+      fetch('/diamondlink/json/prefecture_city.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data[selectedPrefecture]) {
+            data[selectedPrefecture].forEach(city => {
+              const option = document.createElement('option');
+              option.value = city;
+              option.textContent = city;
+              citySelect.appendChild(option);
+            });
+          }
+        })
+        .catch(error => {
+          console.error('市区町村データの読み込みに失敗しました:', error);
+        });
+    } else {
+      citySelect.disabled = true; // 都道府県が未選択ならまたグレーアウト
+    }
+  });
+});
+</script>
   
 </body>
 </html>
