@@ -355,3 +355,42 @@
 .menu-overlay.show {
   display: block;
 }
+/* モバイルメニュー 最初は隠す！ */
+#mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  max-width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 1200;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+/* オーバーレイ 最初は隠す！ */
+#menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+}
+
+/* メニューを表示する状態 */
+#mobile-menu.show {
+  display: block;
+  transform: translateX(0);
+}
+
+/* オーバーレイを表示する状態 */
+#menu-overlay.show {
+  display: block;
+}
