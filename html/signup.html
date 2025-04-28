@@ -30,6 +30,44 @@ body::before {
 }
 </style>
 
+  <style>
+.name-fields {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+</style>
+
+  <style>
+.area-fields {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+</style>
+
+  <style>
+.submit-button {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF; /* ブルー */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.submit-button:hover {
+  background-color: #0056b3; /* ホバー時、ちょっと濃い青に */
+}
+</style>
+
 </head>
 
 <body>
@@ -44,34 +82,28 @@ body::before {
 
   <form id="account-form" action="https://formspree.io/f/xqaqaloa" method="POST">
     
+    <div class="card fade-in-section">
+  <fieldset>
+    <legend>お客様情報</legend>
+
     <!-- 氏名 -->
-    <label>氏名<span class="required">*</span><br>
-      姓 <input type="text" name="last-name" id="last-name">
-      <div class="error-message" id="error-last-name"></div>
-      名 <input type="text" name="first-name" id="first-name">
-      <div class="error-message" id="error-first-name"></div>
-    </label><br><br>
+    <div class="name-fields">
+      <div class="field-group">
+        <label for="last-name">姓<span class="required">*</span></label>
+        <input type="text" name="last-name" id="last-name" required>
+        <div class="error-message" id="error-last-name"></div>
+      </div>
+      <div class="field-group">
+        <label for="first-name">名<span class="required">*</span></label>
+        <input type="text" name="first-name" id="first-name" required>
+        <div class="error-message" id="error-first-name"></div>
+      </div>
+    </div><br><br>
 
     <!-- ニックネーム -->
     <label>ニックネーム<span class="required">*</span>（あとから変更できます）<br>
       <input type="text" name="nickname" id="nickname">
       <div class="error-message" id="error-nickname"></div>
-    </label><br><br>
-
-    <!-- お住まいの地域 -->
-    <label>お住まいの地域<span class="required">*</span><br>
-      <select name="prefecture" id="prefecture" required>
-        <option value="">選択してください</option>
-      </select>
-      <div class="error-message" id="error-prefecture"></div>
-    </label><br><br>
-
-    <!-- 市区町村 -->
-    <label>市区町村<span class="required">*</span><br>
-      <select name="city" id="city-select" required>
-        <option value="">選択してください</option>
-      </select>
-      <div class="error-message" id="error-city"></div>
     </label><br><br>
 
     <!-- 生年月日 -->
@@ -91,25 +123,59 @@ body::before {
       <div class="error-message" id="error-gender"></div>
     </label><br><br>
 
+    <!-- お住まいの地域 -->
+    <div class="area-fields">
+      <div class="field-group">
+        <label for="prefecture">都道府県<span class="required">*</span></label>
+        <select name="prefecture" id="prefecture" required>
+          <option value="">選択してください</option>
+        </select>
+        <div class="error-message" id="error-prefecture"></div>
+      </div>
+
+      <div class="field-group">
+        <label for="city-select">市区町村<span class="required">*</span></label>
+        <select name="city" id="city-select" required>
+          <option value="">選択してください</option>
+        </select>
+        <div class="error-message" id="error-city"></div>
+      </div>
+    </div><br><br>
+
     <!-- メールアドレス -->
     <label>メールアドレス<span class="required">*</span><br>
-      <input type="email" name="email" required>
+      <input type="email" name="email" class="long-input" placeholder="例）diamondlink@example.com" required>
     </label><br><br>
 
-    <!-- パスワード -->
-    <label>パスワード<span class="required">*</span><br>
-      <div style="position: relative; max-width: 300px;">
-        <input type="password" name="password" id="password" style="width: 100%; padding-right: 40px;">
-        <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
-          <i class="fa-solid fa-eye"></i>
-        </button>
-        <div id="password-strength" style="height: 8px; background: #ccc; border-radius: 4px; margin-top: 10px;">
-          <div id="password-strength-bar" style="height: 100%; width: 0%; background: red; transition: width 0.3s;"></div>
-        </div>
-        <p id="password-strength-text" style="margin: 5px 0 0; font-size: 0.9em; color: gray;">パスワードの強度を表示します</p>
+  </fieldset>
+</div>
+<br>
+
+    <div class="card fade-in-section">
+<fieldset>
+  <legend>パスワード設定</legend>
+
+  <label>パスワード<span class="required">*</span><br>
+    <div style="position: relative; max-width: 300px;">
+      <input type="password" name="password" id="password" style="width: 100%; padding-right: 40px;">
+      <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+        <i class="fa-solid fa-eye"></i>
+      </button>
+      <div id="password-strength" style="height: 8px; background: #ccc; border-radius: 4px; margin-top: 10px;">
+        <div id="password-strength-bar" style="height: 100%; width: 0%; background: red; transition: width 0.3s;"></div>
       </div>
-      <div class="error-message" id="error-password"></div>
-    </label><br><br>
+      <p id="password-strength-text" style="margin: 5px 0 0; font-size: 0.9em; color: gray;">パスワードの強度を表示します</p>
+    </div>
+    <div class="error-message" id="error-password"></div>
+  </label>
+
+</fieldset>
+</div>
+<br>
+
+    <div class="card fade-in-section">
+  <fieldset>
+    <legend>ご利用について</legend>
 
     <!-- チーム加入 -->
     <label>現在、野球またはソフトボールチームに加入していますか？<span class="required">*</span><br>
@@ -126,10 +192,14 @@ body::before {
       <input type="checkbox" name="purpose" value="transfer-team"> 移籍先のチームを探したい<br>
       <input type="checkbox" name="purpose" value="practice-match"> 練習試合の相手を探したい<br>
       <input type="checkbox" name="purpose" value="other"> その他<br>
-      <textarea name="other-purpose" rows="2" placeholder="その他の場合はこちらに記入"></textarea>
+      <textarea name="other-purpose" rows="6" cols="60" placeholder="その他の場合はこちらに記入"></textarea>
     </label><br><br>
 
-    <button type="submit">アカウント作成（ダミー）</button>
+  </fieldset>
+</div>
+<br>
+
+    <button type="submit" class="submit-button">アカウント作成（ダミー）</button>
     <p style="font-size: small; color: gray;">※まだ送信機能は有効になっていません</p>
   </form>
 
