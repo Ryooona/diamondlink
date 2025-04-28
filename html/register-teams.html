@@ -74,22 +74,25 @@ body::before {
   </fieldset>
 </div>
 
-      <!-- 活動地域（カード）-->
-      <div class="card fade-in-section">
-      <fieldset>
-        <legend>活動地域</legend>
-        <label>都道府県<span class="required">*</span><br>
-          <select name="prefecture" id="prefecture" required>
-            <option value="">選択してください</option>
-          </select>
-          <div class="error-message" id="error-prefecture"></div>
-        </label><br><br>
-        <label>市区町村<span class="required">*</span><br>
-          <select name="city" id="city-select" required>
-            <option value="">選択してください</option>
-          </select>
-          <div class="error-message" id="error-city"></div>
-        </label><br><br>
+      <!-- 活動地域（横並びに修正） -->
+<div class="activity-area">
+  <span>活動地域：</span><br><br>
+  <label>
+    都道府県<span class="required">*</span><br>
+    <select name="prefecture" id="prefecture" required>
+      <option value="">選択してください</option>
+    </select>
+    <div class="error-message" id="error-prefecture"></div>
+  </label>
+  <label style="margin-left: 20px;">
+    市区町村<span class="required">*</span><br>
+    <select name="city" id="city-select" required>
+      <option value="">選択してください</option>
+    </select>
+    <div class="error-message" id="error-city"></div>
+  </label>
+</div>
+<br><br>
       </fieldset>
       </div>
 
