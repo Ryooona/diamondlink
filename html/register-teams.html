@@ -375,6 +375,18 @@
     });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // ここで仮のユーザー情報を設定（実際にはサーバーから取得するけど、まずは仮の値）
+    const userFirstName = '太郎';  // 例: ログインしたユーザーの名
+    const userLastName = '山田';  // 例: ログインしたユーザーの姓
+
+    // 自動で入力
+    document.getElementById('last-name').value = userLastName;
+    document.getElementById('first-name').value = userFirstName;
+  });
+</script>
+  
 
     <!-- モーダル管理-->
 <link rel="stylesheet" href="/diamondlink/css/header.css">
