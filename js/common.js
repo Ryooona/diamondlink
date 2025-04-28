@@ -43,15 +43,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = loginModal.querySelector('.close-button');
 
     loginLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      overlay.style.display = 'block';
-      loginModal.style.display = 'flex';
-      loginModal.style.opacity = 0;
-      setTimeout(() => {
-        loginModal.style.opacity = 1;
-        loginModal.style.transition = 'opacity 0.3s';
-      }, 10);
-    });
+  e.preventDefault();
+  overlay.style.display = 'block';
+  loginModal.style.display = 'flex';
+  overlay.style.opacity = 0;
+  loginModal.style.opacity = 0;
+  setTimeout(() => {
+    overlay.style.opacity = 1;
+    loginModal.style.opacity = 1;
+    overlay.style.transition = 'opacity 0.3s';
+    loginModal.style.transition = 'opacity 0.3s';
+  }, 10);
+});
 
     function closeModalFunc() {
       loginModal.style.opacity = 0;
