@@ -235,3 +235,11 @@ a:hover {
 .nav-menu {
   display: none; /* 初期状態では非表示 */
 }
+/* 横長の入力フィールド */
+.long-input {
+  width: 100%; /* 親要素の幅に合わせる */
+  max-width: 600px; /* 最大幅を指定 */
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
