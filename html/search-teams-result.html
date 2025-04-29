@@ -248,8 +248,13 @@ document.addEventListener('prefecture-loaded', function() {
       teamList.innerHTML = '';
 
       if (filteredTeams.length === 0) {
-        teamList.innerHTML = '<p>条件に一致するチームがありませんでした。</p>';
-      } else {
+  teamList.innerHTML = `
+    <div style="text-align: center; padding: 40px;">
+      <p style="font-size: 1.2em;">ごめんなさい！条件に合うチームが見つかりませんでした。</p>
+      <p style="font-size: 1em; color: gray;">検索条件を変えて、もう一度お試しください！</p>
+    </div>
+  `;
+} else {
         filteredTeams.forEach(teamData => {
           const card = document.createElement('a');
           card.className = 'team-card';
