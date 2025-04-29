@@ -1,69 +1,87 @@
-/* /diamondlink/css/teams-card.css */
+/* teams-card.css */
 
+/* カード全体 */
 .team-card {
   display: block;
-  background: white;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-bottom: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
   color: inherit;
+  margin-bottom: 24px;
+  transition: transform 0.2s;
 }
 
+/* ホバー時にふわっと浮かす */
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
+/* カードの中身 */
 .team-card-inner {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+}
+
+/* サムネイル部分 */
+.team-thumbnail {
+  flex: 0 0 150px;
+  height: 150px;
+  overflow: hidden;
+  background: #eee;
 }
 
 .team-thumbnail img {
-  width: 160px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
+/* 情報部分 */
 .team-info {
+  flex: 1;
   padding: 16px;
-  flex-grow: 1;
 }
 
+/* チーム名 */
 .team-name {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 1.3rem;
+  margin: 0 0 8px 0;
 }
 
+/* メタ情報（都道府県/年齢層/競技種別など） */
 .team-meta {
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #666;
   margin-bottom: 8px;
 }
 
+/* 練習日 */
 .team-practice {
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #333;
   margin-bottom: 8px;
 }
 
+/* SNSアイコンエリア */
 .team-sns {
   margin-bottom: 8px;
 }
 
-.team-sns a img {
-  width: 24px;
-  height: 24px;
+.team-sns a {
+  display: inline-block;
   margin-right: 8px;
 }
 
+.team-sns img {
+  width: 24px;
+  height: 24px;
+}
+
+/* チーム紹介文 */
 .team-description {
-  font-size: 14px;
-  color: #333;
+  font-size: 0.9rem;
+  color: #444;
   line-height: 1.5;
 }
