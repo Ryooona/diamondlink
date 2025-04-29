@@ -167,36 +167,48 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- 6. URLパラメータからフォームに反映（区分も連動させる版） -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const urlParams = new URLSearchParams(window.location.search);
+  const prefectureSelect = document.getElementById('search-prefecture');
 
-  const prefecture = urlParams.get('search-prefecture');
-  const competition = urlParams.get('search-competition');
-  const division = urlParams.get('search-division');
-  const team = urlParams.get('search-team');
-  const keyword = urlParams.get('search-keyword');
+  function applyURLParams() {
+    const urlParams = new URLSearchParams(window.location.search);
 
-  if (prefecture) {
-    document.getElementById('search-prefecture').value = prefecture;
-  }
-  if (competition) {
-    document.getElementById('search-competition').value = competition;
-    // ⭐ 競技種別のchangeイベントを強制発火
-    const event = new Event('change');
-    document.getElementById('search-competition').dispatchEvent(event);
+    const prefecture = urlParams.get('search-prefecture');
+    const competition = urlParams.get('search-competition');
+    const division = urlParams.get('search-division');
+    const team = urlParams.get('search-team');
+    const keyword = urlParams.get('search-keyword');
 
-    // ⭐ 少し待ってから区分もセット
-    setTimeout(() => {
-      if (division) {
-        document.getElementById('search-division').value = division;
-      }
-    }, 100);
+    if (prefecture) {
+      prefectureSelect.value = prefecture;
+    }
+    if (competition) {
+      document.getElementById('search-competition').value = competition;
+      const event = new Event('change');
+      document.getElementById('search-competition').dispatchEvent(event);
+
+      setTimeout(() => {
+        if (division) {
+          document.getElementById('search-division').value = division;
+        }
+      }, 100);
+    }
+    if (team) {
+      document.getElementById('search-team').value = team;
+    }
+    if (keyword) {
+      document.getElementById('search-keyword').value = keyword;
+    }
   }
-  if (team) {
-    document.getElementById('search-team').value = team;
-  }
-  if (keyword) {
-    document.getElementById('search-keyword').value = keyword;
-  }
+
+  // 都道府県リストが読み込まれるまで待つ
+  const observer = new MutationObserver(() => {
+    if (prefectureSelect.options.length > 1) {
+      applyURLParams();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(prefectureSelect, { childList: true });
 });
 </script>
 
