@@ -51,7 +51,7 @@ body::before {
 
     <h2>検索フォーム</h2>
 <div class="card fade-in-section">
-<form id="search-form" action="search-teams-result.html" method="GET">
+<form id="search-form">
   <div class="search-form">
 
     <!-- 都道府県 -->
@@ -274,5 +274,35 @@ document.addEventListener('DOMContentLoaded', function() {
       teamList.appendChild(card);
     });
   }
+});
+</script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchForm = document.getElementById('search-form');
+  
+  searchForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // ←ここで送信を止める！！
+    
+    const params = new URLSearchParams();
+
+    const prefecture = document.getElementById('search-prefecture').value;
+    const competition = document.getElementById('search-competition').value;
+    const division = document.getElementById('search-division').value;
+    const team = document.getElementById('search-team').value;
+    const keyword = document.getElementById('search-keyword').value;
+
+    if (prefecture) params.set('search-prefecture', prefecture);
+    if (competition) params.set('search-competition', competition);
+    if (division) params.set('search-division', division);
+    if (team) params.set('search-team', team);
+    if (keyword) params.set('search-keyword', keyword);
+
+    // 今のページのURLを書き換え（再読み込みなしで）
+    const newUrl = window.location.pathname + '?' + params.toString();
+    history.replaceState(null, '', newUrl);
+
+    // 検索を再実行
+    location.reload();
+  });
 });
 </script>
