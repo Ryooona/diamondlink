@@ -176,47 +176,51 @@ body::before {
   </fieldset>
 </div>
 
-      <!-- 活動地域（横並びに修正） -->
-  <div class="card fade-in-section">
-    <fieldset> 
-  <legend>活動地域</legend><br>
-     <div class="area-fields">
-  <div class="field-group">
-    <label for="prefecture">都道府県<span class="required">*</span></label>
-    <select name="prefecture" id="prefecture" required>
-      <option value="">選択してください</option>
-    </select>
-    <div class="error-message" id="error-prefecture"></div>
-  </div>
+     <!-- 活動地域（横並びに修正） -->
+<div class="card fade-in-section">
+  <fieldset> 
+    <legend>活動地域</legend><br>
 
-  <div class="field-group">
-    <label for="city-select">市区町村<span class="required">*</span></label>
-    <select name="city" id="city-select" required>
-      <option value="">選択してください</option>
-    </select>
-    <div class="error-message" id="error-city"></div>
-  </div>
-
-       <!-- ホームグラウンド -->
-<div class="field-group">
-  <label for="home-ground">ホームグラウンド<br>
-    <input type="text" name="home-ground" id="home-ground" class="long-input" placeholder="例：○○公園グラウンド">
-  </label>
-</div>
-<br>
-
-<!-- GoogleマップURL -->
-<div class="field-group">
-  <label for="google-map-url">ホームグラウンド（GoogleマップURL）<br>
-    <input type="url" name="google-map-url" id="google-map-url" class="long-input" placeholder="https://maps.google.com/〜">
-  </label>
-  <div class="error-message" id="error-google-map-url"></div>
-</div>
-       
-</div>
-<br><br>
-      </fieldset>
+    <!-- 1段目：都道府県＆市区町村 -->
+    <div class="area-fields">
+      <div class="field-group">
+        <label for="prefecture">都道府県<span class="required">*</span></label>
+        <select name="prefecture" id="prefecture" required>
+          <option value="">選択してください</option>
+        </select>
+        <div class="error-message" id="error-prefecture"></div>
       </div>
+
+      <div class="field-group">
+        <label for="city-select">市区町村<span class="required">*</span></label>
+        <select name="city" id="city-select" required>
+          <option value="">選択してください</option>
+        </select>
+        <div class="error-message" id="error-city"></div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- 2段目：ホームグラウンド＆GoogleマップURL -->
+    <div class="area-fields">
+      <div class="field-group">
+        <label for="home-ground">ホームグラウンド<br>
+          <input type="text" name="home-ground" id="home-ground" class="long-input" placeholder="例：○○公園グラウンド">
+        </label>
+      </div>
+
+      <div class="field-group">
+        <label for="google-map-url">ホームグラウンド（GoogleマップURL）<br>
+          <input type="url" name="google-map-url" id="google-map-url" class="long-input" placeholder="https://maps.google.com/〜">
+        </label>
+        <div class="error-message" id="error-google-map-url"></div>
+      </div>
+    </div>
+
+    <br><br>
+  </fieldset>
+</div>
 
       <!-- チーム構成（カード） -->
       <div class="card fade-in-section">
