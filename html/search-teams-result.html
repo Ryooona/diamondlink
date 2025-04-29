@@ -7,6 +7,7 @@
   <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
   <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
   <link rel="stylesheet" href="/diamondlink/css/header.css">
+
   <style>
     body::before {
       content: "";
@@ -31,55 +32,37 @@
       display: flex;
       flex-direction: column;
     }
+    .team-card {
+      display: block;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .team-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .team-card-inner {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .team-thumbnail img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
   </style>
 
-<style>
-.team-thumbnail img {
-  width: 200px; /* 横幅を200pxに固定 */
-  height: auto; /* 高さは自動調整（縦横比を守る） */
-  object-fit: cover; /* はみ出しを防ぐならこれも追加 */
-}
-</style>
-
-  <style>
-/* カードデザイン */
-.team-card {
-  display: block;
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 800px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* フェードイン時にこれがつく */
-.team-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 中のレイアウトをちょっと整える */
-.team-card-inner {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.team-thumbnail img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-</style>
-  
 </head>
 <body>
-
   <div id="header-placeholder"></div>
 
   <main class="container">
@@ -118,7 +101,7 @@
             </select><br><br>
 
             <label for="search-keyword">フリーワード検索：</label>
-            <input type="text" id="search-keyword" name="search-keyword" class="long-input" placeholder="例：東京　女子　ゴムソフトボール"><br><br>
+            <input type="text" id="search-keyword" name="search-keyword" class="long-input" placeholder="例：東京 女子 ゴムソフトボール"><br><br>
 
             <button type="submit" class="main-button">検索する</button>
             <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
@@ -149,7 +132,6 @@
   <script src="/diamondlink/js/login-modal.js"></script>
   <script src="/diamondlink/js/common.js"></script>
 
-  <!-- 競技種別に応じた区分をセット -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const sportType = document.getElementById('search-competition');
@@ -180,7 +162,6 @@
     });
   </script>
 
-  <!-- フォームにURLパラメータを反映（都道府県以外） -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -201,27 +182,29 @@
     });
   </script>
 
-  <!-- 都道府県だけoptionが読み込まれるのを待ってからセット -->
- <script>
-document.addEventListener('prefecture-loaded', function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const prefecture = urlParams.get('search-prefecture');
-  const target = document.getElementById('search-prefecture');
+  <script>
+    document.addEventListener('prefecture-loaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prefecture = urlParams.get('search-prefecture');
+      const target = document.getElementById('search-prefecture');
+      if (!prefecture || !target) return;
+      const options = Array.from(target.options);
+      const match = options.find(option => option.value === prefecture);
+      if (match) target.value = prefecture;
+    });
+  </script>
 
-  if (!prefecture || !target) return;
-
-  const options = Array.from(target.options);
-  const match = options.find(option => option.value === prefecture);
-
-  if (match) {
-    target.value = prefecture;
-  }
-});
-</script>
-
-  <!-- チーム一覧を絞り込んで表示 -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
       const urlParams = new URLSearchParams(window.location.search);
       const prefecture = urlParams.get('search-prefecture') || '';
       const competition = urlParams.get('search-competition') || '';
@@ -248,13 +231,13 @@ document.addEventListener('prefecture-loaded', function() {
       teamList.innerHTML = '';
 
       if (filteredTeams.length === 0) {
-  teamList.innerHTML = `
-    <div style="text-align: center; padding: 40px;">
-      <p style="font-size: 1.2em;">ごめんなさい！条件に合うチームが見つかりませんでした。</p>
-      <p style="font-size: 1em; color: gray;">検索条件を変えて、もう一度お試しください！</p>
-    </div>
-  `;
-} else {
+        teamList.innerHTML = `
+          <div style="text-align: center; padding: 40px;">
+            <p style="font-size: 1.2em;">ごめんなさい！条件に合うチームが見つかりませんでした。</p>
+            <p style="font-size: 1em; color: gray;">検索条件を変えて、もう一度お試しください！</p>
+          </div>
+        `;
+      } else {
         filteredTeams.forEach(teamData => {
           const card = document.createElement('a');
           card.className = 'team-card';
@@ -266,7 +249,7 @@ document.addEventListener('prefecture-loaded', function() {
               </div>
               <div class="team-info">
                 <h3 class="team-name">${teamData.name}</h3>
-                <p class="team-meta">${teamData.prefecture}／市区町村　${teamData.ageGroup || '一般'}／${teamData.teamType}　${teamData.division}・${teamData.competition}</p>
+                <p class="team-meta">${teamData.prefecture}／市区町村 ${teamData.ageGroup || '一般'}／${teamData.teamType} ${teamData.division}・${teamData.competition}</p>
                 <p class="team-practice">練習日：毎週 土曜日</p>
                 <div class="team-sns">
                   ${teamData.xUrl ? `<a href="${teamData.xUrl}" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>` : ''}
@@ -278,31 +261,11 @@ document.addEventListener('prefecture-loaded', function() {
             </div>
           `;
           teamList.appendChild(card);
+          observer.observe(card);
         });
       }
     });
   </script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // ページ内の全チームカードを取得
-  const cards = document.querySelectorAll('.team-card');
-
-  // 画面に入ったらフェードインさせる
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // 一度表示したら監視解除
-      }
-    });
-  }, {
-    threshold: 0.1 // 10%見えたら発火
-  });
-
-  cards.forEach(card => observer.observe(card));
-});
-</script>
 
 </body>
 </html>
