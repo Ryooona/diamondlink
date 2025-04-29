@@ -165,20 +165,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!prefecture || !target) return;
 
-  const options = Array.from(target.options);
-  const match = options.find(option => option.value === prefecture);
-
-  if (match) {
-    target.value = prefecture;
-    return; // ここで終わり！（監視も不要）
-  }
-
-  const observer = new MutationObserver(() => {
+  function trySetPrefecture() {
     const options = Array.from(target.options);
     const match = options.find(option => option.value === prefecture);
 
     if (match) {
       target.value = prefecture;
+      return true; // セット成功
+    }
+    return false; // まだoptionがない
+  }
+
+  // まず即座に試みる
+  if (trySetPrefecture()) return;
+
+  // まだ無かったら監視する
+  const observer = new MutationObserver(() => {
+    if (trySetPrefecture()) {
       observer.disconnect();
     }
   });
