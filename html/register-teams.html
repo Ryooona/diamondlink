@@ -310,13 +310,13 @@ legend {
   </fieldset>
 </div>
 
-      <!-- チーム構成（カード） -->
+      <!-- チーム区分（カード） -->
       <div class="card fade-in-section">
       <fieldset>
-        <legend>チーム構成</legend>
+        <legend>チーム区分</legend>
         <div class="competition-fields">
   <div class="field-group">
-    <label>競技種別<span class="required">*</span><br>
+    <label>競技<span class="required">*</span><br>
       <select name="sport-type" id="sport-type" required>
         <option value="">選択してください</option>
         <option value="baseball">野球</option>
@@ -326,7 +326,7 @@ legend {
   </div>
 
   <div class="field-group">
-    <label>区分<span class="required">*</span><br>
+    <label>ボール<span class="required">*</span><br>
       <select name="division" id="division" required disabled>
         <option value="">選択してください</option>
       </select>
@@ -336,7 +336,7 @@ legend {
 
         <div class="gender-age-fields">
   <div class="field-group">
-    <label>性別<span class="required">*</span><br>
+    <label>構成<span class="required">*</span><br>
       <select name="gender" required>
         <option value="">選択してください</option>
         <option value="male">男子</option>
@@ -348,13 +348,14 @@ legend {
   </div>
 
   <div class="field-group">
-    <label>部門<span class="required">*</span><br>
+    <label>年代<span class="required">*</span><br>
       <select name="age-group" required>
         <option value="">選択してください</option>
         <option value="adult">一般</option>
+        <option value="university">大学生</option>
         <option value="high-school">高校生</option>
-        <option value="junior high-school">中学生</option>
-        <option value="elementary school">小学生</option>
+        <option value="junior-high-school">中学生</option>
+        <option value="elementary-school">小学生</option>
         <option value="other">その他</option>
       </select>
       <div class="error-message" id="error-age-group"></div>
