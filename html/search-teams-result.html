@@ -120,16 +120,21 @@ body::before {
   <!-- サインアップフォームをあとで入れる -->
 </div>
 
-  <!-- JavaScript -->
-  <script src="/diamondlink/js/header-loader.js"></script>
-  <script src="/diamondlink/js/prefecture-only-loader.js"></script> <!-- ⭐ 都道府県だけロード用 -->
-  <script src="/diamondlink/js/dummy-team-list.js"></script> <!-- チーム表示用（次に作ります） -->
+  <!-- 1. ヘッダー＆フッター読込 -->
+<script src="/diamondlink/js/header-loader.js"></script>
 
-  <!-- モーダル管理-->
+<!-- 2. 都道府県だけロード -->
+<script src="/diamondlink/js/prefecture-only-loader.js"></script>
+
+<!-- 3. ダミーチームリスト -->
+<script src="/diamondlink/js/dummy-team-list.js"></script>
+
+<!-- 4. モーダル管理 -->
 <script src="/diamondlink/js/login-modal.js"></script>
 <script src="/diamondlink/js/common.js"></script>
 
-  <script>
+<!-- 5. 競技種別と区分の連動 -->
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   const sportType = document.getElementById('search-competition');
   const division = document.getElementById('search-division');
@@ -159,7 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-  <script>
+<!-- 6. URLパラメータからフォームに反映（区分も連動させる版） -->
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -174,9 +180,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   if (competition) {
     document.getElementById('search-competition').value = competition;
-  }
-  if (division) {
-    document.getElementById('search-division').value = division;
+    // ⭐ 競技種別のchangeイベントを強制発火
+    const event = new Event('change');
+    document.getElementById('search-competition').dispatchEvent(event);
+
+    // ⭐ 少し待ってから区分もセット
+    setTimeout(() => {
+      if (division) {
+        document.getElementById('search-division').value = division;
+      }
+    }, 100);
   }
   if (team) {
     document.getElementById('search-team').value = team;
@@ -187,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-  <script>
+<!-- 7. ダミーチーム検索＆表示 -->
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -228,6 +242,3 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-  
-</body>
-</html>
