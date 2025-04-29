@@ -33,6 +33,7 @@ for (let i = 1; i <= 100; i++) {
     competition: competition,
     division: division,
     teamType: teamType,
-    description: `${prefecture}で活動する${competition}チーム（${teamType}）です！`
+    description: `${prefecture}で活動する${competition}チーム（${teamType}）です！`,
+    thumbnail: '/diamondlink/images/default-thumbnail.png' // ⭐ここを追加！
   });
 }
