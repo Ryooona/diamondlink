@@ -186,6 +186,48 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const prefecture = urlParams.get('search-prefecture') || '';
+  const competition = urlParams.get('search-competition') || '';
+  const division = urlParams.get('search-division') || '';
+  const team = urlParams.get('search-team') || '';
+  const keyword = urlParams.get('search-keyword') || '';
+
+  const filteredTeams = dummyTeams.filter(teamData => {
+    if (prefecture && teamData.prefecture !== prefecture) return false;
+    if (competition && teamData.competition !== competition) return false;
+    if (division && teamData.division !== division) return false;
+    if (team && teamData.teamType !== team) return false;
+    if (keyword) {
+      const lowerKeyword = keyword.toLowerCase();
+      if (
+        !teamData.name.toLowerCase().includes(lowerKeyword) &&
+        !teamData.description.toLowerCase().includes(lowerKeyword)
+      ) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  const teamList = document.getElementById('team-list');
+  teamList.innerHTML = '';
+
+  if (filteredTeams.length === 0) {
+    teamList.innerHTML = '<p>条件に一致するチームがありませんでした。</p>';
+  } else {
+    filteredTeams.forEach(teamData => {
+      const li = document.createElement('li');
+      li.textContent = `${teamData.name}（${teamData.prefecture}・${teamData.competition}）`;
+      teamList.appendChild(li);
+    });
+  }
+});
+</script>
   
 </body>
 </html>
