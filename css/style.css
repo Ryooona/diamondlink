@@ -484,7 +484,10 @@ html {
   white-space: nowrap;
 }
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
+/* =======================================
+   ◆ その他の共通スタイルが上にあるとして…
+======================================= */
+.required {
+  color: red;
+  margin-left: 5px;
 }
