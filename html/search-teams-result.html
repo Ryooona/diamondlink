@@ -34,10 +34,13 @@
   </style>
 </head>
 <body>
+
   <div id="header-placeholder"></div>
+
   <main class="container">
     <div class="fade-in-section">
       <h1>チーム検索結果</h1>
+
       <h2>検索フォーム</h2>
       <div class="card fade-in-section">
         <form id="search-form" action="search-teams-result.html" method="GET">
@@ -46,6 +49,7 @@
             <select id="search-prefecture" name="search-prefecture" required>
               <option value="">選択してください</option>
             </select><br><br>
+
             <div class="flex-fields">
               <label for="search-competition">競技種別：</label>
               <select id="search-competition" name="search-competition">
@@ -53,11 +57,13 @@
                 <option value="野球">野球</option>
                 <option value="ソフトボール">ソフトボール</option>
               </select>
+
               <label for="search-division">区分：</label>
               <select id="search-division" name="search-division" disabled>
                 <option value="">選択してください</option>
               </select>
             </div><br>
+
             <label for="search-team">チーム構成：</label>
             <select id="search-team" name="search-team">
               <option value="">指定なし</option>
@@ -65,143 +71,170 @@
               <option value="女子">女子</option>
               <option value="混合">混合</option>
             </select><br><br>
+
             <label for="search-keyword">フリーワード検索：</label>
             <input type="text" id="search-keyword" name="search-keyword" class="long-input" placeholder="例：東京　女子　ゴムソフトボール"><br><br>
+
             <button type="submit" class="main-button">検索する</button>
             <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
           </div>
         </form>
       </div>
+
       <hr>
+
       <h2>チーム一覧</h2>
       <div id="team-list"></div>
+
       <div id="pagination" class="pagination"></div>
+
       <hr>
       <a href="index.html">← トップに戻る</a>
     </div>
   </main>
+
   <div id="footer-placeholder"></div>
   <div id="login-modal" class="modal"></div>
   <div id="signup-modal" class="modal"></div>
 
+  <!-- JavaScript -->
   <script src="/diamondlink/js/header-loader.js"></script>
   <script src="/diamondlink/js/prefecture-only-loader.js"></script>
   <script src="/diamondlink/js/dummy-team-list.js"></script>
   <script src="/diamondlink/js/login-modal.js"></script>
   <script src="/diamondlink/js/common.js"></script>
 
+  <!-- 競技種別に応じた区分をセット -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sportType = document.getElementById('search-competition');
-    const division = document.getElementById('search-division');
+    document.addEventListener('DOMContentLoaded', function() {
+      const sportType = document.getElementById('search-competition');
+      const division = document.getElementById('search-division');
 
-    sportType.addEventListener('change', function() {
-      division.innerHTML = '<option value="">選択してください</option>';
-      if (sportType.value === "野球") {
-        division.disabled = false;
-        ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
-          const option = document.createElement('option');
-          option.value = opt;
-          option.textContent = opt;
-          division.appendChild(option);
-        });
-      } else if (sportType.value === "ソフトボール") {
-        division.disabled = false;
-        ["指定なし", "ゴム", "革"].forEach(opt => {
-          const option = document.createElement('option');
-          option.value = opt;
-          option.textContent = opt;
-          division.appendChild(option);
-        });
-      } else {
-        division.disabled = true;
-      }
-    });
-  });
-  </script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const prefecture = urlParams.get('search-prefecture');
-    const competition = urlParams.get('search-competition');
-    const division = urlParams.get('search-division');
-    const team = urlParams.get('search-team');
-    const keyword = urlParams.get('search-keyword');
-
-    if (prefecture) document.getElementById('search-prefecture').value = prefecture;
-    if (competition) {
-      const select = document.getElementById('search-competition');
-      select.value = competition;
-      const event = new Event('change');
-      select.dispatchEvent(event);
-    }
-    if (division) document.getElementById('search-division').value = division;
-    if (team) document.getElementById('search-team').value = team;
-    if (keyword) document.getElementById('search-keyword').value = keyword;
-  });
-  </script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const prefecture = urlParams.get('search-prefecture') || '';
-    const competition = urlParams.get('search-competition') || '';
-    const division = urlParams.get('search-division') || '';
-    const team = urlParams.get('search-team') || '';
-    const keyword = urlParams.get('search-keyword') || '';
-
-    const filteredTeams = dummyTeams.filter(teamData => {
-      if (prefecture && teamData.prefecture !== prefecture) return false;
-      if (competition && teamData.competition !== competition) return false;
-      if (division && teamData.division !== division) return false;
-      if (team && teamData.teamType !== team) return false;
-      if (keyword) {
-        const lowerKeyword = keyword.toLowerCase();
-        if (
-          !teamData.name.toLowerCase().includes(lowerKeyword) &&
-          !teamData.description.toLowerCase().includes(lowerKeyword)
-        ) {
-          return false;
+      sportType.addEventListener('change', function() {
+        division.innerHTML = '<option value="">選択してください</option>';
+        if (sportType.value === "野球") {
+          division.disabled = false;
+          ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            division.appendChild(option);
+          });
+        } else if (sportType.value === "ソフトボール") {
+          division.disabled = false;
+          ["指定なし", "ゴム", "革"].forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt;
+            option.textContent = opt;
+            division.appendChild(option);
+          });
+        } else {
+          division.disabled = true;
         }
-      }
-      return true;
-    });
-
-    const teamList = document.getElementById('team-list');
-    teamList.innerHTML = '';
-
-    if (filteredTeams.length === 0) {
-      teamList.innerHTML = '<p>条件に一致するチームがありませんでした。</p>';
-    } else {
-      filteredTeams.forEach(teamData => {
-        const card = document.createElement('a');
-        card.className = 'team-card';
-        card.href = `/diamondlink/teams/${teamData.id}.html`;
-
-        card.innerHTML = `
-          <div class="team-card-inner">
-            <div class="team-thumbnail">
-              <img src="${teamData.thumbnail}" alt="サムネイル">
-            </div>
-            <div class="team-info">
-              <h3 class="team-name">${teamData.name}</h3>
-              <p class="team-meta">${teamData.prefecture}／市区町村　${teamData.ageGroup || '一般'}／${teamData.teamType}　${teamData.division}・${teamData.competition}</p>
-              <p class="team-practice">練習日：毎週 土曜日</p>
-              <div class="team-sns">
-                ${teamData.xUrl ? `<a href="${teamData.xUrl}" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>` : ''}
-                ${teamData.instagramUrl ? `<a href="${teamData.instagramUrl}" target="_blank"><img src="/diamondlink/images/icon-instagram.svg" alt="Instagram"></a>` : ''}
-                ${teamData.youtubeUrl ? `<a href="${teamData.youtubeUrl}" target="_blank"><img src="/diamondlink/images/icon-youtube.svg" alt="YouTube"></a>` : ''}
-              </div>
-              <p class="team-description">${teamData.description}</p>
-            </div>
-          </div>
-        `;
-
-        teamList.appendChild(card);
       });
-    }
-  });
+    });
   </script>
+
+  <!-- フォームにURLパラメータを反映（都道府県以外） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const competition = urlParams.get('search-competition');
+      const division = urlParams.get('search-division');
+      const team = urlParams.get('search-team');
+      const keyword = urlParams.get('search-keyword');
+
+      if (competition) {
+        const select = document.getElementById('search-competition');
+        select.value = competition;
+        const event = new Event('change');
+        select.dispatchEvent(event);
+      }
+      if (division) document.getElementById('search-division').value = division;
+      if (team) document.getElementById('search-team').value = team;
+      if (keyword) document.getElementById('search-keyword').value = keyword;
+    });
+  </script>
+
+  <!-- 都道府県だけoptionが読み込まれるのを待ってからセット -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prefecture = urlParams.get('search-prefecture');
+      const target = document.getElementById('search-prefecture');
+
+      if (!prefecture || !target) return;
+
+      const observer = new MutationObserver(() => {
+        const found = [...target.options].some(opt => opt.value === prefecture);
+        if (found) {
+          target.value = prefecture;
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(target, { childList: true });
+    });
+  </script>
+
+  <!-- チーム一覧を絞り込んで表示 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const prefecture = urlParams.get('search-prefecture') || '';
+      const competition = urlParams.get('search-competition') || '';
+      const division = urlParams.get('search-division') || '';
+      const team = urlParams.get('search-team') || '';
+      const keyword = urlParams.get('search-keyword') || '';
+
+      const filteredTeams = dummyTeams.filter(teamData => {
+        if (prefecture && teamData.prefecture !== prefecture) return false;
+        if (competition && teamData.competition !== competition) return false;
+        if (division && teamData.division !== division) return false;
+        if (team && teamData.teamType !== team) return false;
+        if (keyword) {
+          const lowerKeyword = keyword.toLowerCase();
+          if (!teamData.name.toLowerCase().includes(lowerKeyword) &&
+              !teamData.description.toLowerCase().includes(lowerKeyword)) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      const teamList = document.getElementById('team-list');
+      teamList.innerHTML = '';
+
+      if (filteredTeams.length === 0) {
+        teamList.innerHTML = '<p>条件に一致するチームがありませんでした。</p>';
+      } else {
+        filteredTeams.forEach(teamData => {
+          const card = document.createElement('a');
+          card.className = 'team-card';
+          card.href = `/diamondlink/teams/${teamData.id}.html`;
+          card.innerHTML = `
+            <div class="team-card-inner">
+              <div class="team-thumbnail">
+                <img src="${teamData.thumbnail}" alt="サムネイル">
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">${teamData.name}</h3>
+                <p class="team-meta">${teamData.prefecture}／市区町村　${teamData.ageGroup || '一般'}／${teamData.teamType}　${teamData.division}・${teamData.competition}</p>
+                <p class="team-practice">練習日：毎週 土曜日</p>
+                <div class="team-sns">
+                  ${teamData.xUrl ? `<a href="${teamData.xUrl}" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>` : ''}
+                  ${teamData.instagramUrl ? `<a href="${teamData.instagramUrl}" target="_blank"><img src="/diamondlink/images/icon-instagram.svg" alt="Instagram"></a>` : ''}
+                  ${teamData.youtubeUrl ? `<a href="${teamData.youtubeUrl}" target="_blank"><img src="/diamondlink/images/icon-youtube.svg" alt="YouTube"></a>` : ''}
+                </div>
+                <p class="team-description">${teamData.description}</p>
+              </div>
+            </div>
+          `;
+          teamList.appendChild(card);
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
