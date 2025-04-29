@@ -198,6 +198,34 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
   <script src="/diamondlink/js/search-teams-result.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchForm = document.getElementById('search-form');
+
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // 送信止める
+
+      const params = new URLSearchParams();
+      const prefecture = document.getElementById('search-prefecture').value;
+      const competition = document.getElementById('search-competition').value;
+      const division = document.getElementById('search-division').value;
+      const team = document.getElementById('search-team').value;
+      const keyword = document.getElementById('search-keyword').value;
+
+      if (prefecture) params.set('search-prefecture', prefecture);
+      if (competition) params.set('search-competition', competition);
+      if (division) params.set('search-division', division);
+      if (team) params.set('search-team', team);
+      if (keyword) params.set('search-keyword', keyword);
+
+      const query = params.toString();
+      location.href = `search-teams-result.html?${query}`;
+    });
+  }
+});
+</script>
   
 </body>
 </html>
