@@ -1,0 +1,69 @@
+/* /diamondlink/css/teams-card.css */
+
+.team-card {
+  display: block;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.team-card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.team-thumbnail img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.team-info {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.team-meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.team-practice {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.team-sns {
+  margin-bottom: 8px;
+}
+
+.team-sns a img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.team-description {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
