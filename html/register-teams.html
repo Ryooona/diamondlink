@@ -36,13 +36,30 @@ body::before {
   gap: 10px; /* 入力フィールドの間にスペースを追加 */
 }
 
+.name-fields label {
+  display: inline-block; /* ラベルを横並びにする */
+  width: auto; /* ラベルの幅を調整 */
+}
+
+.name-fields .field-group {
+  display: flex;
+  flex-direction: row; /* 横並びに変更 */
+  align-items: center; /* 縦位置も揃える */
+  gap: 6px;
+}
+
+.name-fields .field-group label {
+  width: 30px; /* 「姓」「名」の幅を統一 */
+  margin-bottom: 0; /* 下の余白をなくす */
+}
+    
 .field-group {
   display: flex;
   flex-direction: column; /* ラベルと入力欄を縦に並べる */
 }
 
 .field-group input {
-  width: 200px; /* 入力フィールドの幅を調整 */
+  width: 250px; /* 入力フィールドの幅を調整 */
 }
     
 .area-fields {
@@ -92,6 +109,7 @@ body::before {
   flex-direction: column;
 }
 </style>
+
   
 </head>
 <body>
@@ -121,14 +139,14 @@ body::before {
   <label>代表者氏名：</label><br>
   <div class="name-fields">
   <div class="field-group">
-    <label for="last-name">姓<span class="required">*</span></label>
-    <input type="text" name="last-name" id="last-name" required>
-  </div>
+  <label for="last-name">姓<span class="required">*</span></label>
+  <input type="text" name="last-name" id="last-name" required>
+</div>
 
-  <div class="field-group">
-    <label for="first-name">名<span class="required">*</span></label>
-    <input type="text" name="first-name" id="first-name" required>
-  </div>
+<div class="field-group">
+  <label for="first-name">名<span class="required">*</span></label>
+  <input type="text" name="first-name" id="first-name" required>
+</div>
 </div>
 </div>
 <br><br>
