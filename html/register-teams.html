@@ -31,18 +31,18 @@ body::before {
 }
 
 .name-fields {
-  display: flex;
-  align-items: center; /* 中央に揃える */
-  gap: 10px; /* 項目同士の間隔 */
-}
-
-.name-fields label {
-  margin-bottom: 0; /* 余計な改行を消す */
+  display: flex; /* フレックスボックスを使って横並びにする */
+  align-items: center; /* アイテムを縦方向で中央揃え */
+  gap: 10px; /* 入力フィールドの間にスペースを追加 */
 }
 
 .field-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* ラベルと入力欄を縦に並べる */
+}
+
+.field-group input {
+  width: 200px; /* 入力フィールドの幅を調整 */
 }
     
 .area-fields {
