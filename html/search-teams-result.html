@@ -278,5 +278,26 @@ document.addEventListener('prefecture-loaded', function() {
     });
   </script>
 
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ページ内の全チームカードを取得
+  const cards = document.querySelectorAll('.team-card');
+
+  // 画面に入ったらフェードインさせる
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target); // 一度表示したら監視解除
+      }
+    });
+  }, {
+    threshold: 0.1 // 10%見えたら発火
+  });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
+
 </body>
 </html>
