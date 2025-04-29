@@ -157,36 +157,20 @@
   </script>
 
   <!-- 都道府県だけoptionが読み込まれるのを待ってからセット -->
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
+ <script>
+document.addEventListener('prefecture-loaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const prefecture = urlParams.get('search-prefecture');
   const target = document.getElementById('search-prefecture');
 
   if (!prefecture || !target) return;
 
-  function trySetPrefecture() {
-    const options = Array.from(target.options);
-    const match = options.find(option => option.value === prefecture);
+  const options = Array.from(target.options);
+  const match = options.find(option => option.value === prefecture);
 
-    if (match) {
-      target.value = prefecture;
-      return true; // セット成功
-    }
-    return false; // まだoptionがない
+  if (match) {
+    target.value = prefecture;
   }
-
-  // まず即座に試みる
-  if (trySetPrefecture()) return;
-
-  // まだ無かったら監視する
-  const observer = new MutationObserver(() => {
-    if (trySetPrefecture()) {
-      observer.disconnect();
-    }
-  });
-
-  observer.observe(target, { childList: true, subtree: true });
 });
 </script>
 
