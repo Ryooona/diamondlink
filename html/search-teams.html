@@ -158,6 +158,44 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const prefecture = urlParams.get('search-prefecture');
+  const competition = urlParams.get('search-competition');
+  const division = urlParams.get('search-division');
+  const team = urlParams.get('search-team');
+  const keyword = urlParams.get('search-keyword');
+
+  if (prefecture) {
+    document.getElementById('search-prefecture').value = prefecture;
+  }
+
+  if (competition) {
+    const competitionSelect = document.getElementById('search-competition');
+    competitionSelect.value = competition;
+
+    const event = new Event('change');
+    competitionSelect.dispatchEvent(event);
+
+    // 競技種別の変更イベントで区分が再生成されたあとに division をセットする
+    setTimeout(() => {
+      if (division) {
+        document.getElementById('search-division').value = division;
+      }
+    }, 100);
+  }
+
+  if (team) {
+    document.getElementById('search-team').value = team;
+  }
+
+  if (keyword) {
+    document.getElementById('search-keyword').value = keyword;
+  }
+});
+</script>
   
 </body>
 </html>
