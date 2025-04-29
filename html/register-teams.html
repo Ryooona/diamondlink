@@ -81,6 +81,18 @@ body::before {
   flex-direction: column;
 }
 </style>
+
+  <style>
+.gender-age-fields {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+.gender-age-fields .field-group {
+  display: flex;
+  flex-direction: column;
+}
+</style>
   
 </head>
 <body>
@@ -195,27 +207,33 @@ body::before {
   </div>
 </div>
 
-        <label>性別<span class="required">*</span><br>
-          <select name="gender" required>
-            <option value="">選択してください</option>
-            <option value="male">男子</option>
-            <option value="female">女子</option>
-            <option value="mixed">混合</option>
-          </select>
-          <div class="error-message" id="error-gender"></div>
-        </label><br><br>
+        <div class="gender-age-fields">
+  <div class="field-group">
+    <label>性別<span class="required">*</span><br>
+      <select name="gender" required>
+        <option value="">選択してください</option>
+        <option value="male">男子</option>
+        <option value="female">女子</option>
+        <option value="mixed">混合</option>
+      </select>
+      <div class="error-message" id="error-gender"></div>
+    </label>
+  </div>
 
-        <label>部門<span class="required">*</span><br>
-          <select name="age-group" required>
-            <option value="">選択してください</option>
-            <option value="adult">一般</option>
-            <option value="high-school">高校生</option>
-            <option value="junior high-school">中学生</option>
-            <option value="elementary school">小学生</option>
-            <option value="other">その他</option>
-          </select>
-          <div class="error-message" id="error-age-group"></div>
-        </label><br><br>
+  <div class="field-group">
+    <label>部門<span class="required">*</span><br>
+      <select name="age-group" required>
+        <option value="">選択してください</option>
+        <option value="adult">一般</option>
+        <option value="high-school">高校生</option>
+        <option value="junior high-school">中学生</option>
+        <option value="elementary school">小学生</option>
+        <option value="other">その他</option>
+      </select>
+      <div class="error-message" id="error-age-group"></div>
+    </label>
+  </div>
+</div>
       </fieldset>
         </div>
 
