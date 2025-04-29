@@ -1,4 +1,21 @@
-<!-- header-mobile.html -->
+<!-- ▼ここからヘッダー用スタイル（先に書いておく） -->
+<style>
+  .nav-menu a,
+  .mobile-nav a {
+    color: white;
+  }
+
+  .nav-menu a:hover,
+  .mobile-nav a:hover {
+    text-decoration: underline; /* ホバー時の装飾（任意） */
+  }
+
+  #close-menu {
+    color: white;
+  }
+</style>
+
+<!-- ▼ここからヘッダー -->
 <header class="site-header" style="background: #434343; color: white;">
   <div class="header-container">
     <!-- ロゴ -->
@@ -11,27 +28,9 @@
     <!-- ハンバーガーメニュー -->
     <div class="hamburger" id="hamburger">☰</div>
   </div>
-
-  <!-- ヘッダーorフッターの文字を白く -->
-  <style>
-  .nav-menu a,
-  .mobile-nav a {
-    color: white;
-  }
-
-  .nav-menu a:hover,
-  .mobile-nav a:hover {
-    text-decoration: underline; /* 任意。ホバー時の装飾 */
-  }
-
-  #close-menu {
-    color: white;
-  }
-</style>
-  
 </header>
 
-<!-- モバイルメニュー本体 -->
+<!-- ▼モバイルメニュー本体 -->
 <div id="mobile-menu" class="nav-menu">
   <nav class="mobile-nav">
     <a href="/diamondlink/html/signup.html">アカウント作成</a>
@@ -42,5 +41,5 @@
   </nav>
 </div>
 
-<!-- オーバーレイ -->
+<!-- ▼オーバーレイ -->
 <div id="menu-overlay" class="menu-overlay"></div>
