@@ -196,6 +196,23 @@ body::before {
     </select>
     <div class="error-message" id="error-city"></div>
   </div>
+
+       <!-- ホームグラウンド -->
+<div class="field-group">
+  <label for="home-ground">ホームグラウンド<br>
+    <input type="text" name="home-ground" id="home-ground" class="long-input" placeholder="例：○○公園グラウンド">
+  </label>
+</div>
+<br>
+
+<!-- GoogleマップURL -->
+<div class="field-group">
+  <label for="google-map-url">ホームグラウンド（GoogleマップURL）<br>
+    <input type="url" name="google-map-url" id="google-map-url" class="long-input" placeholder="https://maps.google.com/〜">
+  </label>
+  <div class="error-message" id="error-google-map-url"></div>
+</div>
+       
 </div>
 <br><br>
       </fieldset>
@@ -667,6 +684,26 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script src="/diamondlink/js/common.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('team-registration-form');
+  form.addEventListener('submit', function(event) {
+    const googleMapUrlInput = document.getElementById('google-map-url');
+    const googleMapUrl = googleMapUrlInput.value.trim();
+    const errorGoogleMapUrl = document.getElementById('error-google-map-url');
+
+    // 初期化
+    errorGoogleMapUrl.textContent = "";
+
+    if (googleMapUrl && !googleMapUrl.startsWith('https://maps.google.com/') && !googleMapUrl.startsWith('https://www.google.com/maps')) {
+      event.preventDefault();
+      errorGoogleMapUrl.textContent = "GoogleマップのURLを入力してください。";
+      errorGoogleMapUrl.style.color = "red";
+    }
+  });
+});
+</script>
   
 </body>
 </html>
