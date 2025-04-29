@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
           });
           prefectureSelect.appendChild(optgroup);
         }
+        const event = new Event('prefecture-loaded');
+        document.dispatchEvent(event);
       })
       .catch(error => {
         console.error('都道府県リストの読み込みに失敗しました:', error);
