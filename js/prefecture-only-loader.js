@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
           prefectureSelect.appendChild(optgroup);
         }
+        // ✅ ここで prefecture-loaded イベントを飛ばす！
         const event = new Event('prefecture-loaded');
         document.dispatchEvent(event);
       })
