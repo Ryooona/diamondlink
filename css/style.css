@@ -398,6 +398,25 @@ html {
   transition: opacity 0.3s ease;
 }
 
+/* =======================================
+   ◆ ボタンのスタイル
+======================================= */
+.submit-button {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
 /* オーバーレイが表示されるとき */
 #modal-overlay.show {
   opacity: 1;
