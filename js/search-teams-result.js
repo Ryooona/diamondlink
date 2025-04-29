@@ -1,4 +1,4 @@
-// search-teams-result.js
+// /diamondlink/js/search-teams-result.js
 
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -35,25 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     filteredTeams.forEach(team => {
       const a = document.createElement('a');
-      a.href = `/diamondlink/teams/sample-team.html`; // ←チームページへのリンク（ダミー）
+      a.href = `/diamondlink/teams/${team.id}.html`; // ← チームIDでリンク！
       a.className = 'team-card';
       a.innerHTML = `
         <div class="team-card-inner">
           <div class="team-thumbnail">
-            <img src="/diamondlink/images/sample-thumbnail.png" alt="サムネイル">
+            <img src="${team.thumbnail}" alt="サムネイル">
           </div>
           <div class="team-info">
             <h3 class="team-name">${team.name}</h3>
             <p class="team-meta">
-              ${team.prefecture}　${team.competition}・${team.division}　${team.teamType}
+              ${team.prefecture} ${team.competition}・${team.division} ${team.teamType}
             </p>
             <p class="team-practice">
-              練習日：毎週 火/土/日曜日
+              練習日：毎週 土曜日
             </p>
             <div class="team-sns">
-              <a href="#" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>
-              <a href="#" target="_blank"><img src="/diamondlink/images/icon-instagram.svg" alt="Instagram"></a>
-              <a href="#" target="_blank"><img src="/diamondlink/images/icon-youtube.svg" alt="YouTube"></a>
+              ${team.xUrl ? `<a href="${team.xUrl}" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>` : ''}
+              ${team.instagramUrl ? `<a href="${team.instagramUrl}" target="_blank"><img src="/diamondlink/images/icon-instagram.svg" alt="Instagram"></a>` : ''}
+              ${team.youtubeUrl ? `<a href="${team.youtubeUrl}" target="_blank"><img src="/diamondlink/images/icon-youtube.svg" alt="YouTube"></a>` : ''}
             </div>
             <p class="team-description">
               ${team.description}
