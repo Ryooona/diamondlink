@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiamondLink | チーム検索結果</title>
+  <link rel="icon" href="/diamondlink/images/fabicon_square.png" type="image/png">
+  <link rel="stylesheet" href="/diamondlink/css/style.css?v=2">
+  <link rel="stylesheet" href="/diamondlink/css/header.css">
 
+ <style>
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/diamondlink/images/background-1.png'); /* ←背景画像リンク*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+</style>
+
+  <style>
+.flex-fields {
+  display: flex;
+  gap: 20px; /* 並びの間のすき間（お好みで調整可） */
+  align-items: flex-end; /* ラベルの下ラインを揃える */
+}
+
+.flex-fields label {
+  display: flex;
+  flex-direction: column; /* ラベルと入力欄は縦並び */
+}
+</style>
+
+</head>
+<body>
+
+  <!-- 共通ヘッダー挿入 -->
+  <div id="header-placeholder"></div>
+
+  <!-- メインコンテンツ -->
+  <main class="container">
+    <div class="fade-in-section">
+    <h1>チーム検索結果</h1>
+
+    <h2>検索フォーム</h2>
+<div class="card fade-in-section">
+<form id="search-form" action="search-teams-result.html" method="GET">
+  <div class="search-form">
+
+    <!-- 都道府県 -->
+    <label for="search-prefecture">都道府県：</label>
+    <select id="search-prefecture" name="search-prefecture" required>
+      <option value="">選択してください</option>
+    </select><br><br>
+
+    <!-- 競技種別と区分 -->
+<div class="flex-fields">
+  <label for="search-competition">競技種別：</label>
+  <select id="search-competition" name="search-competition">
+    <option value="">指定なし</option>
+    <option value="野球">野球</option>
+    <option value="ソフトボール">ソフトボール</option>
+  </select>
+
+  <label for="search-division">区分：</label>
+  <select id="search-division" name="search-division" disabled>
+    <option value="">選択してください</option>
+  </select>
+</div>
+<br>
+
+    <!-- チーム構成 -->
+    <label for="search-team">チーム構成：</label>
+    <select id="search-team" name="search-team">
+      <option value="">指定なし</option>
+      <option value="男子">男子</option>
+      <option value="女子">女子</option>
+      <option value="混合">混合</option>
+    </select><br><br>
+
+    <!-- フリーワード -->
+    <label for="search-keyword">フリーワード検索：</label>
+    <input type="text" id="search-keyword" name="search-keyword" class="long-input" placeholder="例：東京　女子　ゴムソフトボール"><br><br>
+
+    <button type="submit" class="main-button">検索する</button>
+    <p style="font-size: small; color: gray;">※現在は検索機能は未対応です</p>
+  </div>
+</form>
+</div>
+
+    <hr>
+
+    <h2>チーム一覧</h2>
+    <ul id="team-list"></ul>
+
+    <div id="pagination" class="pagination"></div>
+
+    <hr>
+    <a href="index.html">← トップに戻る</a>
+   </div>   
+  </main>
+
+  <!-- 共通フッター挿入 -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ログインモーダル -->
+<div id="login-modal" class="modal">
+  <!-- ログインフォームをあとで入れる -->
+</div>
+
+<!-- サインアップモーダル -->
+<div id="signup-modal" class="modal">
+  <!-- サインアップフォームをあとで入れる -->
+</div>
+
+  <!-- JavaScript -->
+  <script src="/diamondlink/js/header-loader.js"></script>
+  <script src="/diamondlink/js/prefecture-only-loader.js"></script> <!-- ⭐ 都道府県だけロード用 -->
+  <script src="/diamondlink/js/team-list.js"></script> <!-- チーム表示用（次に作ります） -->
+
+  <!-- モーダル管理-->
+<script src="/diamondlink/js/login-modal.js"></script>
+<script src="/diamondlink/js/common.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sportType = document.getElementById('search-competition');
+  const division = document.getElementById('search-division');
+
+  sportType.addEventListener('change', function() {
+    division.innerHTML = '<option value="">選択してください</option>';
+    if (sportType.value === "野球") {
+      division.disabled = false;
+      ["指定なし", "軟式", "準硬式", "硬式"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else if (sportType.value === "ソフトボール") {
+      division.disabled = false;
+      ["指定なし", "ゴム", "革"].forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        division.appendChild(option);
+      });
+    } else {
+      division.disabled = true;
+    }
+  });
+});
+</script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const prefecture = urlParams.get('search-prefecture');
+  const competition = urlParams.get('search-competition');
+  const division = urlParams.get('search-division');
+  const team = urlParams.get('search-team');
+  const keyword = urlParams.get('search-keyword');
+
+  if (prefecture) {
+    document.getElementById('search-prefecture').value = prefecture;
+  }
+  if (competition) {
+    document.getElementById('search-competition').value = competition;
+  }
+  if (division) {
+    document.getElementById('search-division').value = division;
+  }
+  if (team) {
+    document.getElementById('search-team').value = team;
+  }
+  if (keyword) {
+    document.getElementById('search-keyword').value = keyword;
+  }
+});
+</script>
+  
+</body>
+</html>
