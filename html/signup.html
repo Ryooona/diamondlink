@@ -223,10 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
     togglePasswordBtn.addEventListener('click', function() {
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+        this.innerHTML = '<i class="fa-solid fa-eye"></i>';
       } else {
         passwordInput.type = 'password';
-        this.innerHTML = '<i class="fa-solid fa-eye"></i>';
+        this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
       }
     });
   }
