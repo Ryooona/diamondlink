@@ -28,12 +28,13 @@ for (let i = 1; i <= 100; i++) {
   const teamType = teamTypes[Math.floor(Math.random() * teamTypes.length)];
   
   dummyTeams.push({
+    id: `team-${String(i).padStart(3, '0')}`, // ⭐ここを追加（例: team-001）
     name: `ダミーチーム${i}`,
     prefecture: prefecture,
     competition: competition,
     division: division,
     teamType: teamType,
     description: `${prefecture}で活動する${competition}チーム（${teamType}）です！`,
-    thumbnail: '/diamondlink/images/default-thumbnail.png' // ⭐ここを追加！
+    thumbnail: '/diamondlink/images/default-thumbnail.png'
   });
 }
