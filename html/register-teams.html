@@ -134,7 +134,27 @@ body::before {
 }
 </style>
   
-  
+  <style>
+.thumbnail-upload {
+  flex: 0 0 200px;
+  text-align: center;
+}
+
+.thumbnail-frame {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.thumbnail-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ←ここ大事！トリミングして正方形にフィット */
+}
+</style>
   
 </head>
 <body>
@@ -155,11 +175,13 @@ body::before {
     <legend>チーム情報</legend>
     <div class="form-layout">
       <!-- 左側：サムネイル -->
-      <div class="thumbnail-upload">
-        <label for="team-thumbnail">チームサムネイル</label><br>
-        <img id="thumbnail-preview" src="/diamondlink/images/placeholder.png" alt="サムネイルプレビュー">
-        <input type="file" id="team-thumbnail" name="team-thumbnail" accept="image/*">
-      </div>
+<div class="thumbnail-upload">
+  <div class="thumbnail-frame">
+    <img id="thumbnail-preview" src="/diamondlink/images/default-thumbnail.png" alt="サムネイルプレビュー">
+  </div>
+  <label for="team-thumbnail">サムネイル</label><br>
+  <input type="file" id="team-thumbnail" name="team-thumbnail" accept="image/*">
+</div>
 
       <!-- 右側：基本情報 -->
       <div class="team-fields">
@@ -740,6 +762,20 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault();
       errorGoogleMapUrl.textContent = "GoogleマップのURLを入力してください。";
       errorGoogleMapUrl.style.color = "red";
+    }
+  });
+});
+</script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const thumbnailInput = document.getElementById('team-thumbnail');
+  const previewImg = document.getElementById('thumbnail-preview');
+
+  thumbnailInput.addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      previewImg.src = URL.createObjectURL(file);
     }
   });
 });
