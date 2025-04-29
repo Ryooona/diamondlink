@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- 7. ダミーチーム検索＆表示 -->
+<!-- 7. ダミーチーム検索＆カード表示 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -247,9 +248,30 @@ document.addEventListener('DOMContentLoaded', function() {
     teamList.innerHTML = '<p>条件に一致するチームがありませんでした。</p>';
   } else {
     filteredTeams.forEach(teamData => {
-      const li = document.createElement('li');
-      li.textContent = `${teamData.name}（${teamData.prefecture}・${teamData.competition}）`;
-      teamList.appendChild(li);
+      const card = document.createElement('a');
+      card.className = 'team-card';
+      card.href = '/diamondlink/teams/sample-team.html'; // 仮リンク（あとで動的にできる）
+
+      card.innerHTML = `
+        <div class="team-card-inner">
+          <div class="team-thumbnail">
+            <img src="/diamondlink/images/sample-thumbnail.png" alt="サムネイル">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">${teamData.name}</h3>
+            <p class="team-meta">${teamData.prefecture}／市区町村　${teamData.ageGroup || '一般'}／${teamData.teamType}　${teamData.division}・${teamData.competition}</p>
+            <p class="team-practice">練習日：毎週 土曜日</p> <!-- 仮データ -->
+            <div class="team-sns">
+              ${teamData.xUrl ? `<a href="${teamData.xUrl}" target="_blank"><img src="/diamondlink/images/icon-x.svg" alt="X"></a>` : ''}
+              ${teamData.instagramUrl ? `<a href="${teamData.instagramUrl}" target="_blank"><img src="/diamondlink/images/icon-instagram.svg" alt="Instagram"></a>` : ''}
+              ${teamData.youtubeUrl ? `<a href="${teamData.youtubeUrl}" target="_blank"><img src="/diamondlink/images/icon-youtube.svg" alt="YouTube"></a>` : ''}
+            </div>
+            <p class="team-description">${teamData.description}</p>
+          </div>
+        </div>
+      `;
+
+      teamList.appendChild(card);
     });
   }
 });
