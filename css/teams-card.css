@@ -1,5 +1,12 @@
 /* teams-card.css */
 
+/* 全体のカードエリア */
+#team-list {
+  max-width: 900px; /* 最大幅を決める */
+  margin: 0 auto; /* 中央寄せ */
+  padding: 0 16px; /* スマホ向けに左右に余白 */
+}
+
 /* カード全体 */
 .team-card {
   display: block;
@@ -9,8 +16,7 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  margin: 0 auto 24px auto; /* ←左右中央寄せ＋下だけ余白 */
-  max-width: 800px; /* ←最大幅800px（後で自由に変えられる） */
+  margin-bottom: 24px;
   transition: transform 0.2s;
 }
 
