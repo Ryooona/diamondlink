@@ -421,3 +421,38 @@ html {
 #modal-overlay.show {
   opacity: 1;
 }
+
+/* =======================================
+   ◆ 親用：.card-flex-center
+======================================= */
+
+.card-flex-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;     /* 中央に並べる */
+  gap: 20px;                   /* カードの間隔 */
+  max-width: 960px;            /* 横幅の上限を設定してブレを防ぐ */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+/* =======================================
+   ◆ 子用：.feature-card
+======================================= */
+
+.feature-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  margin: 0 auto;               /* 中央寄せに重要！ */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
