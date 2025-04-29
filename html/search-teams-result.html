@@ -158,24 +158,34 @@
 
   <!-- 都道府県だけoptionが読み込まれるのを待ってからセット -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const prefecture = urlParams.get('search-prefecture');
-      const target = document.getElementById('search-prefecture');
+document.addEventListener('DOMContentLoaded', function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const prefecture = urlParams.get('search-prefecture');
+  const target = document.getElementById('search-prefecture');
 
-      if (!prefecture || !target) return;
+  if (!prefecture || !target) return;
 
-      const observer = new MutationObserver(() => {
-        const found = [...target.options].some(opt => opt.value === prefecture);
-        if (found) {
-          target.value = prefecture;
-          observer.disconnect();
-        }
-      });
+  const options = Array.from(target.options);
+  const match = options.find(option => option.value === prefecture);
 
-      observer.observe(target, { childList: true });
-    });
-  </script>
+  if (match) {
+    target.value = prefecture;
+    return; // ここで終わり！（監視も不要）
+  }
+
+  const observer = new MutationObserver(() => {
+    const options = Array.from(target.options);
+    const match = options.find(option => option.value === prefecture);
+
+    if (match) {
+      target.value = prefecture;
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(target, { childList: true, subtree: true });
+});
+</script>
 
   <!-- チーム一覧を絞り込んで表示 -->
   <script>
