@@ -1,16 +1,21 @@
-<!-- ▼ここからフッター用スタイル（まとめる） -->
+<!-- ▼ここからフッター用スタイル（強制適用版） -->
 <style>
   .footer-nav a {
-    color: white;
+    color: white !important;
   }
 
   .footer-nav a:hover {
-    text-decoration: underline; /* ホバー時に下線（任意） */
+    text-decoration: underline;
+  }
+
+  .site-footer {
+    background: #434343;
+    color: white;
   }
 </style>
 
 <!-- ▼ここからフッター -->
-<footer class="site-footer" style="background: #434343; color: white;">
+<footer class="site-footer">
   <div class="footer-container">
     <p>&copy; 2025 DiamondLink. All Rights Reserved.</p>
     <nav class="footer-nav">
