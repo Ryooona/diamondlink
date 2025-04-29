@@ -150,50 +150,51 @@ body::before {
 <form id="team-registration-form">
       
     <!-- チーム情報（カード） -->
-<fieldset>
-  <legend>チーム情報</legend>
-  <div class="form-layout">
-    <!-- 左側：サムネイル -->
-    <div class="thumbnail-upload">
-      <label for="team-thumbnail">チームサムネイル</label><br>
-      <img id="thumbnail-preview" src="/diamondlink/images/placeholder.png" alt="サムネイルプレビュー">
-      <input type="file" id="team-thumbnail" name="team-thumbnail" accept="image/*">
+<div class="card fade-in-section">
+  <fieldset>
+    <legend>チーム情報</legend>
+    <div class="form-layout">
+      <!-- 左側：サムネイル -->
+      <div class="thumbnail-upload">
+        <label for="team-thumbnail">チームサムネイル</label><br>
+        <img id="thumbnail-preview" src="/diamondlink/images/placeholder.png" alt="サムネイルプレビュー">
+        <input type="file" id="team-thumbnail" name="team-thumbnail" accept="image/*">
+      </div>
+
+      <!-- 右側：基本情報 -->
+      <div class="team-fields">
+        <!-- チーム名 -->
+        <label>チーム名<span class="required">*</span><br>
+          <input type="text" name="team-name" class="long-input" required>
+        </label><br><br>
+
+        <!-- 代表者の姓名 -->
+        <div class="representative-name">
+          <label>代表者氏名</label><br>
+          <div class="name-fields">
+            <div class="field-group">
+              <label for="last-name">姓<span class="required">*</span></label>
+              <input type="text" name="last-name" id="last-name" required>
+            </div>
+
+            <div class="field-group">
+              <label for="first-name">名<span class="required">*</span></label>
+              <input type="text" name="first-name" id="first-name" required>
+            </div>
+          </div>
+        </div><br>
+
+        <!-- メール -->
+        <label>連絡先（メールアドレス）<span class="required">*</span><br>
+          <input type="email" name="email" class="long-input" placeholder="例：diamondlink@example.com" required>
+        </label>
+      </div>
     </div>
 
-    <!-- 右側：基本情報 -->
-    <div class="team-fields">
-      <!-- チーム名 -->
-      <label>チーム名<span class="required">*</span><br>
-        <input type="text" name="team-name" class="long-input" required>
-      </label><br><br>
-
-      <!-- 代表者の姓名 -->
-      <div class="representative-name">
-        <label>代表者氏名</label><br>
-        <div class="name-fields">
-          <div class="field-group">
-            <label for="last-name">姓<span class="required">*</span></label>
-            <input type="text" name="last-name" id="last-name" required>
-          </div>
-
-          <div class="field-group">
-            <label for="first-name">名<span class="required">*</span></label>
-            <input type="text" name="first-name" id="first-name" required>
-          </div>
-        </div>
-      </div><br>
-
-      <!-- メール -->
-      <label>連絡先（メールアドレス）<span class="required">*</span><br>
-        <input type="email" name="email" class="long-input" placeholder="例：diamondlink@example.com" required>
-      </label>
-    </div>
-  </div>
-
-  <!-- ▼紹介欄は外に出す -->
-  <br>
-  <label>チーム紹介（自由記入欄）<br>
-    <textarea name="team-introduction" rows="20" cols="120" placeholder="例：【チーム名】は⚫︎⚫︎県▲▲市で活動している一般女子のゴムソフトボールチームです。
+    <!-- ▼紹介欄はカード内の下部に配置 -->
+    <br>
+    <label>チーム紹介（自由記入欄）<br>
+      <textarea name="team-introduction" rows="20" cols="120" placeholder="例：【チーム名】は⚫︎⚫︎県▲▲市で活動している一般女子のゴムソフトボールチームです。
 
 現在のメンバーは⚫︎⚫︎名ほどで、毎週日曜日に練習・試合を行なっています。
 全国大会優勝を目標に活動しているので、みんな真剣に取り組んでいますが、メンバーはみんな和気藹々としていて、とても仲が良いチームです！
@@ -207,8 +208,8 @@ body::before {
 
 ぜひ1度練習に体験にいらしてください☆
 お問い合わせお待ちしています♪"></textarea>
-  </label><br><br>
-</fieldset>
+    </label><br><br>
+  </fieldset>
 </div>
 
      <!-- 活動地域（横並びに修正） -->
